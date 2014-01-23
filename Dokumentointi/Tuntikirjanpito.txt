@@ -1,0 +1,7 @@
+22.01.2014
+19:10-21:00 Tuloksetta koitettu saada coperturaa ja pittiä toimimaan.
+23.01.2014
+11:30-12:30 copertura ja pit toimii ja aloitettu ohjelmoimaan.
+13:50-16:21 laadittu testejä ja tehty purkkaspagettivirityksiä, että näkee
+miten oikeasti kaikkien kannattaa olla yhteydessä.
+16:45-16:55
