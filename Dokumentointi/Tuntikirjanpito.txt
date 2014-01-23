@@ -5,3 +5,4 @@
 13:50-16:21 laadittu testejä ja tehty purkkaspagettivirityksiä, että näkee
 miten oikeasti kaikkien kannattaa olla yhteydessä.
 16:45-16:55
+19:50-22:00 Testien testausta ja viimeinen tunti miksei github toimi
