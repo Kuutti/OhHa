@@ -1,8 +1,15 @@
 22.01.2014
 19:10-21:00 Tuloksetta koitettu saada coperturaa ja pitti‰ toimimaan.
+
 23.01.2014
 11:30-12:30 copertura ja pit toimii ja aloitettu ohjelmoimaan.
 13:50-16:21 laadittu testej‰ ja tehty purkkaspagettivirityksi‰, ett‰ n‰kee
 miten oikeasti kaikkien kannattaa olla yhteydess‰.
 16:45-16:55
 19:50-22:00 Testien testausta ja viimeinen tunti miksei github toimi
+
+30.01.2014
+14:40-18:30   Jumituttu erin‰isiin seikkoihin ja keksitty v‰ltt‰vi‰ ratkaisuja.
+20:00-21:00       Yritetty selkeytt‰‰ rakennetta pakkauksilla. Muutettu koodia srp:n 
+mukaiseksi, mink‰ jalkeen testit toimivat, mutta pitist‰ j‰‰ mutaatiot henkiin. Ongelmana
+oli typo pitin configuroinnissa pakettejen luonnin j‰lkeen.

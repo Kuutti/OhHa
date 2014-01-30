@@ -1,6 +1,9 @@
 
 
-package rr.robottiralli;
+package logiikka.robottiralli.korttienhallinta;
+
+import logiikka.robottiralli.korttienhallinta.Kortti;
+import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 
 public class Korttipakka {
 

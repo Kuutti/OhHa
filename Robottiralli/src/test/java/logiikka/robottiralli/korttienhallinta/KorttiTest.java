@@ -4,12 +4,9 @@
  * and open the template in the editor.
  */
 
-package rr.robottiralli;
+package logiikka.robottiralli.korttienhallinta;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -29,6 +26,10 @@ public class KorttiTest {
     @Test
     public void KortintoimintoEiNULL(){
         assertEquals(false, kortti.getToiminto() == null);
+    }
+    @Test
+    public void String(){
+        assertEquals(kortti.getToiminto().toString(),kortti.toString());
     }
     
 

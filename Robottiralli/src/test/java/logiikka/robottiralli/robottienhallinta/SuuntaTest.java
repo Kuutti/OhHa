@@ -1,4 +1,4 @@
-package rr.robottiralli;
+package logiikka.robottiralli.robottienhallinta;
 
 
 import org.junit.Before;

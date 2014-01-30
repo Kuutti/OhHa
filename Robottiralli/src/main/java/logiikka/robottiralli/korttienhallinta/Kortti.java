@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 
-package rr.robottiralli;
+package logiikka.robottiralli.korttienhallinta;
 
-import rr.robottiralli.KortinToiminto;
 import java.util.Random;
 
 
@@ -35,9 +34,18 @@ public class Kortti {
                 break;
         }
     }
+    
+    public Kortti(KortinToiminto toiminto){
+        this.toiminto=toiminto;
+    }
 
     public KortinToiminto getToiminto() {
         return toiminto;
+    }
+
+    @Override
+    public String toString() {
+        return toiminto+"";
     }
     
 }

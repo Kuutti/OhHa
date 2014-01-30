@@ -1,6 +1,6 @@
 
 
-package rr.robottiralli;
+package logiikka.robottiralli.korttienhallinta;
 
 public enum KortinToiminto {
     YKSIETEEN, KAKSIETEEN, KOLMEETEEN, PERUUTUS,

@@ -1,4 +1,4 @@
-package rr.robottiralli;
+package logiikka.robottiralli.robottienhallinta;
 public class Suunta {
     int x;
 
@@ -17,10 +17,7 @@ public class Suunta {
             return false;
         }
         final Suunta other = (Suunta) obj;
-        if (this.x != other.x) {
-            return false;
-        }
-        return true;
+        return this.x == other.x;
     }
 
     public Suunta(int X) {

@@ -1,4 +1,4 @@
-package rr.robottiralli;
+package logiikka.robottiralli;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,10 +6,8 @@ package rr.robottiralli;
  * and open the template in the editor.
  */
 
-import org.junit.After;
-import org.junit.AfterClass;
+import logiikka.robottiralli.lautaelementtienhallinta.Sijainti;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -30,7 +28,7 @@ public class KayttoliittymaTest {
     @Test
     public void lautaOikeaaKokoa(){
         assertEquals(10,kayttis.lauta.getKorkeus());
-        assertEquals(10,kayttis.lauta.leveys);
+        assertEquals(10,kayttis.lauta.getLeveys());
     }
     @Test
     public void aloitusOikeassaPaikassa(){

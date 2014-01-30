@@ -44,11 +44,11 @@
     <version>0.30</version>
     <configuration>
         <targetClasses>
-            <param>rr.robottiralli*</param>
-         
+            <param>logiikka.robottiralli*</param>
+            
         </targetClasses>
         <targetTests>
-            <param>rr.robottiralli*</param>
+            <param>logiikka.robottiralli*</param>
             
         </targetTests>
     </configuration>

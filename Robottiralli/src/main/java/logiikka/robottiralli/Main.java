@@ -1,4 +1,4 @@
-package rr.robottiralli;
+package logiikka.robottiralli;
 
 public class Main 
 {

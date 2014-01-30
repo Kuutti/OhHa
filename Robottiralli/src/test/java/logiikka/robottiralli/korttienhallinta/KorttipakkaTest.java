@@ -1,4 +1,4 @@
-package rr.robottiralli;
+package logiikka.robottiralli.korttienhallinta;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,10 +6,9 @@ package rr.robottiralli;
  * and open the template in the editor.
  */
 
-import org.junit.After;
-import org.junit.AfterClass;
+import logiikka.robottiralli.pelaajienhallinta.Ihmispelaaja;
+import logiikka.robottiralli.robottienhallinta.Robotti;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -37,12 +36,12 @@ public class KorttipakkaTest {
     @Test
     public void pelaajalleOikeaMaaraKortteja9(){
         pakka.jaaKortitPelaajalle(peluri);
-        assertEquals(9,peluri.kortit.size());
+        assertEquals(9,peluri.getKasikortit().size());
     }
     @Test public void pelaajalleOikeaMaaraKortteja7(){
         robo.setVahinko(2);
         pakka.jaaKortitPelaajalle(peluri);
-        assertEquals(7,peluri.kortit.size());
+        assertEquals(7,peluri.getKasikortit().size());
     }
    
 }

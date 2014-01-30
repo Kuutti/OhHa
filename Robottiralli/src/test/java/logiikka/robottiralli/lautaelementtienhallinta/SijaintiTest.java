@@ -1,7 +1,8 @@
-package rr.robottiralli;
+package logiikka.robottiralli.lautaelementtienhallinta;
 
 
 
+import logiikka.robottiralli.lautaelementtienhallinta.*;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -26,30 +27,9 @@ public class SijaintiTest {
     }
     @Test
     public void setterit(){
-        sijainti.setX(2);
-        sijainti.setY(3);
+        sijainti.asetaSijainti(2,3);
         assertEquals(2,sijainti.getX());
         assertEquals(3,sijainti.getY());
-    }
-    @Test
-    public void Ylosliikkuminen(){
-        sijainti.ylospain(2);
-        assertEquals(13,sijainti.getY());
-    }
-    @Test
-    public void alasliikkuminen(){
-        sijainti.alaspain(1);
-        assertEquals(10,sijainti.getY());
-    }
-    @Test
-    public void oikealleliike(){
-        sijainti.oikealle(3);
-        assertEquals(13, sijainti.getX());
-    }
-    @Test
-    public void vasemmalleliikkuminne(){
-        sijainti.vasemmalle(4);
-        assertEquals(6,sijainti.getX());
     }
     @Test
     public void VerrataanKunXEri(){
@@ -67,6 +47,9 @@ public class SijaintiTest {
     public void VerrataanKunYEri(){
         assertEquals(false, sijainti.equals(new Sijainti(10,10)));
     }
-    
+    @Test 
+    public void tostring(){
+        assertEquals("Sijainti 10,11",sijainti.toString());
+    }
     
 }

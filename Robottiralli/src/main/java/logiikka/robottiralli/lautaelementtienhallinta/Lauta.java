@@ -1,8 +1,10 @@
 
 
-package rr.robottiralli;
+package logiikka.robottiralli.lautaelementtienhallinta;
 
+import logiikka.robottiralli.robottienhallinta.Robotti;
 import java.util.ArrayList;
+import java.util.Set;
 
 
 public class Lauta {
@@ -11,9 +13,14 @@ public class Lauta {
     Sijainti aloitus;
     Sijainti maali;
     ArrayList<Robotti> robotit;
+    ArrayList<Set<Sijainti>> seinat=new ArrayList<>();
 
     public int getLeveys() {
         return leveys;
+    }
+
+    public ArrayList<Set<Sijainti>> getSeinat() {
+        return seinat;
     }
 
     public int getKorkeus() {
