@@ -63,7 +63,7 @@ public class Ihmispelaaja implements Pelaaja{
     }
 
      public List<Kortti> nullLista() {
-        List<Kortti> lista=new ArrayList<Kortti>();
+        List<Kortti> lista=new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             lista.add(i, null);
         }

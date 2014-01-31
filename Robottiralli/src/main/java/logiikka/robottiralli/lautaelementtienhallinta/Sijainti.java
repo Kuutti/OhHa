@@ -2,8 +2,6 @@
 
 package logiikka.robottiralli.lautaelementtienhallinta;
 
-import logiikka.robottiralli.robottienhallinta.*;
-
 public class Sijainti {
     int x;
     int y;
@@ -29,10 +27,15 @@ public class Sijainti {
         if (this.x != other.x) {
             return false;
         }
-        if (this.y != other.y) {
-            return false;
-        }
-        return true;
+        return this.y == other.y;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + this.x;
+        hash = 79 * hash + this.y;
+        return hash;
     }
 
     public int getY() {

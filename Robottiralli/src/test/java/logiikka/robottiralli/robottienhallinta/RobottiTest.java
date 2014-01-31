@@ -42,27 +42,27 @@ public class RobottiTest {
     @Test
     public void LiikuOikealle(){
         robo.setSuunta(1);
-        robo.liiku(0);
+        robo.liiku(robo.getSuunta().getX());
         assertEquals(new Sijainti(4,3),robo.getSijainti());
     }
     @Test
     
     public void LiikuAlas(){
         robo.setSuunta(2);
-        robo.liiku(0);
+        robo.liiku(robo.getSuunta().getX());
         assertEquals(new Sijainti(3,2),robo.getSijainti());
     }
     
     @Test
     public void LiikuVasemmalle(){
         robo.setSuunta(3);
-        robo.liiku(0);
+        robo.liiku(robo.getSuunta().getX());
         assertEquals(new Sijainti(2,3), robo.getSijainti());
     }
     
     @Test 
     public void LiikuYlos(){
-        robo.liiku(0);
+        robo.liiku(robo.getSuunta().getX());
         assertEquals(new Sijainti (3,4),robo.getSijainti());
     }
     
@@ -106,24 +106,25 @@ public class RobottiTest {
         assertEquals(3,robo.getVahinko());
     }
     
-    @Test
-    public void edessaOlevaRuutu(){
-        assertEquals(new Sijainti(3,4),robo.edessaOleva());
-    }
-    
-    @Test
-    public void TakanaOlevaRuutu(){
-        assertEquals(new Sijainti(3,2),robo.takanaOleva());
-    }
-    
+
     @Test
     public void OikeallaOlevaRuutu(){
-        assertEquals(new Sijainti(4,3), robo.SuunnassaOleva(1));
+        assertEquals(new Sijainti(4,3), robo.SuunnassaOlevaRuutu(1));
     }
     
     @Test
     public void VasemmallaOlevaRuutu(){
-        assertEquals(new Sijainti(2,3),robo.SuunnassaOleva(3));
+        assertEquals(new Sijainti(2,3),robo.SuunnassaOlevaRuutu(3));
+    }
+    
+    @Test
+    public void EdessaOlevaRuutu(){
+        assertEquals(new Sijainti(3,4),robo.SuunnassaOlevaRuutu(0));
+    }
+    
+    @Test
+    public void TakanaOlevaRuutu(){
+        assertEquals(new Sijainti(3,2),robo.SuunnassaOlevaRuutu(2));
     }
 
 

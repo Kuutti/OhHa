@@ -28,6 +28,11 @@ public class Suunta {
         x=(x+1)%4;
     }
 
+    @Override
+    public String toString() {
+        return "Suunta on "+x;
+    }
+
     public void setX(int x) {
         this.x = x%4;
     }

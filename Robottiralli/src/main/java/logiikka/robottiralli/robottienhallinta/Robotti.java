@@ -24,7 +24,7 @@ public class Robotti {
     }
     
     public void liiku(int liikuttavasuunta){
-        int vipu=(suunta.getX()+liikuttavasuunta)%4;
+        int vipu=(liikuttavasuunta)%4;
         switch (vipu) {
             case 0: sijainti.asetaSijainti(sijainti.getX(), sijainti.getY()+1);
                 break;
@@ -64,7 +64,7 @@ public class Robotti {
         suunta.setX(x);
     }
 
-    public Sijainti SuunnassaOleva(int x) {
+    public Sijainti SuunnassaOlevaRuutu(int x) {
         switch((suunta.getX()+x)%4+1){
             case 1: return new Sijainti(sijainti.getX(),sijainti.getY()+1);  
             case 2: return new Sijainti(sijainti.getX()+1, sijainti.getY());
@@ -74,11 +74,5 @@ public class Robotti {
         return null;
     }
 
-    public Sijainti edessaOleva() {
-        return SuunnassaOleva(0);
-    }
     
-    public Sijainti takanaOleva(){
-        return SuunnassaOleva(2);
-    }
 }
