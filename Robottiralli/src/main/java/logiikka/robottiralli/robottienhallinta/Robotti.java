@@ -8,15 +8,42 @@ public class Robotti {
    Suunta suunta;
    Sijainti sijainti;
    int vahinko;
+   Sijainti checkpoint=null;
+   Boolean active=true;
+   Boolean holo=true;
+
+    public Boolean isActive() {
+        return active;
+    }
 
     public Robotti(int x, int y, int z) {
         sijainti=new Sijainti(x,y);
         suunta=new Suunta(z);
     }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Boolean isHolo() {
+        return holo;
+    }
+
+    public void setHolo(Boolean holo) {
+        this.holo = holo;
+    }
     
     public Robotti(Sijainti sijainti, int z){
         this.sijainti=sijainti;
         suunta=new Suunta(z);
+    }
+
+    public void setCheckpoint(Sijainti checkpoint) {
+        this.checkpoint = checkpoint;
+    }
+
+    public Sijainti getCheckpoint() {
+        return checkpoint;
     }
 
     public void setSijainti(Sijainti sijainti) {
@@ -73,6 +100,8 @@ public class Robotti {
       }
         return null;
     }
+
+    
 
     
 }

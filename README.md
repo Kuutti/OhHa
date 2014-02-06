@@ -1,2 +1,2 @@
-Seiniin ja robotteihin törmäily kunnossa.
-Tuntuu olevan hiukan purkkaviritystä, mutta parempaa ei ole keksitty.
+Suurin osa ajasta mennyt käyttöliittymän kanssa.
+Asia ei edennyt, joten pitää tulla käymään pajassa joku kerta.

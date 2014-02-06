@@ -13,3 +13,14 @@ miten oikeasti kaikkien kannattaa olla yhteydess‰.
 20:00-21:00       Yritetty selkeytt‰‰ rakennetta pakkauksilla. Muutettu koodia srp:n 
 mukaiseksi, mink‰ jalkeen testit toimivat, mutta pitist‰ j‰‰ mutaatiot henkiin. Ongelmana
 oli typo pitin configuroinnissa pakettejen luonnin j‰lkeen.
+
+31.01.2014
+Satunnaista koodausta muiden puuhien ohella.
+
+05.02.2014
+19:00-19:45 Interfacen suunnittelua.
+
+06.02.2014
+13:00-15:00 Interfacen kanssa tappelua.
+16:35-17:30       -||-
+19:00-20:00 V‰h‰n lis‰‰ interfacea ja siirrytty takaisin logiikkaan

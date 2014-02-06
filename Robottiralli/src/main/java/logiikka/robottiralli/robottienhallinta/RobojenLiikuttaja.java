@@ -24,7 +24,8 @@ public class RobojenLiikuttaja {
     void toteutaOhjelmat(HashMap<Pelaaja, List<Kortti>> ohjelmat) {
         for (int i = 0; i < 5; i++) {
             for (Pelaaja peluri : ohjelmat.keySet()) {
-                switch(ohjelmat.get(peluri).get(i).getToiminto()){
+                if (peluri.getRobotti().isActive()) {
+                switch(ohjelmat.get(peluri).get(i).getToiminto()){                 
                     case KAANNOSOIKEALLE: peluri.getRobotti().getSuunta().kaannyOikealle();
                         break;
                     case KAANNOSVASEMMALLE:peluri.getRobotti().getSuunta().kaannyVasemmalle();
@@ -40,8 +41,10 @@ public class RobojenLiikuttaja {
                     case PERUUTUS: liikuta(peluri.getRobotti(),1,peluri.getRobotti().getSuunta().getX()+2);
                         break;
                 }
-            }
+                }
+            }            
         }
+        kaikkiRobotitAktiivisiksi(ohjelmat);
     }
 
     private void liikuta(Robotti robo, int i, int suunta) {
@@ -57,6 +60,13 @@ public class RobojenLiikuttaja {
                 liikuta(tiella,1,suunta);
             }
             robo.liiku(suunta);
+            lauta.onkoRobotitLaudalla();
+        }
+    }
+
+    private void kaikkiRobotitAktiivisiksi(HashMap<Pelaaja, List<Kortti>> ohjelmat) {
+        for (Pelaaja peluri : ohjelmat.keySet()) {
+            peluri.getRobotti().setActive(true);
         }
     }
 

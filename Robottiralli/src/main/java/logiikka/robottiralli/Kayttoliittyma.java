@@ -8,22 +8,30 @@ import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 import logiikka.robottiralli.korttienhallinta.Korttipakka;
 import java.util.ArrayList;
+import kayttoliittyma.Aloitusikkuna;
+import kayttoliittyma.Lautaikkuna;
 
 public class Kayttoliittyma {
     Lauta lauta;
     ArrayList<Pelaaja> pelaajat=new ArrayList<>();
+    int pelaajia;
     Korttipakka pakka;
     
      public void aloitus(){
-         laudanluonti();
-         pelaajienLuonti();
-//         pelaus();
+        
+        Aloitusikkuna ikkuna=new Aloitusikkuna();
+        pelaajia=ikkuna.aloita();
+        laudanluonti();
+        pelaajienLuonti();
+        Lautaikkuna lautaikkuna=new Lautaikkuna();
+        lautaikkuna.setVisible(true);
+        lautaikkuna.luoLauta(lauta, pelaajia);
+         System.out.println("s");
          
      }
 
     private void pelaajienLuonti() {
-        int ihmispelaajia=1;
-        for (int i = 0; i < ihmispelaajia; i++) {
+        for (int i = 0; i < pelaajia; i++) {
           Ihmispelaaja peluri=new Ihmispelaaja(new Robotti(lauta.getAloitus(),0));
           pelaajat.add(peluri);  
         }
@@ -31,9 +39,9 @@ public class Kayttoliittyma {
     }
 
     private void laudanluonti() {
-        lauta=new Lauta(10,10);
+        lauta=new Lauta(24,24);
         lauta.setAloitus(1, 1);
-        lauta.setMaali(10, 10);
+        lauta.setMaali(24, 24);
     }
 
 //    private void pelaus() {
@@ -45,5 +53,6 @@ public class Kayttoliittyma {
 //        liikuttaja.liikuta(ohjelmat);
 //    }
 
+     
     
 }

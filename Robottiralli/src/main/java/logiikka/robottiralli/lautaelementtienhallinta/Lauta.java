@@ -15,6 +15,8 @@ public class Lauta {
     Sijainti maali;
     ArrayList<Robotti> robotit=new ArrayList<>();
     ArrayList<Set<Sijainti>> seinat=new ArrayList<>();
+    ArrayList<Sijainti> kuopat=new ArrayList<>();
+   
 
     public int getLeveys() {
         return leveys;
@@ -38,7 +40,9 @@ public class Lauta {
     }
 
     public void setAloitus(int x, int y) {
-        //erroria jos aloitus ei laudalla
+        if (new Sijainti(x,y).equals(maali)||kuopat.contains(new Sijainti(x,y))) {
+            return;
+        }
         this.aloitus = new Sijainti(x,y);
     }
 
@@ -47,7 +51,9 @@ public class Lauta {
     }
     
     public void setMaali(int x, int y){
-        //erroria jos maali ei laudalla
+        if (new Sijainti(x,y).equals(aloitus)||kuopat.contains(new Sijainti(x,y))) {
+            return;
+        }
         maali=new Sijainti(x,y);
     }
 
@@ -57,7 +63,7 @@ public class Lauta {
 
     public boolean onRobotti(Sijainti ruutu) {
         for (Robotti robotti : robotit) {
-            if (robotti.getSijainti().equals(ruutu)) {
+            if (robotti.getSijainti().equals(ruutu)&&!robotti.isHolo()) {
                 return true;
             }
         }
@@ -80,6 +86,23 @@ public class Lauta {
         return null;
     }
 
+    public void addKuoppa(Sijainti kuoppa){
+        if (kuoppa.equals(aloitus)||kuoppa.equals(maali)) {
+            return;
+        }
+        kuopat.add(kuoppa);
+    }
+
+    public void onkoRobotitLaudalla() {
+        for (Robotti robotti : robotit) {
+            if (!robotti.onkoLaudalla(leveys, korkeus)||kuopat.contains(robotti.getSijainti())) {
+                robotti.setActive(false);
+                if (robotti.getCheckpoint()==null) {
+                    robotti.setSijainti(aloitus);
+                }
+            }
+        }
+    }
     
 
     
