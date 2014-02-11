@@ -14,26 +14,19 @@ import java.util.List;
 public class Ihmispelaaja implements Pelaaja{
 
    Robotti pelinappula;
-   HashMap<Kortti,Integer> kasikortit=new HashMap<>();
+   ArrayList<Kortti> kasikortit=new ArrayList<>();
+   ArrayList<Kortti> ohjelma=new ArrayList<>();
 
-   @Override
-    public HashMap<Kortti, Integer> getKasikortit() {
-        return kasikortit;
-    }
    
-
     public Ihmispelaaja(Robotti pelinappula) {
         this.pelinappula = pelinappula;
-        kasikortit=new HashMap<>();
+        
        
     }
 
     @Override
     public void otaKortti(Kortti kortti) {
-        if (!kasikortit.containsKey(kortti)) {
-            kasikortit.put(kortti, 0);
-        }
-        kasikortit.put(kortti, kasikortit.get(kortti)+1);
+        kasikortit.add(kortti);
     }
 
     @Override
@@ -42,15 +35,20 @@ public class Ihmispelaaja implements Pelaaja{
     }
 
     @Override
-    public List<Kortti> teeOhjelma() {
-          List<Kortti> ohjelma=nullLista(); 
+    public void teeOhjelma() {
+          ArrayList<Kortti> keskenerainen=(ArrayList<Kortti>) nullLista(); 
 //        for (Kortti kortti : kasikortit.keySet()) {
 //            System.out.println(kortti+" "+kasikortit.get(kortti)+"kpl");
 //        }
 //        while(ohjelmaEiValmis(ohjelma)){
 //            
 //        }
-        return ohjelma;
+//          if (true) {
+//            pelinappula.setActive(false);
+//             return;
+//        }
+//       ohjelma=new ArrayList<>();
+         this.ohjelma=keskenerainen;
     }
 
     public boolean ohjelmaEiValmis(List<Kortti> ohjelma) {
@@ -63,12 +61,30 @@ public class Ihmispelaaja implements Pelaaja{
     }
 
      public List<Kortti> nullLista() {
-        List<Kortti> lista=new ArrayList<>();
+        ArrayList<Kortti> lista=new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             lista.add(i, null);
         }
         return lista;
     }
+
+    @Override
+    public ArrayList<Kortti> getOhjelma() {
+        return ohjelma;
+    }
+
+    @Override
+    public void setOhjelma(ArrayList<Kortti> ohjelma) {
+        this.ohjelma=ohjelma;
+        
+    }
+
+    @Override
+    public ArrayList<Kortti> getKasi() {
+        return kasikortit;
+    }
+
+    
 
     
 

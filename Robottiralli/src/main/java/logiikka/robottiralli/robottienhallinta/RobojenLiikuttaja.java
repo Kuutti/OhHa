@@ -2,13 +2,12 @@
 
 package logiikka.robottiralli.robottienhallinta;
 
-import logiikka.robottiralli.lautaelementtienhallinta.Sijainti;
-import logiikka.robottiralli.korttienhallinta.Kortti;
-import java.util.HashMap;
+import java.util.ArrayList;
+import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
+import logiikka.robottiralli.lautaelementtienhallinta.Lautaelementtienaktivoija;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 
 
@@ -21,54 +20,60 @@ public class RobojenLiikuttaja {
         this.lauta=lauta;
     }
 
-    void toteutaOhjelmat(HashMap<Pelaaja, List<Kortti>> ohjelmat) {
+    void toteutaOhjelmat(ArrayList<Pelaaja> pelaajat) {
+        Lautaelementtienaktivoija aktivoija=new Lautaelementtienaktivoija(lauta);
         for (int i = 0; i < 5; i++) {
-            for (Pelaaja peluri : ohjelmat.keySet()) {
+            for (Pelaaja peluri : pelaajat) {
                 if (peluri.getRobotti().isActive()) {
-                switch(ohjelmat.get(peluri).get(i).getToiminto()){                 
-                    case KAANNOSOIKEALLE: peluri.getRobotti().getSuunta().kaannyOikealle();
+                switch(peluri.getOhjelma().get(i).getToiminto()){                 
+                    case KAANNOSOIKEALLE: peluri.getRobotti().setSuunta(peluri.getRobotti().getSuunta()+1);
                         break;
-                    case KAANNOSVASEMMALLE:peluri.getRobotti().getSuunta().kaannyVasemmalle();
+                    case KAANNOSVASEMMALLE:peluri.getRobotti().setSuunta(peluri.getRobotti().getSuunta()+3);
                         break;
-                    case UKAANNOS:peluri.getRobotti().getSuunta().uKaannos();
+                    case UKAANNOS:peluri.getRobotti().setSuunta(peluri.getRobotti().getSuunta()+2);
                         break;
-                    case YKSIETEEN: liikuta(peluri.getRobotti(),1, peluri.getRobotti().getSuunta().getX());
+                    case YKSIETEEN: liikuta(peluri.getRobotti(),1, peluri.getRobotti().getSuunta());
                         break;
-                    case KAKSIETEEN:liikuta(peluri.getRobotti(),2,peluri.getRobotti().getSuunta().getX());
+                    case KAKSIETEEN:liikuta(peluri.getRobotti(),2,peluri.getRobotti().getSuunta());
                         break;
-                    case KOLMEETEEN:liikuta(peluri.getRobotti(),3,peluri.getRobotti().getSuunta().getX());
+                    case KOLMEETEEN:liikuta(peluri.getRobotti(),3,peluri.getRobotti().getSuunta());
                         break;
-                    case PERUUTUS: liikuta(peluri.getRobotti(),1,peluri.getRobotti().getSuunta().getX()+2);
+                    case PERUUTUS: liikuta(peluri.getRobotti(),1,peluri.getRobotti().getSuunta()+2);
                         break;
                 }
                 }
-            }            
+            } 
+            aktivoija.aktivoi(pelaajat,i+1);
+            Laserzhallinta hallinta=new Laserzhallinta(lauta);
+            hallinta.ammulaserz(pelaajat);
         }
-        kaikkiRobotitAktiivisiksi(ohjelmat);
+        
     }
 
     private void liikuta(Robotti robo, int i, int suunta) {
         for (int j = 0; j < i; j++) {
-            Set<Sijainti>ruudut= new HashSet<>();
-            ruudut.add(robo.getSijainti());
-            Sijainti seuraavaRuutu=robo.SuunnassaOlevaRuutu(suunta);
-            ruudut.add(seuraavaRuutu);
+            Set<Ruutu>ruudut= new HashSet<>(); //bad code
+            ruudut.add(robo.getRuutu());
+             Ruutu seuraava=lauta.seuraavaRuutu(robo.getRuutu(), suunta);
+             ruudut.add(seuraava);
             if (lauta.getSeinat().contains(ruudut)) {
                 break;
-            } else if (lauta.onRobotti(seuraavaRuutu)) {
-                Robotti tiella=lauta.robottiRuudussa(seuraavaRuutu);
+            } else if (lauta.onRobotti(seuraava)) {
+                Robotti tiella=lauta.robottiRuudussa(seuraava);
                 liikuta(tiella,1,suunta);
             }
-            robo.liiku(suunta);
-            lauta.onkoRobotitLaudalla();
+           
+            robo.setRuutu(seuraava);
+            
+            
         }
     }
 
-    private void kaikkiRobotitAktiivisiksi(HashMap<Pelaaja, List<Kortti>> ohjelmat) {
-        for (Pelaaja peluri : ohjelmat.keySet()) {
-            peluri.getRobotti().setActive(true);
-        }
-    }
+   
+
+    
+
+    
 
 
     

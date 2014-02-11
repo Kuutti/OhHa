@@ -2,23 +2,42 @@
 
 package logiikka.robottiralli.robottienhallinta;
 
-import logiikka.robottiralli.lautaelementtienhallinta.Sijainti;
+import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 
 public class Robotti {
-   Suunta suunta;
-   Sijainti sijainti;
-   int vahinko;
-   Sijainti checkpoint=null;
+   int suunta;
+   int vahinko=0;
+   Ruutu seuraavacp;
+   Ruutu respawn=null;
    Boolean active=true;
    Boolean holo=true;
+   Ruutu ruutu;
 
+    
+
+    public void setRuutu(Ruutu ruutu) {
+        this.ruutu.setRobotti(null);
+        this.ruutu = ruutu;
+        this.ruutu.setRobotti(this);
+    }
+
+    public Ruutu getSeuraavacp() {
+        return seuraavacp;
+    }
+
+    public void setSeuraavacp(Ruutu seuraavacp) {
+        this.seuraavacp = seuraavacp;
+    }
+    
+    
+    
     public Boolean isActive() {
         return active;
     }
 
-    public Robotti(int x, int y, int z) {
-        sijainti=new Sijainti(x,y);
-        suunta=new Suunta(z);
+    public Robotti (Ruutu ruutu, int z) {
+        this.ruutu=ruutu;
+        suunta=z%4;
     }
 
     public void setActive(Boolean active) {
@@ -29,77 +48,53 @@ public class Robotti {
         return holo;
     }
 
+    public Ruutu getRespawn() {
+        return respawn;
+    }
+
     public void setHolo(Boolean holo) {
         this.holo = holo;
     }
     
-    public Robotti(Sijainti sijainti, int z){
-        this.sijainti=sijainti;
-        suunta=new Suunta(z);
+    public void setRespawn(Ruutu respawn)  {   
+            this.respawn = respawn;
     }
 
-    public void setCheckpoint(Sijainti checkpoint) {
-        this.checkpoint = checkpoint;
+    public Ruutu Respawn(){
+        return respawn;
     }
 
-    public Sijainti getCheckpoint() {
-        return checkpoint;
-    }
-
-    public void setSijainti(Sijainti sijainti) {
-        this.sijainti = sijainti;
-    }
+    public void tuhoudu(){
+        holo=true;
+        active=false;
+        vahinko=2;
+    }   
     
-    public void liiku(int liikuttavasuunta){
-        int vipu=(liikuttavasuunta)%4;
-        switch (vipu) {
-            case 0: sijainti.asetaSijainti(sijainti.getX(), sijainti.getY()+1);
-                break;
-            case 1: sijainti.asetaSijainti(sijainti.getX()+1, sijainti.getY());
-                break;
-            case 2: sijainti.asetaSijainti(sijainti.getX(), sijainti.getY()-1);
-                break;
-            case 3: sijainti.asetaSijainti(sijainti.getX()-1,sijainti.getY());
-                break;
-        }
-    }
-    
-    public boolean onkoLaudalla(int leveys, int korkeus){
-        return sijainti.getX() >= 1 && sijainti.getX() <= leveys && sijainti.getY() >= 1 && sijainti.getY() <= korkeus;
-    }
-
-    void setSijainti(int x, int y) {
-        sijainti=new Sijainti(x, y);
-    }
-      public int getVahinko() {
+    public int getVahinko() {
         return vahinko;
     }
 
     public void setVahinko(int vahinko) {
-        this.vahinko = vahinko;
+        this.vahinko = Math.max(vahinko, 0);
     }
 
-    public Suunta getSuunta() {
+    public int getSuunta() {
         return suunta;
     }
 
-    public Sijainti getSijainti() {
-        return sijainti;
-    }
-
     public void setSuunta(int x) {
-        suunta.setX(x);
+        suunta=x%4;
     }
 
-    public Sijainti SuunnassaOlevaRuutu(int x) {
-        switch((suunta.getX()+x)%4+1){
-            case 1: return new Sijainti(sijainti.getX(),sijainti.getY()+1);  
-            case 2: return new Sijainti(sijainti.getX()+1, sijainti.getY());
-            case 3: return new Sijainti(sijainti.getX(),sijainti.getY()-1);
-            case 4: return new Sijainti(sijainti.getX()-1,sijainti.getY());
-      }
-        return null;
+    public Ruutu getRuutu() {
+        return ruutu;
     }
+
+    public void korjaa(int teho) {
+        vahinko=vahinko-2;
+    }
+
+    
 
     
 

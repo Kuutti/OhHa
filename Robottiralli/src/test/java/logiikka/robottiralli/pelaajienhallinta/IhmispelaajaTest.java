@@ -10,6 +10,7 @@ import logiikka.robottiralli.korttienhallinta.Kortti;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 import java.util.Arrays;
 import java.util.List;
+import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -26,7 +27,7 @@ public class IhmispelaajaTest {
     
     @Before
     public void setUp() {
-        robo=new Robotti(2,2,2);
+        robo=new Robotti(new Ruutu(2,2),2);
         peluri=new Ihmispelaaja(robo);
         kortti=new Kortti();
     }
@@ -43,7 +44,7 @@ public class IhmispelaajaTest {
     @Test
     public void kasikorttejaOikeaMaara(){
         peluri.otaKortti(kortti);
-        assertEquals(1, peluri.kasikortit.get(kortti).intValue());
+        assertEquals(1, peluri.kasikortit.size());
     }
     @Test
     public void nullListanullia(){

@@ -1,3 +1,4 @@
+ 
 
 
 package logiikka.robottiralli.lautaelementtienhallinta;
@@ -7,27 +8,34 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+//muutettava vain antamaan ja varastoimaan tietoa
 
 public class Lauta {
     int leveys;
     int korkeus;
-    Sijainti aloitus;
-    Sijainti maali;
-    ArrayList<Robotti> robotit=new ArrayList<>();
-    ArrayList<Set<Sijainti>> seinat=new ArrayList<>();
-    ArrayList<Sijainti> kuopat=new ArrayList<>();
+    Ruutu aloitus;
+    Ruutu maali;
+    Ruutu[][] pelilauta;
+    ArrayList<Set<Ruutu>>seinat=new ArrayList<>();
+    ArrayList<Laser> laserit=new ArrayList<>();
+
+    public ArrayList<Laser> getLaserit() {
+        return laserit;
+    }
+    ArrayList<Robotti> robot=new ArrayList<>();
+ 
    
 
     public int getLeveys() {
         return leveys;
     }
 
-    public ArrayList<Set<Sijainti>> getSeinat() {
+    public ArrayList<Set<Ruutu>> getSeinat() {
         return seinat;
     }
 
     public void AddRobo(Robotti robo){
-        robotit.add(robo);
+        robot.add(robo);
     }
     
     public int getKorkeus() {
@@ -37,76 +45,75 @@ public class Lauta {
     public Lauta(int leveys, int korkeus) {
         this.leveys = leveys;
         this.korkeus = korkeus;
+        pelilauta=new Ruutu[leveys][korkeus];
+        for (int i = 0; i < leveys; i++) {
+            for (int j = 0; j < korkeus; j++) {
+                pelilauta[i][j]=new Ruutu(i,j);
+            }
+        }
     }
 
     public void setAloitus(int x, int y) {
-        if (new Sijainti(x,y).equals(maali)||kuopat.contains(new Sijainti(x,y))) {
-            return;
-        }
-        this.aloitus = new Sijainti(x,y);
+        this.aloitus = new Ruutu(x,y);
     }
-
-    public Sijainti getAloitus() {
+    
+    public Ruutu getAloitus(){
         return aloitus;
     }
     
     public void setMaali(int x, int y){
-        if (new Sijainti(x,y).equals(aloitus)||kuopat.contains(new Sijainti(x,y))) {
-            return;
-        }
-        maali=new Sijainti(x,y);
+        maali=new Ruutu(x,y);
     }
 
-    public Sijainti getMaali() {
+    public Ruutu getMaali() {
         return maali;
     }
 
-    public boolean onRobotti(Sijainti ruutu) {
-        for (Robotti robotti : robotit) {
-            if (robotti.getSijainti().equals(ruutu)&&!robotti.isHolo()) {
-                return true;
-            }
-        }
-        return false;
+    //muualle
+    public boolean onRobotti(Ruutu ruutu) {
+        return pelilauta[ruutu.getX()][ruutu.getY()].onRobotti();
     }
 
-    public void addSeina(Sijainti sijainti, Sijainti seuraava) {
-        Set<Sijainti> seina=new HashSet<>();
+    public void addSeina(Ruutu sijainti, Ruutu seuraava) {
+        Set<Ruutu> seina=new HashSet<>();
         seina.add(sijainti);
         seina.add(seuraava);
         seinat.add(seina);
     }
 
-    public Robotti robottiRuudussa(Sijainti ruutu) {
-        for (Robotti robotti : robotit) {
-            if (robotti.getSijainti().equals(ruutu)) {
-               return robotti; 
+    public boolean onLaudalla(Ruutu sijainti){
+        return sijainti.getX()>0&&sijainti.getX()<= leveys && sijainti.getY() > 0 && sijainti.getY() <= korkeus;
+    }
+
+    public Ruutu seuraavaRuutu(Ruutu ruutu, int suunta) {
+             int vipu=(suunta)%4;
+            switch (vipu) {
+            case 0: ruutu=pelilauta[ruutu.getX()][ruutu.getY()+1];
+                break;
+            case 1: ruutu=pelilauta[ruutu.getX()+1][ruutu.getY()];
+                break;
+            case 2: ruutu=pelilauta[ruutu.getX()][ruutu.getY()-1];
+                break;
+            case 3: ruutu=pelilauta[ruutu.getX()-1][ruutu.getY()];
+                break;
+        }
+        return ruutu;
+    }
+
+    public Robotti robottiRuudussa(Ruutu ruutu) {
+        return pelilauta[ruutu.getX()][ruutu.getY()].getRobotti();
+    }
+
+    void aktivoiRuudussa(String elementti,Ruutu ruutu, int vuoro) {
+        for (Ruudunvieva osa : ruutu.getRuudussa()) {
+            if (osa.tyyppi().matches(elementti)) {
+                osa.aktivoidu(this, ruutu, vuoro);
             }
         }
-        return null;
     }
 
-    public void addKuoppa(Sijainti kuoppa){
-        if (kuoppa.equals(aloitus)||kuoppa.equals(maali)) {
-            return;
-        }
-        kuopat.add(kuoppa);
-    }
-
-    public void onkoRobotitLaudalla() {
-        for (Robotti robotti : robotit) {
-            if (!robotti.onkoLaudalla(leveys, korkeus)||kuopat.contains(robotti.getSijainti())) {
-                robotti.setActive(false);
-                if (robotti.getCheckpoint()==null) {
-                    robotti.setSijainti(aloitus);
-                }
-            }
-        }
-    }
     
-
-    
-    
+  
    
    
 }

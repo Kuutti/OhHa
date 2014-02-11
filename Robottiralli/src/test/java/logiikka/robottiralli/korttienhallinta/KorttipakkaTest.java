@@ -6,6 +6,7 @@ package logiikka.robottiralli.korttienhallinta;
  * and open the template in the editor.
  */
 
+import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.pelaajienhallinta.Ihmispelaaja;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 import org.junit.Before;
@@ -29,19 +30,23 @@ public class KorttipakkaTest {
     @Before
     public void setUp() {
         pakka=new Korttipakka();
-        robo=new Robotti(2,2,2);
+        robo=new Robotti(new Ruutu(2,2),2);
         peluri=new Ihmispelaaja(robo);
     }
     
     @Test
-    public void pelaajalleOikeaMaaraKortteja9(){
+    public void oikeaMaaraKorttejaEiVahinkoa(){
         pakka.jaaKortitPelaajalle(peluri);
-        assertEquals(9,peluri.getKasikortit().size());
+        assertEquals(9,peluri.getKasi().size());
     }
-    @Test public void pelaajalleOikeaMaaraKortteja7(){
+    
+    @Test
+    public void oikeaMaaraKorttejaKaksiVahinkoa(){
         robo.setVahinko(2);
         pakka.jaaKortitPelaajalle(peluri);
-        assertEquals(7,peluri.getKasikortit().size());
+        assertEquals(7,peluri.getKasi().size());
     }
+    
+   
    
 }

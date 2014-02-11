@@ -4,7 +4,8 @@ package logiikka.robottiralli.robottienhallinta;
 
 
 
-import logiikka.robottiralli.lautaelementtienhallinta.Sijainti;
+import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
+import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -19,87 +20,35 @@ public class RobottiTest {
     }
     
     Robotti robo;
+    Lauta lauta;
     
     @Before
     public void setUp() {
-        robo=new Robotti(3,3,0);
+        robo=new Robotti(new Ruutu(3,3),0);
+        lauta=new Lauta(10,10);
     }
     
     @Test
     public void getteritJaKonstruktori(){
-        assertEquals(new Sijainti(3,3), robo.getSijainti());
-        assertEquals(new Suunta(0), robo.getSuunta());
+        assertEquals(new Ruutu(3,3), robo.getRuutu());
+        assertEquals(0, robo.getSuunta());
     }
     
     @Test
     public void Setterit(){
-        robo.setSijainti(new Sijainti(2,2));
+        robo.setRuutu(new Ruutu(2,2));
         robo.setSuunta(1);
-        assertEquals(new Suunta(1),robo.getSuunta());
-        assertEquals(new Sijainti(2,2), robo.getSijainti());
-    }
-    
-    @Test
-    public void LiikuOikealle(){
-        robo.setSuunta(1);
-        robo.liiku(robo.getSuunta().getX());
-        assertEquals(new Sijainti(4,3),robo.getSijainti());
-    }
-    @Test
-    
-    public void LiikuAlas(){
-        robo.setSuunta(2);
-        robo.liiku(robo.getSuunta().getX());
-        assertEquals(new Sijainti(3,2),robo.getSijainti());
-    }
-    
-    @Test
-    public void LiikuVasemmalle(){
-        robo.setSuunta(3);
-        robo.liiku(robo.getSuunta().getX());
-        assertEquals(new Sijainti(2,3), robo.getSijainti());
-    }
-    
-    @Test 
-    public void LiikuYlos(){
-        robo.liiku(robo.getSuunta().getX());
-        assertEquals(new Sijainti (3,4),robo.getSijainti());
+        assertEquals(1,robo.getSuunta());
+        assertEquals(new Ruutu(2,2), robo.getRuutu());
     }
     
     @Test
     public void ToinenKonstruktori(){
-       Robotti r=new Robotti(new Sijainti(2,2),1);
-       assertEquals(new Sijainti(2,2),r.getSijainti());
-       assertEquals(new Suunta(1),r.getSuunta());
+       Robotti r=new Robotti(new Ruutu(2,2),1);
+       assertEquals(new Ruutu(2,2),r.getRuutu());
+       assertEquals(1,r.getSuunta());
    }
-    
-    @Test
-    public void OnLaudalla(){
-        assertEquals(true,robo.onkoLaudalla(4, 4));
-    }
-    
-    @Test
-    public void Ylareunalla(){
-        assertEquals(true,robo.onkoLaudalla(4, 3));
-    }
-    
-    @Test
-    public void Alareunalla(){
-        robo.setSijainti(3,1);
-        assertEquals(true,robo.onkoLaudalla(4, 4));
-    }
-    
-    @Test
-    public void OikeallaReunalla(){
-        assertEquals(true, robo.onkoLaudalla(3, 4));
-    }
-    
-    @Test
-    public void VasemmallaReunalla(){
-        robo.setSijainti(1, 3);
-        assertEquals(true,robo.onkoLaudalla(4, 4));
-    }
-    
+     
     @Test
     public void vahinko(){
         robo.setVahinko(3);
@@ -107,25 +56,7 @@ public class RobottiTest {
     }
     
 
-    @Test
-    public void OikeallaOlevaRuutu(){
-        assertEquals(new Sijainti(4,3), robo.SuunnassaOlevaRuutu(1));
-    }
-    
-    @Test
-    public void VasemmallaOlevaRuutu(){
-        assertEquals(new Sijainti(2,3),robo.SuunnassaOlevaRuutu(3));
-    }
-    
-    @Test
-    public void EdessaOlevaRuutu(){
-        assertEquals(new Sijainti(3,4),robo.SuunnassaOlevaRuutu(0));
-    }
-    
-    @Test
-    public void TakanaOlevaRuutu(){
-        assertEquals(new Sijainti(3,2),robo.SuunnassaOlevaRuutu(2));
-    }
+   
 
 
 
