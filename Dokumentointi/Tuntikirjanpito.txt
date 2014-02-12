@@ -32,3 +32,11 @@ Satunnaista koodausta muiden puuhien ohella.
 
 08.02.2014
 15:35-17:00
+
+11.02.2014
+11:30-14:00 Pajassa interfacen ohjelmointia.
+Myöhemmin illalla lautaelementtien piirtelyä pari tuntia.
+
+12.02.2014
+14:30-16:30
+19:00-21:00 Saatu loput lautaelementit piirrettyä. 

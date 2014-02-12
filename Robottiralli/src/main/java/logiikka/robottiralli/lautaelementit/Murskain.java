@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
-import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
-import logiikka.robottiralli.robottienhallinta.Robotti;
 
 
 public class Murskain implements Ruudunvieva{
