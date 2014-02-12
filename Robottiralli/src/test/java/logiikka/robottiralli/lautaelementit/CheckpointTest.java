@@ -54,7 +54,7 @@ public class CheckpointTest {
     
     @Test
     public void korjaaVuoronlopussa(){
-        robo.setVahinko(2);
+        robo.otaVahinkoa(2);
         cp.aktivoidu(new Lauta(5,5), ruutu, 5);
         assertEquals(1,robo.getVahinko());
     }

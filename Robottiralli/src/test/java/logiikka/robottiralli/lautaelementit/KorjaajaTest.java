@@ -41,7 +41,7 @@ public class KorjaajaTest {
     
     @Test
     public void korjaa(){
-        robo.setVahinko(4);
+        robo.otaVahinkoa(4);
         korjaaja.aktivoidu(new Lauta(5,5), ruutu, 5);
         assertEquals(2,robo.getVahinko());
     }

@@ -35,7 +35,7 @@ public class Checkpoint implements Ruudunvieva{
             ruutu.getRobotti().setSeuraavacp(seuraava);
         }
         if (vuoro==5) {
-            ruutu.getRobotti().setVahinko(ruutu.getRobotti().getVahinko()-1);
+            ruutu.getRobotti().otaVahinkoa(ruutu.getRobotti().getVahinko()-1);
         }
     }
     

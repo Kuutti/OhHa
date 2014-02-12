@@ -42,7 +42,7 @@ public class KorttipakkaTest {
     
     @Test
     public void oikeaMaaraKorttejaKaksiVahinkoa(){
-        robo.setVahinko(2);
+        robo.otaVahinkoa(2);
         pakka.jaaKortitPelaajalle(peluri);
         assertEquals(7,peluri.getKasi().size());
     }

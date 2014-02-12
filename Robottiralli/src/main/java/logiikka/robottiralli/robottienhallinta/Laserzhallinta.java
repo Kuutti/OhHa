@@ -44,7 +44,7 @@ public class Laserzhallinta {
         Robotti kohde=null;
         kohde=onkoEdessärobottia(ruutu, suunta);
         if (kohde!=null) {
-            kohde.setVahinko(kohde.getVahinko()+1);
+            kohde.otaVahinkoa(kohde.getVahinko()+1);
         }
     }
 
@@ -64,7 +64,7 @@ public class Laserzhallinta {
     private void laseritAmpuu() {
         for (Laser laser : lauta.getLaserit()) {
             if (laser.getRuutu().onRobotti()) {
-                laser.getRuutu().getRobotti().setVahinko(laser.getVahinko()+laser.getRuutu().getRobotti().getVahinko());
+                laser.getRuutu().getRobotti().otaVahinkoa(laser.getVahinko()+laser.getRuutu().getRobotti().getVahinko());
             } else {
                 ampuminen(laser.getRuutu(),laser.getSuunta());
             }

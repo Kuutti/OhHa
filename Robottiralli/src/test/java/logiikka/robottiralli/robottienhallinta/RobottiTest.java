@@ -51,7 +51,7 @@ public class RobottiTest {
      
     @Test
     public void vahinko(){
-        robo.setVahinko(3);
+        robo.otaVahinkoa(3);
         assertEquals(3,robo.getVahinko());
     }
     
