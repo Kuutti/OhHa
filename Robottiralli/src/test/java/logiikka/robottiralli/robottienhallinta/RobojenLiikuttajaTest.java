@@ -170,6 +170,6 @@ public class RobojenLiikuttajaTest {
         peluri.setOhjelma( (ArrayList<Kortti>) ohjelma);
         ArrayList<Pelaaja> lista=new ArrayList<>();
         lista.add(peluri);
-        liikuttaja.toteutaOhjelmat(lista);
+        liikuttaja.suoritaOhjelmat(lista);
     }
 }

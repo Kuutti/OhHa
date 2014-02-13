@@ -27,7 +27,7 @@ public class RobojenLiikuttaja {
      * @param pelaajat Lista pelaajista, joiden robotteja liikutetaan.
      */
     
-    void toteutaOhjelmat(ArrayList<Pelaaja> pelaajat) {
+    void suoritaOhjelmat(ArrayList<Pelaaja> pelaajat) {
         Lautaelementtienaktivoija aktivoija=new Lautaelementtienaktivoija(lauta);
         for (int i = 0; i < 5; i++) {
             for (Pelaaja peluri : pelaajat) {
