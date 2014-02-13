@@ -6,13 +6,9 @@
 
 package logiikka.robottiralli.lautaelementit;
 
-import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.robottienhallinta.Robotti;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -29,7 +25,7 @@ public class KuoppaTest {
     @Before
     public void setUp() {
         ruutu=new Ruutu(3,3);
-        kuoppa=new Kuoppa(ruutu);
+        kuoppa=new Kuoppa();
         robo=new Robotti(ruutu,2);
         ruutu.setRobotti(robo);
     }
@@ -42,7 +38,7 @@ public class KuoppaTest {
     @Test
     public void robottiTuhoutuu(){
         robo.setRespawn(new Ruutu(2,2));
-        kuoppa.aktivoidu(new Lauta(5,5), ruutu, 2);
+        kuoppa.aktivoidu(robo, 2);
         assertEquals(new Ruutu(2,2),robo.getRuutu());
         assertEquals(2,robo.getVahinko());
     }

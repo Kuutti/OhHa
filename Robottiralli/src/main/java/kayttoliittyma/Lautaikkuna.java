@@ -43,7 +43,5 @@ public class Lautaikkuna implements Runnable{
         frame.setVisible(true);
     }
 
-    public void luoElementit() {
-        
-    }
+    
 }

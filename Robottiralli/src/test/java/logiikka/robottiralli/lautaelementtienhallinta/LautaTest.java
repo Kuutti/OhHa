@@ -30,11 +30,6 @@ public class LautaTest {
         lauta.setAloitus(2,2);
         assertEquals(new Ruutu(2,2),lauta.getAloitus());
     }
-    @Test
-    public void maali(){
-        lauta.setMaali(2, 3);
-        assertEquals(new Ruutu(2,3),lauta.getMaali());
-    }
     
     @Test
     public void seinanLisays(){
@@ -43,17 +38,6 @@ public class LautaTest {
         test.add(new Ruutu(1,1));
         test.add(new Ruutu(1,2));
         assertEquals(true,lauta.getSeinat().contains(test));
-    }
-    @Test
-    public void lisaaRobotin(){
-        lauta.AddRobo(new Robotti(new Ruutu(2,2),2));
-        assertEquals(1,lauta.robot.size());
-    }
-    @Test
-    public void eiVoiTormataHolona(){
-        Robotti testirobo=new Robotti(new Ruutu(2,2),2);
-        lauta.AddRobo(testirobo);
-        assertEquals(false,lauta.onRobotti(lauta.pelilauta[2][2]));
     }
     
      @Test
@@ -94,26 +78,5 @@ public class LautaTest {
     @Test
     public void onLaudallaYlareunassa(){
         assertEquals(true,lauta.onLaudalla(new Ruutu(8,10)));
-    }
-    
-    @Test
-    public void ruudussaRobo(){
-       Robotti robo=new Robotti(new Ruutu(2,2),2);
-       lauta.pelilauta[2][2].setRobotti(robo);
-       assertEquals(robo,lauta.robottiRuudussa(new Ruutu(2,2)));
-    }
-    
-    @Test
-    public void ruudussaElementti(){
-        Ruutu ruutu=new Ruutu(2,2);
-        Robotti robo=new Robotti(ruutu,0);
-        ruutu.setRobotti(robo);
-        Kaantaja kaannin=new Kaantaja(ruutu,1);
-        ruutu.lisaaElementti(kaannin);
-        lauta.pelilauta[2][2]=ruutu;
-        lauta.aktivoiRuudussa("kaantaja", ruutu,1);
-        assertEquals(1,robo.getSuunta());
-    }
-
-    
+    }    
 }

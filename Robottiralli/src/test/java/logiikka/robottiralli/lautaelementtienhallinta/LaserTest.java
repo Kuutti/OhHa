@@ -27,7 +27,7 @@ public class LaserTest {
     @Before
     public void setUp() {
         ruutu=new Ruutu(3,3);
-        laser=new Laser(ruutu,2,2);
+        laser=new Laser(ruutu,2);
         robo=new Robotti(ruutu,1);
     }
     
@@ -35,7 +35,6 @@ public class LaserTest {
     public void luoOikein(){
         assertEquals(new Ruutu(3,3),laser.getRuutu());
         assertEquals(2,laser.getSuunta());
-        assertEquals(2,laser.getVahinko());
     }
     
 }

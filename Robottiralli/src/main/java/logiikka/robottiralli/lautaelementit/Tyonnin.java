@@ -10,34 +10,55 @@ import java.util.ArrayList;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
-import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
+import logiikka.robottiralli.robottienhallinta.Robotti;
 
 /**
  *
  * @author KOTIPC
  */
 public class Tyonnin implements Ruudunvieva{
-
-    Ruutu ruutu;
+/**
+ * Ruutu, johon työnnin työntää robotin.
+ */
     Ruutu tyonnettavaRuutu;
-    ArrayList<Integer> aktivoituu;
+    /**
+     * Ilmaisee aktivoituuko työnnin parillisilla vai parittomilla vuoroilla
+     */
+    Integer aktivoituu;
+    /**
+     * Piirtämistä varten suunta johon työnnetään robotti.
+     */
+    Integer suunta;
     
     @Override
     public String tyyppi() {
         return "tyonnin";
     }
 
-    public Tyonnin(Ruutu ruutu, Ruutu tyonnettavaRuutu, ArrayList<Integer> aktivoituu) {
-        this.ruutu = ruutu;
+    public Tyonnin(Ruutu tyonnettavaRuutu, Integer aktivoituu, Integer suunta) {
+        this.suunta=suunta%4;
         this.tyonnettavaRuutu = tyonnettavaRuutu;
         this.aktivoituu = aktivoituu;
     }
 
+    /**
+     * Siirtää robotin työnnettävään ruutuun, jossa vuoro on oikea.
+     * @param robo Robotti, jota työnnetään
+     * @param vuoro monta ohjelman käskyä on toteutettu
+     */
     @Override
-    public void aktivoidu(Lauta lauta, Ruutu ruutu, int vuoro) {
-        if (aktivoituu.contains(vuoro)) {
-            ruutu.getRobotti().setRuutu(tyonnettavaRuutu);
+    public void aktivoidu(Robotti robo, int vuoro) {
+        if (aktivoituu%2==vuoro%2) {
+           robo.setRuutu(tyonnettavaRuutu);
         }
+    }
+/**  
+ * @return palauttaa suunnan, joka on välillä 0-3, kun työnnin aktivoituu
+ * parillisilla vuoroilla ja 4-7, kun aktivoituu parittomilla.
+ */
+    @Override
+    public Integer getErikoisint() {
+        return 4*(aktivoituu%2)+suunta;
     }
     
 }

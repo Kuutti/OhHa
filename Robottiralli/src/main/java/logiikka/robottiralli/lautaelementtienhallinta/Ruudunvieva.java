@@ -1,8 +1,22 @@
 package logiikka.robottiralli.lautaelementtienhallinta;
 
-import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
+import logiikka.robottiralli.robottienhallinta.Robotti;
 
 public interface Ruudunvieva {
+    /**
+     * @return Palauttaa minkälainen elementti on kyseessä.
+     */
     String tyyppi();
-    void aktivoidu(Lauta lauta, Ruutu ruutu, int vuoro);
+    /**
+     * Aktivoi lautaelementin ja suorittaa elementin toiminnon
+     * @param robo Robotti, jolle lautaelementti tekee jotain.
+     * @param vuoro Monta korttia pelaajien ohjelmista on paljastettu.
+     */
+    void aktivoidu(Robotti robo, int vuoro);
+    /**
+     * @return Palauttaa elementistä riippuen luvun, jota grafiikkapiirturi
+     * tarvitsee.
+     */
+    Integer getErikoisint();
+       
 }

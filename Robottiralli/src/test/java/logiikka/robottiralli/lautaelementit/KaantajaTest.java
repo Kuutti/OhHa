@@ -6,13 +6,9 @@
 
 package logiikka.robottiralli.lautaelementit;
 
-import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.robottienhallinta.Robotti;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -29,7 +25,7 @@ public class KaantajaTest {
     @Before
     public void setUp() {
         ruutu=new Ruutu(3,3);
-        kaannin=new Kaantaja(ruutu,1);
+        kaannin=new Kaantaja(1);
         robo=new Robotti(ruutu,2);
         ruutu.setRobotti(robo);
     }
@@ -41,7 +37,7 @@ public class KaantajaTest {
     
     @Test
     public void kaantaa(){
-        kaannin.aktivoidu(new Lauta(3,3), ruutu, 0);
+        kaannin.aktivoidu(robo, 0);
         assertEquals(robo.getSuunta(),3);
     }
     

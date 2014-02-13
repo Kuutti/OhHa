@@ -6,14 +6,9 @@
 
 package logiikka.robottiralli.lautaelementit;
 
-import java.util.ArrayList;
-import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.robottienhallinta.Robotti;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -30,9 +25,7 @@ public class TyonninTest {
     @Before
     public void setUp() {
         ruutu=new Ruutu(2,2);
-        ArrayList<Integer> lista=new ArrayList<>();
-        lista.add(2);
-        tyonnin=new Tyonnin(ruutu,new Ruutu(2,1),lista);
+        tyonnin=new Tyonnin(new Ruutu(2,1),2,2);
         robo=new Robotti(ruutu,0);
         ruutu.setRobotti(robo);
     }
@@ -44,7 +37,7 @@ public class TyonninTest {
     
     @Test
     public void tyontaa(){
-        tyonnin.aktivoidu(new Lauta(5,5), ruutu, 2);
+        tyonnin.aktivoidu(robo, 2);
         assertEquals(robo.getRuutu(),new Ruutu(2,1));
     }
     

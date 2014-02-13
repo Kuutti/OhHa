@@ -14,6 +14,9 @@ import java.util.Random;
 public class Kortti {
     KortinToiminto toiminto;
 
+    /**
+     * Luo sattumanvaraisesti jonkun seitsemästä kortista.
+     */
     public Kortti() {
         Random random=new Random();
         int vipu=random.nextInt(7)+1;
@@ -34,11 +37,14 @@ public class Kortti {
                 break;
         }
     }
-    
+    /**
+     * Tekee kortin, jossa on tietty toiminto testejä varten.
+     * @param toiminto Korttiin laitettava toiminto
+     */
     public Kortti(KortinToiminto toiminto){
         this.toiminto=toiminto;
     }
-
+    
     public KortinToiminto getToiminto() {
         return toiminto;
     }

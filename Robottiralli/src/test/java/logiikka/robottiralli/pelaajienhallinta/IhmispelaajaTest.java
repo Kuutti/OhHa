@@ -6,6 +6,7 @@
 
 package logiikka.robottiralli.pelaajienhallinta;
 
+import java.util.ArrayList;
 import logiikka.robottiralli.korttienhallinta.Kortti;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 import java.util.Arrays;
@@ -54,12 +55,12 @@ public class IhmispelaajaTest {
     @Test
     public void ohjelmavalmis(){
         List<Kortti> test=Arrays.asList(kortti,kortti,kortti,kortti,kortti);
-        assertEquals(false,peluri.ohjelmaEiValmis(test));
+        assertEquals(false,peluri.ohjelmaEiValmis((ArrayList<Kortti>) test));
     }
     @Test
     public void ohjelmaEiValmis(){
         List<Kortti> lista=peluri.nullLista();
-        assertEquals(true,peluri.ohjelmaEiValmis(lista));
+        assertEquals(true,peluri.ohjelmaEiValmis((ArrayList<Kortti>) lista));
     }
     @Test
     public void nullListanKokoOikea(){

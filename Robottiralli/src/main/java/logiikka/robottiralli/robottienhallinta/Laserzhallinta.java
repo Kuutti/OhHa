@@ -17,7 +17,9 @@ import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 
 
 public class Laserzhallinta {
-
+/**
+ * Pelissä käytettävä lauta
+ */
     Lauta lauta;
     
    
@@ -26,12 +28,18 @@ public class Laserzhallinta {
         this.lauta=lauta;
         
     }
-
+/**
+ * Huolehditaan, että pelaajat ja laudalla olevat laserit ampuvat.
+ * @param pelaajat joiden robotit ampuvat.
+ */
     public void ammulaserz(ArrayList<Pelaaja> pelaajat) {
         robotAmpuu(pelaajat);
         laseritAmpuu();
     }
-
+/**
+ * Hoidetaan pelaajien robottien ampuminen.
+ * @param pelaajat joiden robotit ampuvat.
+ */
     private void robotAmpuu(ArrayList<Pelaaja> pelaajat) {
         for (Pelaaja pelaaja : pelaajat) {
             if (pelaaja.getRobotti().isActive()&&!pelaaja.getRobotti().isHolo()) {
@@ -39,7 +47,11 @@ public class Laserzhallinta {
             }
         }
     }
-
+/**
+ * Ammutaan ruudusta tiettyyn suuntaan ja jos osutaan robottiin, se ottaa vahingon.
+ * @param ruutu Ruutu, josta ammutaan.
+ * @param suunta Suunta, johon ammutaan.
+ */
     private void ampuminen(Ruutu ruutu, int suunta) {
         Robotti kohde=null;
         kohde=onkoEdessärobottia(ruutu, suunta);
@@ -48,23 +60,32 @@ public class Laserzhallinta {
         }
     }
 
-    private Robotti onkoEdessärobottia(Ruutu sija, int suunta) {
+    /**
+     * Palautetaan olion edessä oleva robotti, jos ei ole robottia, palautetaan null.
+     * @param ruutu ruutu, jossa  olio on
+     * @param suunta Suunta, johon olio katsoo.
+     * @return 
+     */
+    private Robotti onkoEdessärobottia(Ruutu ruutu, int suunta) {
         Set<Ruutu>ruudut= new HashSet<>(); //bad code            
-            ruudut.add(sija);
-             Ruutu next=lauta.seuraavaRuutu(sija, suunta);
+            ruudut.add(ruutu);
+             Ruutu next=lauta.seuraavaRuutu(ruutu, suunta);
             ruudut.add(next);
             if (lauta.getSeinat().contains(ruudut)||!lauta.onLaudalla(next)) {
                 return null;
-            } else if (lauta.onRobotti(next)&&!lauta.robottiRuudussa(next).isHolo()) {                
-                return lauta.robottiRuudussa(next);
+            } else if (next.getRobotti()!=null) {                
+                return next.getRobotti();
             }
         return onkoEdessärobottia(next,suunta);
     }
-
+/**
+ * Hoidetaan laudalla olevien laserien ampuminen ja päivitetään robotin vahinko
+ * tarvittaessa.
+ */
     private void laseritAmpuu() {
         for (Laser laser : lauta.getLaserit()) {
             if (laser.getRuutu().onRobotti()) {
-                laser.getRuutu().getRobotti().otaVahinkoa(laser.getVahinko()+laser.getRuutu().getRobotti().getVahinko());
+                laser.getRuutu().getRobotti().otaVahinkoa(1);
             } else {
                 ampuminen(laser.getRuutu(),laser.getSuunta());
             }

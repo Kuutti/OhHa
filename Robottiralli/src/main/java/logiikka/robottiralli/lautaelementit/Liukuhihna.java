@@ -9,14 +9,24 @@ import logiikka.robottiralli.robottienhallinta.Robotti;
 
 
 public class Liukuhihna implements Ruudunvieva{
+    /**
+     * Ruutu johon liukuhihna vie
+     */
     Ruutu seuraava;
-    Ruutu sijainti;
+    /**
+     * Ilmoittaa kuinka paljon robottia käännetään
+     */
     int kaantaminen;
+    /**
+     * Ilmoittaa suunnan, johon liukuhihna vie. Tarvitaan
+     * grafiikassa.
+     */
+    int suunta;
 
-    public Liukuhihna(Ruutu sijainti, Ruutu seuraava, int kaantaminen) {
+    public Liukuhihna(Ruutu seuraava, int kaantaminen, int suunta) {
         this.seuraava = seuraava;
-        this.sijainti = sijainti;
         this.kaantaminen=kaantaminen;
+        this.suunta=suunta;
     }
 
     @Override
@@ -24,11 +34,22 @@ public class Liukuhihna implements Ruudunvieva{
         return "liukuhihna";
     }
 
+    /**
+     * Liikuttaa robotin seuraavaan ruutun ja kääntää tarvittaessa.
+     * @param robo Liikutettava robotti.
+     * @param vuoro Ei tarvita.
+     */
     @Override
-    public void aktivoidu(Lauta lauta, Ruutu ruutu, int vuoro) {
-        Robotti robo=ruutu.getRobotti();
+    public void aktivoidu(Robotti robo, int vuoro) {
         robo.setSuunta(robo.getSuunta()+kaantaminen);
-        ruutu.getRobotti().setRuutu(seuraava);
+        robo.setRuutu(seuraava);
+    }
+/**
+ * @return Palauttaa suunnan, johon liukuhihna vie.
+ */
+    @Override
+    public Integer getErikoisint() {
+        return suunta;
     }
 
     

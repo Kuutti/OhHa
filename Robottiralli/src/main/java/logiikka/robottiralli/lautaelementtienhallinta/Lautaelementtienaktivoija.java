@@ -12,23 +12,34 @@ import java.util.List;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 
 public class Lautaelementtienaktivoija {
+    /**
+     * Pelissä käyettävä lauta
+     */
     Lauta lauta;
-    ArrayList<Pelaaja> pelaajat;
+    /**
+     * Lista elementeistä, jotka käydään läpi tietyssä järjestyksessä.
+     */
     List<String> elementit=Arrays.asList("liukuhihna","tyonnin","kaantaja","murskain","kuoppa","checkpoint", "korjaaja");
 
     public Lautaelementtienaktivoija(Lauta lauta) {
         this.lauta = lauta;
         
     }
-
+/**
+ * Tarkistaa jokaiselta pelaajalta onko pelaajan robotti samassa ruudussa jonkun
+ * lautaelementin kanssa. Jos näin on lautaelementti aktivoituu.
+ * @param pelaajat Lista pelaajista, jotka pelaavat peliä.
+ * @param vuoro Monta korttia pelaajien ohjelmista on paljastettu.
+ */
     public void aktivoi(ArrayList<Pelaaja> pelaajat, int vuoro) {
-        this.pelaajat=pelaajat;
         for (String elementti : elementit) { 
             for (Pelaaja pelaaja : pelaajat) {
-               lauta.aktivoiRuudussa(elementti , pelaaja.getRobotti().getRuutu(), vuoro);        
+               if (pelaaja.getRobotti().getRuutu().getRuudussa().tyyppi().matches(elementti)) {
+                pelaaja.getRobotti().getRuutu().getRuudussa().aktivoidu(pelaaja.getRobotti(), vuoro);        
         }
         }
+    }  
     }
-
-   
+    
+    
 }

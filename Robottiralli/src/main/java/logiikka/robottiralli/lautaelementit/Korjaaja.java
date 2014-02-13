@@ -9,6 +9,7 @@ package logiikka.robottiralli.lautaelementit;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
+import logiikka.robottiralli.robottienhallinta.Robotti;
 
 /**
  *
@@ -16,11 +17,12 @@ import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
  */
 public class Korjaaja implements Ruudunvieva{
     
-    Ruutu ruutu;
+    /**
+     * Kuinka tehkkaasti robottia korjataan
+     */
     int teho;
 
-    Korjaaja(Ruutu ruutu, int i) {
-        this.ruutu=ruutu;
+    public Korjaaja(int i) {
         teho=i;
     }
     
@@ -29,12 +31,25 @@ public class Korjaaja implements Ruudunvieva{
     public String tyyppi() {
         return "korjaaja";
     }
-
+/**
+ * Asettaa robotin respawnin Korjaajan ruutun ja, jos vuoro on viisi,
+ * korjaa robottia tehon verran.
+ * @param robo Robotti, jonka respawn vaihdetaan ja jota korjataan.
+ * @param vuoro monta ohjelman käskyä on suoritettu.
+ */
     @Override
-    public void aktivoidu(Lauta lauta, Ruutu ruutu, int vuoro) {
+    public void aktivoidu(Robotti robo, int vuoro) {
+        robo.setRespawn(robo.getRuutu());
         if (vuoro==5) {
-            ruutu.getRobotti().korjaa(teho);
+            robo.korjaa(teho);
         }
+    }
+/**
+ * @return palauttaa Korjaajan tehon.
+ */
+    @Override
+    public Integer getErikoisint() {
+        return teho;
     }
     
 }

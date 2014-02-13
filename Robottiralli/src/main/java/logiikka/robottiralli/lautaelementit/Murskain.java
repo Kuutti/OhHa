@@ -10,15 +10,17 @@ import java.util.ArrayList;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
+import logiikka.robottiralli.robottienhallinta.Robotti;
 
 
 public class Murskain implements Ruudunvieva{
     
-    Ruutu sijainti;
-    ArrayList<Integer> aktivoituu;
+    /**
+     * Luku, joka kertoo aktivoituuko parittomilla tai parillisilla vuoroilla.
+     */
+    Integer aktivoituu;
 
-    public Murskain(Ruutu sijainti, ArrayList<Integer> aktivoituu) {
-        this.sijainti = sijainti;
+    public Murskain( Integer aktivoituu) {
         this.aktivoituu = aktivoituu;
     }
 
@@ -26,13 +28,23 @@ public class Murskain implements Ruudunvieva{
     public String tyyppi() {
         return "murskain";
     }
-
+/**
+ * Jos vuoron modulo 2 on sama kuin aktivoitumisen robotti tuhotaan.
+ * @param robo Robotti, joka tuhotaan, jos vuoro on oikea.
+ * @param vuoro monta ohjelman käskyä on toteutettu
+ */
     @Override
-    public void aktivoidu(Lauta lauta, Ruutu ruutu, int vuoro) {
-        if (aktivoituu.contains(vuoro)) {
-        ruutu.getRobotti().tuhoudu();  
-        ruutu.getRobotti().setRuutu(ruutu.getRobotti().getRespawn()); 
+    public void aktivoidu(Robotti robo, int vuoro) {
+        if (aktivoituu%2==vuoro%2) {
+        robo.tuhoudu();  
         }
+    }
+/**
+ * @return palauttaa aktivoituuko parittomilla via parillisilla vuoroilla 
+ */
+    @Override
+    public Integer getErikoisint() {
+        return aktivoituu;
     }
     
 }

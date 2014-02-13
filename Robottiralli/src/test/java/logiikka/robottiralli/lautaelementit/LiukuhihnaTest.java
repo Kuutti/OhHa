@@ -6,13 +6,9 @@
 
 package logiikka.robottiralli.lautaelementit;
 
-import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.robottienhallinta.Robotti;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -29,7 +25,7 @@ public class LiukuhihnaTest {
     @Before
     public void setUp() {
         ruutu=new Ruutu(3,3);
-        hihna=new Liukuhihna(ruutu,new Ruutu(3,2),1);
+        hihna=new Liukuhihna(new Ruutu(3,2),1,2);
         robo=new Robotti(ruutu,2);
         ruutu.setRobotti(robo);
     }
@@ -41,7 +37,7 @@ public class LiukuhihnaTest {
     
     @Test
     public void liikuttaaOikein(){
-        hihna.aktivoidu(new Lauta(4,4), ruutu, 2);
+        hihna.aktivoidu(robo, 2);
         assertEquals(new Ruutu(3,2),robo.getRuutu());
         assertEquals(3,robo.getSuunta());
         assertEquals(robo, hihna.seuraava.getRobotti());

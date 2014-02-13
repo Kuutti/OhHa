@@ -9,7 +9,7 @@ package logiikka.robottiralli.lautaelementtienhallinta;
 public class Laser {
     Ruutu ruutu;
     int suunta;
-    int vahinko;
+    
 
     public Ruutu getRuutu() {
         return ruutu;
@@ -19,13 +19,10 @@ public class Laser {
         return suunta;
     }
 
-    public int getVahinko() {
-        return vahinko;
-    }
-
-    public Laser(Ruutu ruutu, int suunta, int vahinko) {
+   
+    public Laser(Ruutu ruutu, int suunta) {
         this.ruutu = ruutu;
         this.suunta = suunta;
-        this.vahinko = vahinko;
+        
     }
 }

@@ -3,15 +3,20 @@
 package logiikka.robottiralli.pelaajienhallinta;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 import logiikka.robottiralli.korttienhallinta.Kortti;
-import java.util.List;
 
 
 public interface Pelaaja {
+    /**
+     * Pelaaja ottaa vastaan korttipakan jakaman kortin.
+     * @param kortti Korttipakan jakama kortti.
+     */
     void otaKortti(Kortti kortti);
     Robotti getRobotti();
+    /**
+     * Pelaaja tekee korteistansa ohjelman.
+     */
     void teeOhjelma();
     ArrayList<Kortti> getOhjelma();
     void setOhjelma(ArrayList<Kortti> ohjelma);

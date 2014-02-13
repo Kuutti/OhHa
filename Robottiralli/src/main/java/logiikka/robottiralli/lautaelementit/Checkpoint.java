@@ -6,9 +6,9 @@
 
 package logiikka.robottiralli.lautaelementit;
 
-import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
+import logiikka.robottiralli.robottienhallinta.Robotti;
 
 /**
  *
@@ -16,11 +16,17 @@ import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
  */
 public class Checkpoint implements Ruudunvieva{
 
-    Ruutu ruutu;
+    /**
+     * Monesko checkpoint on kyseessä.
+     */
+    int mones;
+    /**
+     * Seuraava checkpoint
+     */
     Ruutu seuraava;
 
-    public Checkpoint(Ruutu ruutu, Ruutu seuraava) {
-        this.ruutu = ruutu;
+    public Checkpoint(int mones, Ruutu seuraava) {
+        this.mones=mones;
         this.seuraava = seuraava;
     }
     
@@ -28,15 +34,30 @@ public class Checkpoint implements Ruudunvieva{
     public String tyyppi() {
         return "checkpoint";
     }
-
+/**
+ * Jos robotin seuraava checkpoint on tämä, robotin seuraavacp päivittyy
+ * seuraavaksi. Jos seuraava on null pelaaja, jonka robotti on kyseessä voittaa.
+ * @param robo Tarkasteltava robotti
+ * @param vuoro Ei tarvita
+ */
     @Override
-    public void aktivoidu(Lauta lauta, Ruutu ruutu, int vuoro) {
-        if (ruutu.getRobotti().getSeuraavacp()==this.ruutu) {
-            ruutu.getRobotti().setSeuraavacp(seuraava);
+    public void aktivoidu(Robotti robo, int vuoro) {
+        if (robo.getSeuraavacp()==robo.getRuutu()) {
+            if (seuraava==null) {
+                //voitto
+            }
+            robo.setSeuraavacp(seuraava);
         }
         if (vuoro==5) {
-            ruutu.getRobotti().otaVahinkoa(ruutu.getRobotti().getVahinko()-1);
+            robo.korjaa(1);
         }
+    }
+/**
+ * @return palauttaa monesko checkpoint on kyseessä.
+ */
+    @Override
+    public Integer getErikoisint() {
+        return mones;
     }
     
 }

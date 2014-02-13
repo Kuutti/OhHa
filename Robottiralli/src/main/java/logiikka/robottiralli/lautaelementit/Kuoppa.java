@@ -6,10 +6,7 @@
 
 package logiikka.robottiralli.lautaelementit;
 
-import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
-import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
-import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
 /**
@@ -18,21 +15,31 @@ import logiikka.robottiralli.robottienhallinta.Robotti;
  */
 public class Kuoppa implements Ruudunvieva{
     
-    Ruutu ruutu;
-
-    public Kuoppa(Ruutu ruutu) {
-        this.ruutu = ruutu;
+  
+    public Kuoppa() {
     }
 
     @Override
     public String tyyppi() {
         return "kuoppa";
     }
-
+/**
+ * Tuhoaa kuopan päällä olevan robotin.
+ * @param robo Tuhottava robotti
+ * @param vuoro Ei tarvita
+ */
     @Override
-    public void aktivoidu(Lauta lauta, Ruutu ruutu, int vuoro) {
-        ruutu.getRobotti().tuhoudu();
-        ruutu.getRobotti().setRuutu(ruutu.getRobotti().getRespawn()); 
+    public void aktivoidu(Robotti robo, int vuoro) {
+        robo.tuhoudu(); 
+    }
+
+    /**
+     * Ei tarvita
+     * @return 
+     */
+    @Override
+    public Integer getErikoisint() {
+        return 0;
     }
     
 }

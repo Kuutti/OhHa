@@ -40,3 +40,9 @@ Myöhemmin illalla lautaelementtien piirtelyä pari tuntia.
 12.02.2014
 14:30-16:30
 19:00-21:00 Saatu loput lautaelementit piirrettyä. 
+23:00-02:30 Aloitettu koodaamaan testilaudan piirtämistä ja muokattu
+samalla piirtämiskoodeja sopivammaksi.
+
+13.02.2014
+12:15-15:30 Koodattu testilautaa.
+19:00-

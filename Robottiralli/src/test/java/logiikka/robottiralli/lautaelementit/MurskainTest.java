@@ -6,14 +6,9 @@
 
 package logiikka.robottiralli.lautaelementit;
 
-import java.util.ArrayList;
-import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.robottienhallinta.Robotti;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -30,9 +25,7 @@ public class MurskainTest {
     @Before
     public void setUp() {
         ruutu=new Ruutu(3,3);
-        ArrayList<Integer> lista=new ArrayList<>();
-        lista.add(2);
-        murskain=new Murskain(ruutu,lista);
+        murskain=new Murskain(2);
         robo=new Robotti(ruutu,1);
         ruutu.setRobotti(robo);
     }
@@ -45,7 +38,7 @@ public class MurskainTest {
     @Test
     public void murskaa(){
         robo.setRespawn(new Ruutu(2,3));
-        murskain.aktivoidu(new Lauta(5,5), ruutu, 2);
+        murskain.aktivoidu(robo, 2);
         assertEquals(robo.getRuutu(),new Ruutu(2,3));
         assertEquals(robo.getVahinko(),2);
         assertEquals(null,ruutu.getRobotti());

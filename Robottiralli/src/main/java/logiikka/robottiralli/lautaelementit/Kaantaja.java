@@ -9,18 +9,19 @@ package logiikka.robottiralli.lautaelementit;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
-import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
+import logiikka.robottiralli.robottienhallinta.Robotti;
 
 
 
 
 public class Kaantaja implements Ruudunvieva{
-    Ruutu sijainti;
-    int Kaannossuunta;
+   /**
+    * Kuinka paljon robottia käännetään oikealle.
+    */
+    int Kaannosmaara;
     
-    public Kaantaja(Ruutu sijainti, int Kaannossuunta) {
-        this.sijainti = sijainti;
-        this.Kaannossuunta = Kaannossuunta;
+    public Kaantaja( int Kaannossuunta) {
+        this.Kaannosmaara = Kaannossuunta;
     }
 
     @Override
@@ -28,9 +29,21 @@ public class Kaantaja implements Ruudunvieva{
         return "kaantaja";
     }
 
+    /**
+     *Robottia kaannosmaaran verran.
+     * @param robo Kaannettava robotti.
+     * @param vuoro Ei tarvita
+     */
     @Override
-    public void aktivoidu(Lauta lauta, Ruutu ruutu, int vuoro) {
-        ruutu.getRobotti().setSuunta(ruutu.getRobotti().getSuunta()+Kaannossuunta);
+    public void aktivoidu(Robotti robo, int vuoro) {
+        robo.setSuunta(robo.getSuunta()+Kaannosmaara);
+    }
+ /**
+  * @return  palauttaa kaannosmaaran.
+  */
+    @Override
+    public Integer getErikoisint() {
+       return Kaannosmaara;
     }
    
     

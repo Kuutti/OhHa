@@ -11,10 +11,7 @@ import logiikka.robottiralli.lautaelementit.Kaantaja;
 import logiikka.robottiralli.pelaajienhallinta.Ihmispelaaja;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 import logiikka.robottiralli.robottienhallinta.Robotti;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -31,7 +28,7 @@ public class LautaelementtienaktivoijaTest {
     public void setUp() {
         Lauta lauta=new Lauta(10,10);
         Ruutu ruutu=new Ruutu(2,2);
-        Kaantaja kaantaja=new Kaantaja(ruutu,1);
+        Kaantaja kaantaja=new Kaantaja(1);
         ruutu.lisaaElementti(kaantaja);
         Robotti robo=new Robotti(ruutu,2);
         pelaajat.add(new Ihmispelaaja(robo));

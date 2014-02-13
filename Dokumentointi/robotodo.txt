@@ -1,0 +1,8 @@
+teht‰v‰‰
+-ui
+-liukuhihna vie kuoppaan, jossa robotti. Unohtaa ekan robotin.
+-voitto
+-ohjelmien lukitus
+-hologrammit
+-vaihda Ruudunviev‰ lautaelementiksi
+-ruudun taulukon allkaminen nollasta.
