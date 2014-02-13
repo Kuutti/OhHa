@@ -48,7 +48,7 @@ public class Liukuhihna implements Ruudunvieva{
  * @return Palauttaa suunnan, johon liukuhihna vie.
  */
     @Override
-    public Integer getErikoisint() {
+    public int getErikoisint() {
         return suunta;
     }
 

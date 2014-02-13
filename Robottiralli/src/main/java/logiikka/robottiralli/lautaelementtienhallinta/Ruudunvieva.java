@@ -17,6 +17,6 @@ public interface Ruudunvieva {
      * @return Palauttaa elementistä riippuen luvun, jota grafiikkapiirturi
      * tarvitsee.
      */
-    Integer getErikoisint();
+    int getErikoisint();
        
 }

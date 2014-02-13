@@ -38,14 +38,11 @@ public class KaantajaTest {
     @Test
     public void kaantaa(){
         kaannin.aktivoidu(robo, 0);
-        assertEquals(robo.getSuunta(),3);
+        assertEquals(3,robo.getSuunta());
     }
     
-    
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void tarkistakaannos(){
+        assertEquals(1,kaannin.getErikoisint());
+    }
 }

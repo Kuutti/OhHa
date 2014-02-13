@@ -36,9 +36,9 @@ public class Tyonnin implements Ruudunvieva{
     }
 
     public Tyonnin(Ruutu tyonnettavaRuutu, Integer aktivoituu, Integer suunta) {
-        this.suunta=suunta%4;
         this.tyonnettavaRuutu = tyonnettavaRuutu;
         this.aktivoituu = aktivoituu;
+        this.suunta=suunta;
     }
 
     /**
@@ -57,7 +57,7 @@ public class Tyonnin implements Ruudunvieva{
  * parillisilla vuoroilla ja 4-7, kun aktivoituu parittomilla.
  */
     @Override
-    public Integer getErikoisint() {
+    public int getErikoisint() {
         return 4*(aktivoituu%2)+suunta;
     }
     

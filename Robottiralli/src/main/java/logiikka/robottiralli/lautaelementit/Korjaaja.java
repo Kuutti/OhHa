@@ -40,6 +40,7 @@ public class Korjaaja implements Ruudunvieva{
     @Override
     public void aktivoidu(Robotti robo, int vuoro) {
         robo.setRespawn(robo.getRuutu());
+        System.out.println(robo.getRespawn());
         if (vuoro==5) {
             robo.korjaa(teho);
         }
@@ -48,7 +49,7 @@ public class Korjaaja implements Ruudunvieva{
  * @return palauttaa Korjaajan tehon.
  */
     @Override
-    public Integer getErikoisint() {
+    public int getErikoisint() {
         return teho;
     }
     

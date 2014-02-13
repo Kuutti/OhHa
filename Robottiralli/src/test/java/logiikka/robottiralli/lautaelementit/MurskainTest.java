@@ -44,6 +44,11 @@ public class MurskainTest {
         assertEquals(null,ruutu.getRobotti());
     }
     
+    @Test
+    public void erikoisInt(){
+        assertEquals(2,murskain.getErikoisint());
+    }
+    
     
     }
     

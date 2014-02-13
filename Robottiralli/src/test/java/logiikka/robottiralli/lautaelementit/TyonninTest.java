@@ -40,6 +40,9 @@ public class TyonninTest {
         tyonnin.aktivoidu(robo, 2);
         assertEquals(robo.getRuutu(),new Ruutu(2,1));
     }
-    
+    @Test 
+    public void Erikoisint(){
+        assertEquals(2,tyonnin.getErikoisint());
+    }
     
 }

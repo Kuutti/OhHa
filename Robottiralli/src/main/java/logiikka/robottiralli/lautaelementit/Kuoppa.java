@@ -38,7 +38,7 @@ public class Kuoppa implements Ruudunvieva{
      * @return 
      */
     @Override
-    public Integer getErikoisint() {
+    public int getErikoisint() {
         return 0;
     }
     

@@ -34,8 +34,11 @@ public class Lautaelementtienaktivoija {
     public void aktivoi(ArrayList<Pelaaja> pelaajat, int vuoro) {
         for (String elementti : elementit) { 
             for (Pelaaja pelaaja : pelaajat) {
-               if (pelaaja.getRobotti().getRuutu().getRuudussa().tyyppi().matches(elementti)) {
-                pelaaja.getRobotti().getRuutu().getRuudussa().aktivoidu(pelaaja.getRobotti(), vuoro);        
+                if (pelaaja.getRobotti().getRuutu().getRuudussa()!=null) {
+                       if (pelaaja.getRobotti().getRuutu().getRuudussa().tyyppi().matches(elementti)) {
+                   pelaaja.getRobotti().getRuutu().getRuudussa().aktivoidu(pelaaja.getRobotti(), vuoro); 
+                }
+                   
         }
         }
     }  

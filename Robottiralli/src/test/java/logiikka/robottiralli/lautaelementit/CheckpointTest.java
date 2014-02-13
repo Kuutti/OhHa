@@ -54,6 +54,13 @@ public class CheckpointTest {
         cp.aktivoidu(robo, 5);
         assertEquals(1,robo.getVahinko());
     }
+    
+    @Test
+    public void tarkistaMones(){
+        assertEquals(2,cp.getErikoisint());
+    }
+    
 
+    
     
 }

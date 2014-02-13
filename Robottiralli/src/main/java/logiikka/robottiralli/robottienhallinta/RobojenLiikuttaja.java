@@ -66,7 +66,7 @@ public class RobojenLiikuttaja {
     */
     private void liikuta(Robotti robo, int i, int suunta) {
         for (int j = 0; j < i; j++) {
-            Set<Ruutu>ruudut= new HashSet<>(); //bad code
+            Set<Ruutu>ruudut= new HashSet<>(); 
             ruudut.add(robo.getRuutu());
              Ruutu seuraava=lauta.seuraavaRuutu(robo.getRuutu(), suunta);
              ruudut.add(seuraava);

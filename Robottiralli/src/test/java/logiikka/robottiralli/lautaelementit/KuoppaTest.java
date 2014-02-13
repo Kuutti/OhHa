@@ -43,5 +43,10 @@ public class KuoppaTest {
         assertEquals(2,robo.getVahinko());
     }
     
+    @Test
+    public void Erikoisint(){
+        assertEquals(0,kuoppa.getErikoisint());
+    }
+    
     
 }

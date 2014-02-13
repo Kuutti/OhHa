@@ -43,9 +43,6 @@ public class Checkpoint implements Ruudunvieva{
     @Override
     public void aktivoidu(Robotti robo, int vuoro) {
         if (robo.getSeuraavacp()==robo.getRuutu()) {
-            if (seuraava==null) {
-                //voitto
-            }
             robo.setSeuraavacp(seuraava);
         }
         if (vuoro==5) {
@@ -56,7 +53,7 @@ public class Checkpoint implements Ruudunvieva{
  * @return palauttaa monesko checkpoint on kyseessä.
  */
     @Override
-    public Integer getErikoisint() {
+    public int getErikoisint() {
         return mones;
     }
     

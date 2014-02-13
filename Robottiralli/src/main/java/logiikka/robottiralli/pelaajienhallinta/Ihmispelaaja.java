@@ -64,7 +64,7 @@ public class Ihmispelaaja implements Pelaaja{
      * @param ohjelma tarkastettava ohjelma
      * @return palauttaa true, jos ohjelmassa on 5 korttia
      */
-    public boolean ohjelmaEiValmis(ArrayList<Kortti> ohjelma) {
+    public boolean Ohjelmavalmis(ArrayList<Kortti> ohjelma) {
         return ohjelma.size()==5;
     }
 

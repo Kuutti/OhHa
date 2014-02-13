@@ -2,6 +2,7 @@
 
 package logiikka.robottiralli;
 
+import Laudanluonti.RumaaKoodiaEsittelyLaudanluomiseen;
 import Kayttoliittyma.Lautaikkuna;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;

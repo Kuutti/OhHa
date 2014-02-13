@@ -43,7 +43,7 @@ public class Murskain implements Ruudunvieva{
  * @return palauttaa aktivoituuko parittomilla via parillisilla vuoroilla 
  */
     @Override
-    public Integer getErikoisint() {
+    public int getErikoisint() {
         return aktivoituu;
     }
     

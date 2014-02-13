@@ -1,6 +1,6 @@
 
 
-package logiikka.robottiralli;
+package Laudanluonti;
 
 import logiikka.robottiralli.lautaelementit.Checkpoint;
 import logiikka.robottiralli.lautaelementit.Kaantaja;

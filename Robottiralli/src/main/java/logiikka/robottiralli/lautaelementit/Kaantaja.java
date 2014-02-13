@@ -42,9 +42,11 @@ public class Kaantaja implements Ruudunvieva{
   * @return  palauttaa kaannosmaaran.
   */
     @Override
-    public Integer getErikoisint() {
+    public int getErikoisint() {
        return Kaannosmaara;
     }
+    
+   
    
     
 }

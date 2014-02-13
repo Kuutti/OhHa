@@ -54,13 +54,16 @@ public class IhmispelaajaTest {
     }
     @Test
     public void ohjelmavalmis(){
-        List<Kortti> test=Arrays.asList(kortti,kortti,kortti,kortti,kortti);
-        assertEquals(false,peluri.ohjelmaEiValmis((ArrayList<Kortti>) test));
+        List<Kortti> test=new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            test.add(kortti);
+        }
+        assertEquals(true,peluri.Ohjelmavalmis((ArrayList<Kortti>) test));
     }
     @Test
     public void ohjelmaEiValmis(){
         List<Kortti> lista=peluri.nullLista();
-        assertEquals(true,peluri.ohjelmaEiValmis((ArrayList<Kortti>) lista));
+        assertEquals(true,peluri.Ohjelmavalmis((ArrayList<Kortti>) lista));
     }
     @Test
     public void nullListanKokoOikea(){

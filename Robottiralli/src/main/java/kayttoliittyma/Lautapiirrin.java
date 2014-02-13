@@ -45,7 +45,9 @@ public class Lautapiirrin extends JPanel{
         for (Ruutu[] ruutu1 :lauta.getPelilauta()) {
             for (Ruutu ruutu : ruutu1) {
                 Ruudunvieva elementti=ruutu.getRuudussa();
-                    if ("liukuhihna".equals(elementti.tyyppi())){
+                    if (elementti==null) {
+                }
+                   else if ("liukuhihna".equals(elementti.tyyppi())){
                         piirraLiukuhihna(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
                     } else if ("kuoppa".equals(elementti.tyyppi())) {
                         piirraKuoppa(graphics,ruutu.getX(),ruutu.getY());

@@ -6,6 +6,7 @@
 
 package logiikka.robottiralli.lautaelementit;
 
+import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 import org.junit.Before;
@@ -21,6 +22,7 @@ public class LiukuhihnaTest {
     Liukuhihna hihna;
     Ruutu ruutu;
     Robotti robo;
+    Lauta lauta;
     
     @Before
     public void setUp() {
@@ -28,6 +30,8 @@ public class LiukuhihnaTest {
         hihna=new Liukuhihna(new Ruutu(3,2),1,2);
         robo=new Robotti(ruutu,2);
         ruutu.setRobotti(robo);
+        lauta=new Lauta(20,20);
+        lauta.getPelilauta()[3][3].lisaaElementti(hihna);
     }
     
     @Test
@@ -40,9 +44,12 @@ public class LiukuhihnaTest {
         hihna.aktivoidu(robo, 2);
         assertEquals(new Ruutu(3,2),robo.getRuutu());
         assertEquals(3,robo.getSuunta());
-        assertEquals(robo, hihna.seuraava.getRobotti());
-        
     }
+    @Test
+    public void Erikoisint(){
+        assertEquals(2,hihna.getErikoisint());
+    }
+    
     
     
 }

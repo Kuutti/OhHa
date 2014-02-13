@@ -42,5 +42,16 @@ public class KorjaajaTest {
         assertEquals(2,robo.getVahinko());
     }
     
+    @Test
+    public void korjausget(){
+        assertEquals(2,korjaaja.getErikoisint());
+    }
+    
+    @Test
+    public void Respawntarkistus(){
+        korjaaja.aktivoidu(robo, 5);
+        assertEquals(ruutu,robo.getRespawn());
+    }
+    
 
 }
