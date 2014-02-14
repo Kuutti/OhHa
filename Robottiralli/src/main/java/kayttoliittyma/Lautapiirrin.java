@@ -248,7 +248,6 @@ public class Lautapiirrin extends JPanel{
             int [] yeka={koko-(y-1)*ruudunkoko,koko-(y-1)*ruudunkoko,koko-(y-1)*ruudunkoko-4,koko-(y-1)*ruudunkoko-4};
             g.fillPolygon(xeka, yeka, 4);
             g.setColor(Color.red);
-            System.out.println(pituus);
             g.drawLine((x-1)*ruudunkoko+19, koko-(y-1)*ruudunkoko-4, (x-1)*ruudunkoko+19, koko-(y-1)*ruudunkoko-ruudunkoko*(pituus)+3);  
         } else if (suunta==1){
             int [] xeka={(x-1)*ruudunkoko,(x-1)*ruudunkoko,(x-1)*ruudunkoko+6,(x-1)*ruudunkoko+6};

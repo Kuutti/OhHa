@@ -9,7 +9,7 @@ import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.korttienhallinta.Korttipakka;
 import java.util.ArrayList;
 import javax.swing.SwingUtilities;
-import kayttoliittyma.Aloitusikkuna;
+import kayttoliittyma.Ohjelmantekija;
 
 
 public class Kayttoliittyma {
@@ -35,10 +35,9 @@ public class Kayttoliittyma {
      */
      public void aloitus(){
         
-        Aloitusikkuna ikkuna=new Aloitusikkuna();
-//        pelaajia=ikkuna.aloita();
-//       
-//        pelaajienLuonti();
+       // Aloitusikkuna ikkuna=new Aloitusikkuna();
+       //pelaajienLuonti();
+       
          laudanluonti();
         Lautaikkuna lautaikkuna=new Lautaikkuna(lauta);
         SwingUtilities.invokeLater(lautaikkuna);

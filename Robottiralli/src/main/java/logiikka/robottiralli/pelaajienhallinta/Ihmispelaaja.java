@@ -25,6 +25,7 @@ public class Ihmispelaaja implements Pelaaja{
     */
    ArrayList<Kortti> ohjelma=new ArrayList<>();
 
+   int mones;
    
     public Ihmispelaaja(Robotti pelinappula) {
         this.pelinappula = pelinappula;
@@ -94,6 +95,10 @@ public class Ihmispelaaja implements Pelaaja{
     @Override
     public ArrayList<Kortti> getKasi() {
         return kasikortit;
+    }
+
+    public int getMones() {
+        return mones;
     }
 
     

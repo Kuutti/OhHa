@@ -45,4 +45,9 @@ samalla piirtämiskoodeja sopivammaksi.
 
 13.02.2014
 12:15-15:30 Koodattu testilautaa.
-19:00-22:00
+19:00-22:00 Javadocsia ja pari sekvenssikaaviota tehty
+
+14.02.2014
+11:45-13:30 ihmetelty layoutteja ja saatu nappulat pistettyä.
+15:00-16:00 Koitettu noudattaa clean codea, mutta jostain syystä jframe ei 
+suostu luomaan jpanelin extendaavaa luokkaa.
