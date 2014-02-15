@@ -3,6 +3,7 @@ package logiikka.robottiralli.pelaajienhallinta;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 import logiikka.robottiralli.korttienhallinta.Kortti;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -23,7 +24,7 @@ public class Ihmispelaaja implements Pelaaja{
    /**
     * Pelaajan korteista tekemä ohjelma, jota pelaajan robotti noudattaa
     */
-   ArrayList<Kortti> ohjelma=new ArrayList<>();
+   LinkedList<Kortti> ohjelma=new LinkedList<>();
 
    int mones;
    
@@ -45,19 +46,7 @@ public class Ihmispelaaja implements Pelaaja{
 
     @Override
     public void teeOhjelma() {
-          ArrayList<Kortti> keskenerainen=(ArrayList<Kortti>) nullLista(); 
-//        for (Kortti kortti : kasikortit.keySet()) {
-//            System.out.println(kortti+" "+kasikortit.get(kortti)+"kpl");
-//        }
-//        while(ohjelmaEiValmis(ohjelma)){
-//            
-//        }
-//          if (true) {
-//            pelinappula.setActive(false);
-//             return;
-//        }
-//       ohjelma=new ArrayList<>();
-         this.ohjelma=keskenerainen;
+  
     }
 
     /**
@@ -82,15 +71,11 @@ public class Ihmispelaaja implements Pelaaja{
     }
 
     @Override
-    public ArrayList<Kortti> getOhjelma() {
+    public LinkedList<Kortti> getOhjelma() {
         return ohjelma;
     }
 
-    @Override
-    public void setOhjelma(ArrayList<Kortti> ohjelma) {
-        this.ohjelma=ohjelma;
-        
-    }
+   
 
     @Override
     public ArrayList<Kortti> getKasi() {
@@ -99,6 +84,12 @@ public class Ihmispelaaja implements Pelaaja{
 
     public int getMones() {
         return mones;
+    }
+
+
+    @Override
+    public void setOhjelma(LinkedList<Kortti> ohjelma) {
+        this.ohjelma=ohjelma;
     }
 
     

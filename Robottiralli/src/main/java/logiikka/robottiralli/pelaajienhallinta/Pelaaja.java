@@ -3,6 +3,7 @@
 package logiikka.robottiralli.pelaajienhallinta;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 import logiikka.robottiralli.korttienhallinta.Kortti;
 
@@ -18,7 +19,7 @@ public interface Pelaaja {
      * Pelaaja tekee korteistansa ohjelman.
      */
     void teeOhjelma();
-    ArrayList<Kortti> getOhjelma();
-    void setOhjelma(ArrayList<Kortti> ohjelma);
+    LinkedList<Kortti> getOhjelma();
     ArrayList<Kortti> getKasi();
+    void setOhjelma(LinkedList<Kortti> ohjelma);
 }

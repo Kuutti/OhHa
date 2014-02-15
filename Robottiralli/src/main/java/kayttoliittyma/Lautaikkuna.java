@@ -6,6 +6,7 @@
 
 package Kayttoliittyma;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -17,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import kayttoliittyma.Ohjelmantekija;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.pelaajienhallinta.Ihmispelaaja;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
@@ -32,7 +34,8 @@ public class Lautaikkuna implements Runnable{
     GridBagConstraints gbc=new GridBagConstraints();
     JLabel pelaaja;
     JLabel vahinko;
-    JLabel seuraava;  
+    JLabel seuraava;
+    Ohjelmantekija tekija;
     
     public Lautaikkuna(Lauta lauta) {
         this.lauta=lauta;
@@ -46,69 +49,88 @@ public class Lautaikkuna implements Runnable{
         container.add(piirrin);
         JPanel nappulat=new JPanel();
         container.add(nappulat);
-        teeNappulat(nappulat);
+        teeInteraktiviiset(nappulat);
+        
         
     }
 
-     public void teeNappulat(JPanel nappulat) {
+     public void teeInteraktiviiset(JPanel nappulat) {
         gbc.insets=new Insets(5,5,5,5);
         
         nappulat.setLayout(new GridBagLayout());
         gbc.fill=GridBagConstraints.HORIZONTAL;
         
-        
-       Ohjelmantekija tekija=new Ohjelmantekija();
+        tekija=new Ohjelmantekija();
         
         JButton eteen1nappula=new JButton("1 Eteenpäin");
         gbc.gridx=0;
         gbc.gridy=1;
-        
+        eteen1nappula.addActionListener(tekija);
+        tekija.setEteen1nappula(eteen1nappula);
         nappulat.add(eteen1nappula,gbc);
       
         JButton eteen2nappula=new JButton("2 Eteenpäin");
         gbc.gridx=1;
         gbc.gridy=1;
+        eteen2nappula.addActionListener(tekija);
+        tekija.setEteen2nappula(eteen2nappula);
         nappulat.add(eteen2nappula,gbc);
         
         JButton eteen3nappula=new JButton("3 Eteenpäin");
         gbc.gridx=2;
         gbc.gridy=1;
+        eteen3nappula.addActionListener(tekija);
+        tekija.setEteen3nappula(eteen3nappula);
         nappulat.add(eteen3nappula,gbc);
         
         JButton oikealle=new JButton("Käännös oikealle");
         gbc.gridx=0;
         gbc.gridy=2;
+        oikealle.addActionListener(tekija);
+        tekija.setOikealle(oikealle);
         nappulat.add(oikealle,gbc);
         
         JButton vasemmalle=new JButton("Käännös vasemmalle");
         gbc.gridx=1;
         gbc.gridy=2;
+        vasemmalle.addActionListener(tekija);
+        tekija.setVasemmalle(vasemmalle);
         nappulat.add(vasemmalle,gbc);
         
         JButton ukaannos=new JButton("Tee U-käännös");
         gbc.gridx=2;
         gbc.gridy=2;
+        ukaannos.addActionListener(tekija);
+        tekija.setUkaannos(ukaannos);
         nappulat.add(ukaannos,gbc);
         
         JButton peruutus=new JButton("Peruuta");
         gbc.gridx=0;
         gbc.gridy=3;
+        peruutus.addActionListener(tekija);
+        tekija.setPeruutus(peruutus);
         nappulat.add(peruutus,gbc);
         
         JButton poista=new JButton("Poista ");
         gbc.gridx=2;
         gbc.gridy=3;
+        poista.addActionListener(tekija);
+        tekija.setPoista(poista);
         nappulat.add(poista,gbc);
        
         JButton shutdown=new JButton("Shutdown");
         gbc.gridx=1;
         gbc.gridy=4;
+        shutdown.addActionListener(tekija);
+        tekija.setShutdown(shutdown);
         nappulat.add(shutdown,gbc);
         
         JButton ok=new JButton("Ohjelma valmis");
         gbc.gridx=0;
         gbc.gridy=5;
         gbc.gridwidth=3;
+        ok.addActionListener(tekija);
+        tekija.setOk(ok);
         nappulat.add(ok,gbc);
         
         pelaaja=new JLabel("");
@@ -125,6 +147,21 @@ public class Lautaikkuna implements Runnable{
         gbc.gridx=2;
         gbc.gridy=0;
         nappulat.add(seuraava,gbc);
+        
+        JLabel komentorivi=new JLabel();
+        gbc.gridx=0;
+        gbc.gridy=6;
+        gbc.gridwidth=3;
+        tekija.setKomentorivi(komentorivi);
+        nappulat.add(komentorivi,gbc);
+        
+        JLabel virhekasky=new JLabel();
+        gbc.gridx=0;
+        gbc.gridy=7;
+        gbc.gridwidth=3;
+        virhekasky.setForeground(Color.RED);
+        tekija.setVirhekasky(virhekasky);
+        nappulat.add(virhekasky,gbc);
     }
 
     
@@ -143,9 +180,11 @@ public class Lautaikkuna implements Runnable{
     }
 
     public void ohjelmanTeko(Ihmispelaaja pelaaja){
+       tekija.setJatkaa(false);
        seuraava.setText("Seuraava piste on "+pelaaja.getRobotti().getSeuraavacp());
        this.pelaaja.setText("Pelaaja numero "+pelaaja.getMones());
        vahinko.setText("Vahinkoa otettu "+pelaaja.getRobotti().getVahinko());
+       while(!tekija.isJatkaa());
     }
     
   

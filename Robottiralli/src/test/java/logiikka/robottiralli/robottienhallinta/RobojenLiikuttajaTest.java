@@ -7,6 +7,7 @@
 package logiikka.robottiralli.robottienhallinta;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.korttienhallinta.KortinToiminto;
@@ -57,7 +58,7 @@ public class RobojenLiikuttajaTest {
     
     @Test
     public void VainEteen1(){
-        ArrayList<Kortti> ohjelma= new ArrayList<>();
+         LinkedList<Kortti> ohjelma= new  LinkedList<>();
         for (int i = 0; i < 5; i++) {
             ohjelma.add(eteen1);
         }
@@ -68,7 +69,7 @@ public class RobojenLiikuttajaTest {
     
     @Test
     public void VainEteen2(){
-        ArrayList<Kortti> ohjelma= new ArrayList<>();
+         LinkedList<Kortti> ohjelma= new  LinkedList<>();
         for (int i = 0; i < 5; i++) {
             ohjelma.add(eteen2);
         }
@@ -79,7 +80,7 @@ public class RobojenLiikuttajaTest {
     
     @Test
     public void VainEteen3(){
-        ArrayList<Kortti> ohjelma= new ArrayList<>();
+         LinkedList<Kortti> ohjelma= new  LinkedList<>();
         for (int i = 0; i < 5; i++) {
             ohjelma.add(eteen3);
         }
@@ -90,7 +91,7 @@ public class RobojenLiikuttajaTest {
     
     @Test
     public void VainPeruutus(){
-        ArrayList<Kortti> ohjelma= new ArrayList<>();
+         LinkedList<Kortti> ohjelma= new  LinkedList<>();
         for (int i = 0; i < 5; i++) {
             ohjelma.add(peruutus);
         }
@@ -101,7 +102,7 @@ public class RobojenLiikuttajaTest {
     
     @Test
     public void VainOikealle(){
-        ArrayList<Kortti> ohjelma= new ArrayList<>();
+         LinkedList<Kortti> ohjelma= new  LinkedList<>();
         for (int i = 0; i < 5; i++) {
             ohjelma.add(oikealle);
         }
@@ -112,7 +113,7 @@ public class RobojenLiikuttajaTest {
     
     @Test
     public void VainVasemalle(){
-        ArrayList<Kortti> ohjelma= new ArrayList<>();
+         LinkedList<Kortti> ohjelma= new  LinkedList<>();
         for (int i = 0; i < 5; i++) {
             ohjelma.add(vasemmalle);
         }
@@ -123,7 +124,7 @@ public class RobojenLiikuttajaTest {
     
     @Test
     public void VainUkaannos(){
-        ArrayList<Kortti> ohjelma= new ArrayList<>();
+        LinkedList<Kortti> ohjelma= new  LinkedList<>();
         for (int i = 0; i < 5; i++) {
             ohjelma.add(ukaannos);
         }
@@ -166,8 +167,8 @@ public class RobojenLiikuttajaTest {
     
     
     
-    private void OhjelmanToteutus(ArrayList<Kortti> ohjelma) {
-        peluri.setOhjelma( (ArrayList<Kortti>) ohjelma);
+    private void OhjelmanToteutus(LinkedList<Kortti> ohjelma) {
+        peluri.setOhjelma( (LinkedList<Kortti>) ohjelma);
         ArrayList<Pelaaja> lista=new ArrayList<>();
         lista.add(peluri);
         liikuttaja.suoritaOhjelmat(lista);

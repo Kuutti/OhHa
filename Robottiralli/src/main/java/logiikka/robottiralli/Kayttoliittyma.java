@@ -9,7 +9,6 @@ import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.korttienhallinta.Korttipakka;
 import java.util.ArrayList;
 import javax.swing.SwingUtilities;
-import kayttoliittyma.Ohjelmantekija;
 
 
 public class Kayttoliittyma {
