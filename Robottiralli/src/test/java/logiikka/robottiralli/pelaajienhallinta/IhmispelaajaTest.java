@@ -9,8 +9,8 @@ package logiikka.robottiralli.pelaajienhallinta;
 import java.util.ArrayList;
 import logiikka.robottiralli.korttienhallinta.Kortti;
 import logiikka.robottiralli.robottienhallinta.Robotti;
-import java.util.Arrays;
 import java.util.List;
+import logiikka.robottiralli.korttienhallinta.Korttipakka;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,50 +24,45 @@ public class IhmispelaajaTest {
     
     Ihmispelaaja peluri;
     Robotti robo;
-    Kortti kortti;
+    Korttipakka pakka;
     
     @Before
     public void setUp() {
         robo=new Robotti(new Ruutu(2,2),2);
-        peluri=new Ihmispelaaja(robo);
-        kortti=new Kortti();
+        peluri=new Ihmispelaaja(robo,1);
+        pakka=new Korttipakka();
+        
     }
-    
-    @Test
-    public void KorttejaYksi(){
-        peluri.otaKortti(kortti);
-        assertEquals(1,peluri.kasikortit.size());
-    }
+  
     @Test
     public void OikeaRobotti(){
         assertEquals(robo,peluri.getRobotti());
     }
+
     @Test
-    public void kasikorttejaOikeaMaara(){
-        peluri.otaKortti(kortti);
-        assertEquals(1, peluri.kasikortit.size());
+    public void monesOikein(){
+        assertEquals(1,peluri.getMones());
     }
+    
     @Test
-    public void nullListanullia(){
-        List<Kortti> test=peluri.nullLista();
-        assertEquals(null,test.get(1));
+    public void tyhjentaaOhjelman(){
+        List<Kortti> testi=new ArrayList<>();
+        testi.add(new Kortti());
+        peluri.ohjelma.addAll(testi);
+        peluri.getRobotti().otaVahinkoa(4);
+        peluri.ohjelmaTyhjaksi();
+        assertEquals(0,peluri.getOhjelma().size());
     }
+    
     @Test
-    public void ohjelmavalmis(){
-        List<Kortti> test=new ArrayList<>();
+    public void lukittaa(){
+         List<Kortti> testi=new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            test.add(kortti);
+             testi.add(new Kortti());
         }
-        assertEquals(true,peluri.Ohjelmavalmis((ArrayList<Kortti>) test));
-    }
-    @Test
-    public void ohjelmaEiValmis(){
-        List<Kortti> lista=peluri.nullLista();
-        assertEquals(true,peluri.Ohjelmavalmis((ArrayList<Kortti>) lista));
-    }
-    @Test
-    public void nullListanKokoOikea(){
-        List<Kortti> lista=peluri.nullLista();
-        assertEquals(5,lista.size());
+        peluri.ohjelma.addAll(testi);
+        peluri.getRobotti().otaVahinkoa(5);
+        peluri.ohjelmaTyhjaksi();
+       assertEquals(1,peluri.getOhjelma().size());        
     }
 }

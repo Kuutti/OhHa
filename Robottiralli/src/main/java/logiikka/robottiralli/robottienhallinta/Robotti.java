@@ -13,6 +13,7 @@ public class Robotti {
     * Paljonko vahinkoa robotti on ottanut
     */
    int vahinko=0;
+   int seuraavacpnumero=0;
    /**
     * Seuraava ruutu, johon robotin on mentävä radalla
     */
@@ -57,6 +58,7 @@ public class Robotti {
 
     public void setSeuraavacp(Ruutu seuraavacp) {
         this.seuraavacp = seuraavacp;
+        seuraavacpnumero++;
     }
     
     
@@ -142,6 +144,10 @@ public class Robotti {
      */
     public void korjaa(int teho) {
         vahinko=Math.max(0, vahinko-teho);
+    }
+
+    public int getSeuraavacpnumero() {
+        return seuraavacpnumero;
     }
 
     

@@ -26,12 +26,12 @@ public class LautaelementtienaktivoijaTest {
     
     @Before
     public void setUp() {
-        Lauta lauta=new Lauta(10,10);
+        Lauta lauta=new Lauta(10);
         Ruutu ruutu=new Ruutu(2,2);
         Kaantaja kaantaja=new Kaantaja(1);
         ruutu.lisaaElementti(kaantaja);
         Robotti robo=new Robotti(ruutu,2);
-        pelaajat.add(new Ihmispelaaja(robo));
+        pelaajat.add(new Ihmispelaaja(robo,1));
         ruutu.setRobotti(robo);
         lauta.pelilauta[2][2]=ruutu;
         aktivoija=new Lautaelementtienaktivoija(lauta);

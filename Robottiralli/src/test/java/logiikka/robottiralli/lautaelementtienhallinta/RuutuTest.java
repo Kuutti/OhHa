@@ -14,38 +14,38 @@ public class RuutuTest {
     public RuutuTest() {
     }
     
-    Ruutu sijainti;
+    Ruutu ruutu;
     
     @Before
     public void setUp() {
-        sijainti=new Ruutu(10,11);
+        ruutu=new Ruutu(10,11);
     }
     
     @Test
     public void konstruktorijagetterit(){
-        assertEquals(10,sijainti.getX());
-        assertEquals(11,sijainti.getY());
+        assertEquals(10,ruutu.getX());
+        assertEquals(11,ruutu.getY());
     }
 
     @Test
     public void VerrataanKunXEri(){
-        assertEquals(false, sijainti.equals(new Ruutu(9,11)));
+        assertEquals(false, ruutu.equals(new Ruutu(9,11)));
     }
     @Test
     public void VerrataanNull(){
-        assertEquals(false, sijainti.equals(null));
+        assertEquals(false, ruutu.equals(null));
     }
     @Test 
     public void VerrataanVaaraanLuokkaan(){
-        assertEquals(false, sijainti.equals(2));
+        assertEquals(false, ruutu.equals(2));
     }
     @Test
     public void VerrataanKunYEri(){
-        assertEquals(false, sijainti.equals(new Ruutu(10,10)));
+        assertEquals(false, ruutu.equals(new Ruutu(10,10)));
     }
     @Test 
     public void tostring(){
-        assertEquals("Sijainti 10,11",sijainti.toString());
+        assertEquals("Sijainti 10,11",ruutu.toString());
     }
     
     @Test
@@ -55,12 +55,16 @@ public class RuutuTest {
     
     @Test
     public void holorobonLisaysjapoisto(){
-        Robotti robo=new Robotti(sijainti,1);
-        sijainti.lisaaholorobo(robo);
-        sijainti.poistaholorobo(robo);
-        assertEquals(false,sijainti.holorobot.contains(robo));
+        Robotti robo=new Robotti(ruutu,1);
+        ruutu.lisaaholorobo(robo);
+        ruutu.poistaholorobo(robo);
+        assertEquals(false,ruutu.holorobot.contains(robo));
     }
     
+    @Test
+    public void eiRobottia(){
+        assertEquals(false,ruutu.onRobotti());
+    }
     
     
 }

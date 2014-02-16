@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import logiikka.robottiralli.korttienhallinta.KortinToiminto;
 import logiikka.robottiralli.korttienhallinta.Kortti;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
@@ -28,9 +29,12 @@ public class Ohjelmantekija implements ActionListener{
     JButton poista;
     JButton shutdown;
     JButton ok;
-    JLabel komentorivi;
+    JTextArea komentorivi;
+    JTextArea kasi;
+
+    
     JLabel virhekasky;
-    HashMap<JButton,Kortti> komennot=new HashMap<>();
+    HashMap<JButton,Kortti> komennot;
     Pelaaja pelaaja;
     Boolean jatkaa;
     
@@ -38,39 +42,65 @@ public class Ohjelmantekija implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         virhekasky.setText("");
         if (komennot.containsKey(ae.getSource())){
-            Kortti kortti=komennot.get(ae.getSource());
-            if (pelaaja.getKasi().contains(kortti)) {
+             Kortti kortti=komennot.get(ae.getSource());
+            if (pelaaja.getOhjelma().size()==5) {
+                virhekasky.setText("Et voi lisätä ohjelmaasi useampaa korttia!");
+            } else  if (pelaaja.getKasi().get(kortti)>0) {
                 pelaaja.getOhjelma().addLast(kortti);
-                pelaaja.getKasi().remove(kortti);
-                komentorivi.setText(komentorivi.getText()+", "+kortti.toString() );
+                pelaaja.getKasi().put(kortti, pelaaja.getKasi().get(kortti)-1);
             } else {
                 virhekasky.setText("Kyseistä korttia ei ole kädessäsi!");
             }
         } else if (ae.getSource()==poista){
-            if (pelaaja.getKasi().size()>0) {
-                pelaaja.getKasi().add(pelaaja.getOhjelma().pollLast());
-                while(!komentorivi.getText().endsWith(",")){
-                    komentorivi.setText(komentorivi.getText().substring(0, komentorivi.getText().length()-1));
-                }
+            if (pelaaja.getOhjelma().size()>0) {
+                poistaKortti();
             } else {
                 virhekasky.setText("Ohjelmassasi ei ollut yhtään korttia!");
             }
         } else if (ae.getSource()==shutdown){
             while (pelaaja.getOhjelma().size()!=0){
-                pelaaja.getKasi().add(pelaaja.getOhjelma().pollLast());
+                poistaKortti();
             }
             for (int i = 0; i < 5; i++) {
                 pelaaja.getOhjelma().add(new Kortti(KortinToiminto.NULL));
             }
         } else if (ae.getSource()==ok){
-            if (pelaaja.getKasi().size()==5) {
+            if (pelaaja.getOhjelma().size()==5) {
                 komentorivi.setText("");
+                pelaaja.kasiTyhjaksi();
                 jatkaa=true;
             } else {
                 virhekasky.setText("Ohjelmasi ei ole valmis. Ei voida jatkaa");
             }
         }
-        
+        paivitaKasi();
+        paivitaOhjelma();
+    }
+
+    private void paivitaOhjelma() {
+        komentorivi.setText("");
+        for (int i = 0; i < pelaaja.getOhjelma().size(); i++) {
+            komentorivi.setText(komentorivi.getText()+pelaaja.getOhjelma().get(i)+",  ");
+            if (i==2) {
+                komentorivi.setText(komentorivi.getText()+"\n");
+            }
+        }
+    }
+    
+    public void paivitaKasi() {
+        kasi.setText("");
+        kasi.setText("YKSI ETEEN                 x"+pelaaja.getKasi().get(new Kortti(KortinToiminto.YKSIETEEN)));
+        kasi.setText(kasi.getText()+"    KAKSI ETEEN                     x"+pelaaja.getKasi().get(new Kortti(KortinToiminto.KAKSIETEEN))+"\n");
+        kasi.setText(kasi.getText()+"KOLME ETEEN            x"+pelaaja.getKasi().get(new Kortti(KortinToiminto.KOLMEETEEN)));
+        kasi.setText(kasi.getText()+"    PERUUTUS                        x"+pelaaja.getKasi().get(new Kortti(KortinToiminto.PERUUTUS))+"\n");
+        kasi.setText(kasi.getText()+"OIKEALLE KÄÄNNÖS x"+pelaaja.getKasi().get(new Kortti(KortinToiminto.KAANNOSOIKEALLE)));
+        kasi.setText(kasi.getText()+"    VASEMMALLE KÄÄNNÖS x"+pelaaja.getKasi().get(new Kortti(KortinToiminto.KAANNOSVASEMMALLE))+"\n");
+        kasi.setText(kasi.getText()+"U-KÄÄNNÖS                x"+pelaaja.getKasi().get(new Kortti(KortinToiminto.UKAANNOS)));
+    }
+    
+    public void poistaKortti() {
+        Kortti kortti=pelaaja.getOhjelma().pollLast();
+        pelaaja.getKasi().put(kortti, pelaaja.getKasi().get(kortti)+1);
     }
 
     public Boolean isJatkaa() {
@@ -83,6 +113,10 @@ public class Ohjelmantekija implements ActionListener{
 
     
     public Ohjelmantekija() {
+        komennot=new HashMap<>();
+    }
+    
+    public void HashMappiinNappulat(){
         komennot.put(eteen1nappula, new Kortti(KortinToiminto.YKSIETEEN));
         komennot.put(eteen2nappula, new Kortti(KortinToiminto.KAKSIETEEN));
         komennot.put(eteen3nappula, new Kortti(KortinToiminto.KOLMEETEEN));
@@ -136,13 +170,20 @@ public class Ohjelmantekija implements ActionListener{
         this.pelaaja = pelaaja;
     }
 
-    public void setKomentorivi(JLabel komentorivi) {
+    public void setKomentorivi(JTextArea komentorivi) {
         this.komentorivi = komentorivi;
     }
 
     public void setVirhekasky(JLabel virhekasky) {
         this.virhekasky = virhekasky;
     }
+
+    public void setKasi(JTextArea kasi) {
+        this.kasi = kasi;
+    }
+
+    
+    
     
     
     

@@ -30,7 +30,7 @@ public class LiukuhihnaTest {
         hihna=new Liukuhihna(new Ruutu(3,2),1,2);
         robo=new Robotti(ruutu,2);
         ruutu.setRobotti(robo);
-        lauta=new Lauta(20,20);
+        lauta=new Lauta(20);
         lauta.getPelilauta()[3][3].lisaaElementti(hihna);
     }
     

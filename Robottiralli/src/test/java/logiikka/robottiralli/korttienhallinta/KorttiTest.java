@@ -32,6 +32,19 @@ public class KorttiTest {
         assertEquals(kortti.getToiminto().toString(),kortti.toString());
     }
     
+    @Test
+    public void hashcode(){
+        assertEquals(97*3+kortti.getToiminto().hashCode(),kortti.hashCode());
+    }
+    
+    @Test
+    public void samuus(){
+        assertEquals(false,kortti.equals(null));
+        assertEquals(false,kortti.equals("?"));
+        Kortti kortti1=new Kortti(KortinToiminto.KAANNOSOIKEALLE);
+        assertEquals(false,kortti1.equals(new Kortti(KortinToiminto.KAANNOSVASEMMALLE)));
+        assertEquals(true,kortti1.equals(new Kortti(KortinToiminto.KAANNOSOIKEALLE)));
+    }
 
     
 }

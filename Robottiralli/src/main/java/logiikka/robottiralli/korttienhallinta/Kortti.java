@@ -6,6 +6,7 @@
 
 package logiikka.robottiralli.korttienhallinta;
 
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -53,5 +54,28 @@ public class Kortti {
     public String toString() {
         return toiminto+"";
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.toiminto);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Kortti other = (Kortti) obj;
+        if (this.toiminto != other.toiminto) {
+            return false;
+        }
+        return true;
+    }
+    
     
 }

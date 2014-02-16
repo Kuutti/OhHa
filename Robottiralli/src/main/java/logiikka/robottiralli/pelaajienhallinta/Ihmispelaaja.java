@@ -3,8 +3,10 @@ package logiikka.robottiralli.pelaajienhallinta;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 import logiikka.robottiralli.korttienhallinta.Kortti;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import logiikka.robottiralli.korttienhallinta.KortinToiminto;
 
 
 
@@ -20,7 +22,7 @@ public class Ihmispelaaja implements Pelaaja{
    /**
     * Pelaajan hallussa olevat kortit, joista tehdään ohjelma
     */
-   ArrayList<Kortti> kasikortit=new ArrayList<>();
+   HashMap<Kortti,Integer> kasikortit=new HashMap<>();
    /**
     * Pelaajan korteista tekemä ohjelma, jota pelaajan robotti noudattaa
     */
@@ -28,15 +30,16 @@ public class Ihmispelaaja implements Pelaaja{
 
    int mones;
    
-    public Ihmispelaaja(Robotti pelinappula) {
+    public Ihmispelaaja(Robotti pelinappula, int mones) {
         this.pelinappula = pelinappula;
-        
+        this.mones=mones;
+        kasiTyhjaksi();
        
     }
 
     @Override
     public void otaKortti(Kortti kortti) {
-        kasikortit.add(kortti);
+        kasikortit.put(kortti, kasikortit.get(kortti)+1);
     }
 
     @Override
@@ -45,52 +48,44 @@ public class Ihmispelaaja implements Pelaaja{
     }
 
     @Override
-    public void teeOhjelma() {
-  
-    }
-
-    /**
-     * Tarkistaa sisältääkö ohjelma 5 korttia
-     * @param ohjelma tarkastettava ohjelma
-     * @return palauttaa true, jos ohjelmassa on 5 korttia
-     */
-    public boolean Ohjelmavalmis(ArrayList<Kortti> ohjelma) {
-        return ohjelma.size()==5;
-    }
-
-    /**
-     * Tekee ohjelman, joka sisältää pelkkiä null-arvoja shutdownia varten.
-     * @return Palauttaa listan, jonka koko on 5 ja sisältää null-arvoja.
-     */
-     public List<Kortti> nullLista() {
-        ArrayList<Kortti> lista=new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            lista.add(i, null);
-        }
-        return lista;
-    }
-
-    @Override
     public LinkedList<Kortti> getOhjelma() {
         return ohjelma;
     }
 
-   
-
-    @Override
-    public ArrayList<Kortti> getKasi() {
-        return kasikortit;
-    }
-
+   @Override
     public int getMones() {
         return mones;
     }
-
 
     @Override
     public void setOhjelma(LinkedList<Kortti> ohjelma) {
         this.ohjelma=ohjelma;
     }
+
+    @Override
+    public HashMap<Kortti, Integer> getKasi() {
+        return kasikortit;
+    }
+
+    public void kasiTyhjaksi() {
+        for (KortinToiminto kortinToiminto : KortinToiminto.values()) {
+            kasikortit.put(new Kortti(kortinToiminto), 0);
+        }
+    }
+
+    @Override
+    public void ohjelmaTyhjaksi() {
+        if (this.getRobotti().getVahinko()<5) {
+            ohjelma=new LinkedList<>();
+        } else {
+            for (int i = 0; i <9-this.getRobotti().getVahinko(); i++) {
+                ohjelma.removeLast();
+            }
+        }
+        
+    }
+
+   
 
     
 

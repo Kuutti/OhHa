@@ -24,6 +24,7 @@ public class RumaaKoodiaEsittelyLaudanluomiseen {
      * @param lauta luodaan elementit.
      */
     public void teeLauta(Lauta lauta){
+        
         Ruutu[][] pelilauta=lauta.getPelilauta(); 
         for (int i = 6; i < 9; i++) {
             pelilauta[1][i].lisaaElementti(new Liukuhihna(pelilauta[1][i+1],0,0));
@@ -45,6 +46,7 @@ public class RumaaKoodiaEsittelyLaudanluomiseen {
         }
         pelilauta[3][5].lisaaElementti(new Liukuhihna(pelilauta[2][5],3,3));
         pelilauta[3][3].lisaaElementti(new Checkpoint(1,pelilauta[10][20]));
+        lauta.setAloitus(pelilauta[3][3]);
         lauta.addSeina(pelilauta[5][3], pelilauta[6][3]);
         lauta.addSeina(pelilauta[7][4],pelilauta[8][4]);
         lauta.addLaser(new Laser(pelilauta[7][4],3));

@@ -25,7 +25,7 @@ public class RobottiTest {
     @Before
     public void setUp() {
         robo=new Robotti(new Ruutu(3,3),0);
-        lauta=new Lauta(10,10);
+        lauta=new Lauta(10);
     }
     
     @Test

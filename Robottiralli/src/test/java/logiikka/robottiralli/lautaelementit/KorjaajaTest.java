@@ -26,8 +26,10 @@ public class KorjaajaTest {
     public void setUp() {
         ruutu=new Ruutu(3,3);
         korjaaja=new Korjaaja(2);
+        ruutu.lisaaElementti(korjaaja);
         robo=new Robotti(ruutu,2);
         ruutu.setRobotti(robo);
+        robo.setRespawn(new Ruutu(3,2));
     }
     
     @Test
@@ -52,6 +54,8 @@ public class KorjaajaTest {
         korjaaja.aktivoidu(robo, 5);
         assertEquals(ruutu,robo.getRespawn());
     }
+    
+    
     
 
 }

@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 import kayttoliittyma.Ohjelmantekija;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
@@ -30,27 +31,28 @@ import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 public class Lautaikkuna implements Runnable{
     
     private JFrame frame;
-    private final Lauta lauta;
+    Lautapiirrin piirrin;
     GridBagConstraints gbc=new GridBagConstraints();
     JLabel pelaaja;
     JLabel vahinko;
     JLabel seuraava;
     Ohjelmantekija tekija;
+    boolean saaJatkaa=false;
     
-    public Lautaikkuna(Lauta lauta) {
-        this.lauta=lauta;
+    
+    public Lautaikkuna(Lautapiirrin piirrin) {
+        this.piirrin=piirrin;
          
     }
     
     private void luoKomponentit(Container container) {
         container.setLayout(new FlowLayout());
-        Lautapiirrin piirrin=new Lautapiirrin(lauta);
         piirrin.setPreferredSize(new Dimension(912,912)); 
         container.add(piirrin);
         JPanel nappulat=new JPanel();
         container.add(nappulat);
         teeInteraktiviiset(nappulat);
-        
+        saaJatkaa=true;
         
     }
 
@@ -133,35 +135,47 @@ public class Lautaikkuna implements Runnable{
         tekija.setOk(ok);
         nappulat.add(ok,gbc);
         
-        pelaaja=new JLabel("");
+        pelaaja=new JLabel("??");
         gbc.gridx=0;
         gbc.gridy=0;
         nappulat.add(pelaaja,gbc);
         
-        vahinko=new JLabel("");
+        vahinko=new JLabel("??");
         gbc.gridx=1;
         gbc.gridy=0;
         nappulat.add(vahinko,gbc);
         
-        seuraava=new JLabel("");
+        seuraava=new JLabel("??");
         gbc.gridx=2;
         gbc.gridy=0;
         nappulat.add(seuraava,gbc);
         
-        JLabel komentorivi=new JLabel();
+        JTextArea komentorivi=new JTextArea();
+        komentorivi.setEditable(false);
         gbc.gridx=0;
         gbc.gridy=6;
         gbc.gridwidth=3;
         tekija.setKomentorivi(komentorivi);
         nappulat.add(komentorivi,gbc);
         
-        JLabel virhekasky=new JLabel();
+        JLabel virhekasky=new JLabel("??");
         gbc.gridx=0;
         gbc.gridy=7;
         gbc.gridwidth=3;
         virhekasky.setForeground(Color.RED);
         tekija.setVirhekasky(virhekasky);
         nappulat.add(virhekasky,gbc);
+        
+        JTextArea kasi=new JTextArea();
+        kasi.setEditable(false);
+        gbc.gridx=0;
+        gbc.gridy=8;
+        gbc.gridwidth=3;
+        tekija.setKasi(kasi);
+        nappulat.add(kasi, gbc);
+        
+        tekija.HashMappiinNappulat();
+    
     }
 
     
@@ -180,11 +194,16 @@ public class Lautaikkuna implements Runnable{
     }
 
     public void ohjelmanTeko(Ihmispelaaja pelaaja){
+       tekija.setPelaaja(pelaaja);
        tekija.setJatkaa(false);
-       seuraava.setText("Seuraava piste on "+pelaaja.getRobotti().getSeuraavacp());
+       seuraava.setText("Seuraava piste on "+pelaaja.getRobotti().getSeuraavacpnumero());
        this.pelaaja.setText("Pelaaja numero "+pelaaja.getMones());
        vahinko.setText("Vahinkoa otettu "+pelaaja.getRobotti().getVahinko());
        while(!tekija.isJatkaa());
+    }
+
+    public boolean isSaaJatkaa() {
+        return saaJatkaa;
     }
     
   

@@ -1,8 +1,9 @@
 tehtävää
--ui
--liukuhihna vie kuoppaan, jossa robotti. Unohtaa ekan robotin.
+-liukuhihna vie kuoppaan, jossa robotti. Unohtaa ekan robotin.->tarkasta kuopat joka välissä
 -voitto
--ohjelmien lukitus
--hologrammit
+-hologrammit, tarkistus koska pois
+-korjaa murskaimesta syntyvä virhe
+-korjaa robottien ampuminen
+
 -vaihda Ruudunvievä lautaelementiksi
--ruudun taulukon allkaminen nollasta.
+-ruudun taulukon alkaminen nollasta.

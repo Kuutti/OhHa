@@ -40,7 +40,6 @@ public class Korjaaja implements Ruudunvieva{
     @Override
     public void aktivoidu(Robotti robo, int vuoro) {
         robo.setRespawn(robo.getRuutu());
-        System.out.println(robo.getRespawn());
         if (vuoro==5) {
             robo.korjaa(teho);
         }

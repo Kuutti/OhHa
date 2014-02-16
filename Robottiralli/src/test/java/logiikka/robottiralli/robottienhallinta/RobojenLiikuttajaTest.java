@@ -39,8 +39,8 @@ public class RobojenLiikuttajaTest {
     @Before
     public void setUp() {
         robo=new Robotti(new Ruutu(10,10),0);
-        peluri=new Ihmispelaaja(robo);
-        lauta=new Lauta(30,30);
+        peluri=new Ihmispelaaja(robo,1);
+        lauta=new Lauta(30);
         liikuttaja=new RobojenLiikuttaja(lauta);
         peruutus=new Kortti(KortinToiminto.PERUUTUS);
         eteen1=new Kortti(KortinToiminto.YKSIETEEN);

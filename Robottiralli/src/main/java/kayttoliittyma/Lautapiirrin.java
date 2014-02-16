@@ -17,6 +17,8 @@ import logiikka.robottiralli.lautaelementtienhallinta.Laser;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
+import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
+import logiikka.robottiralli.robottienhallinta.Robotti;
 
 /**
  *
@@ -25,56 +27,72 @@ import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 public class Lautapiirrin extends JPanel{
     
     Lauta lauta;
-    int koko=912;
+    int koko;
     int ruudunkoko=38;
+    ArrayList<Pelaaja> pelaajat;
     
-    Lautapiirrin(Lauta lauta) {
+    public Lautapiirrin(Lauta lauta, ArrayList<Pelaaja> pelaajat) {
         super.setBackground(Color.gray);
         this.lauta=lauta;
+        this.pelaajat=pelaajat;
+        koko=38*lauta.getKoko();
     }
     
     @Override
     protected void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
+        piirraRuudukko(graphics);
+        piirraRuudut(graphics);
+        piirraLaserit(graphics);
+        piirraRobotit(graphics);
+    }
+
+    public void piirraRuudut(Graphics graphics) {
+        for (Ruutu[] ruutu1 :lauta.getPelilauta()) {
+            for (Ruutu ruutu : ruutu1) {
+                piirraRuutu(ruutu, graphics);
+            } 
+        }
+        for (HashSet<Ruutu> seina : lauta.getSeinat()) {
+            Ruutu[] ruudut=seina.toArray(new Ruutu[0]);
+            piirraSeina(graphics,ruudut[0].getX(),ruudut[0].getY(),ruudut[1].getX(),ruudut[1].getY());
+        }
+    }
+
+    public void piirraRuudukko(Graphics graphics) {
         int alku=0;
         for (int i = 0; i < 25; i++) {
             alku=i*(koko/24);
             graphics.drawLine(alku, 0, alku, koko);
             graphics.drawLine(0, alku, koko, alku);
         }
-        for (Ruutu[] ruutu1 :lauta.getPelilauta()) {
-            for (Ruutu ruutu : ruutu1) {
-                Ruudunvieva elementti=ruutu.getRuudussa();
-                    if (elementti==null) {
-                }
-                   else if ("liukuhihna".equals(elementti.tyyppi())){
-                        piirraLiukuhihna(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
-                    } else if ("kuoppa".equals(elementti.tyyppi())) {
-                        piirraKuoppa(graphics,ruutu.getX(),ruutu.getY());
-                    } else if ("checkpoint".equals(elementti.tyyppi())){
-                        piirraCheckpoint(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
-                    } else if ("korjaaja".equals((elementti.tyyppi()))){
-                        piirraKorjaaja(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
-                    } else if ("kaantaja".equals(elementti.tyyppi())){
-                        piirraKaantaja(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
-                    } else if ("murskain".equals(elementti.tyyppi())){
-                        piirraMurskain(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
-                    } else if ("tyonnin".equals(elementti.tyyppi())){
-                        piirraTyonnin(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
-                    }
-                        
-                
-            } 
+    }
+
+    public void piirraLaserit(Graphics graphics) {
+        for (Laser laser : lauta.getLaserit()) {
+            piirraLaser(graphics,laser.getRuutu().getX(),laser.getRuutu().getY(),laser.getSuunta());
         }
-        for (HashSet<Ruutu> seina : lauta.getSeinat()) {
-             Ruutu[] ruudut=seina.toArray(new Ruutu[0]);
-             piirraSeina(graphics,ruudut[0].getX(),ruudut[0].getY(),ruudut[1].getX(),ruudut[1].getY());
-             
-                
-            }
-            for (Laser laser : lauta.getLaserit()) {
-                piirraLaser(graphics,laser.getRuutu().getX(),laser.getRuutu().getY(),laser.getSuunta());
-            }
+    }
+
+    public void piirraRuutu(Ruutu ruutu, Graphics graphics) {
+        Ruudunvieva elementti=ruutu.getRuudussa();
+        if (elementti==null) {
+        }
+        else if ("liukuhihna".equals(elementti.tyyppi())){
+            piirraLiukuhihna(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
+        } else if ("kuoppa".equals(elementti.tyyppi())) {
+            piirraKuoppa(graphics,ruutu.getX(),ruutu.getY());
+        } else if ("checkpoint".equals(elementti.tyyppi())){
+            piirraCheckpoint(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
+        } else if ("korjaaja".equals((elementti.tyyppi()))){
+            piirraKorjaaja(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
+        } else if ("kaantaja".equals(elementti.tyyppi())){
+            piirraKaantaja(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
+        } else if ("murskain".equals(elementti.tyyppi())){
+            piirraMurskain(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
+        } else if ("tyonnin".equals(elementti.tyyppi())){
+            piirraTyonnin(graphics,ruutu.getX(),ruutu.getY(),elementti.getErikoisint());
+        }
     }
 
     private void piirraCheckpoint(Graphics g, int x, int y, int mones) {
@@ -285,5 +303,50 @@ public class Lautapiirrin extends JPanel{
         return pituus;
     }
     
+    public void piirraRobotti(Pelaaja pelaaja, Graphics g){;
+        Robotti robo=pelaaja.getRobotti();
+        switch (pelaaja.getMones()){
+            case 1:g.setColor(Color.blue);
+                break;
+            case 2:g.setColor(Color.red);
+                break;
+            case 3:g.setColor(Color.GREEN);
+                break;
+            case 4: g.setColor(Color.magenta);
+                break;
+        }
+                
+        int y=robo.getRuutu().getY();
+        int x=robo.getRuutu().getX();
+        if (robo.getSuunta()==0) {
+            int [] xpisteet={(x-1)*ruudunkoko+5,(x-1)*ruudunkoko+33,(x-1)*ruudunkoko+18};
+            int [] ypisteet={koko-y*ruudunkoko+30,koko-y*ruudunkoko+30,koko-y*ruudunkoko+10};
+            g.drawPolygon(xpisteet, ypisteet, 3);
+            g.setColor(Color.black);
+            g.drawString(pelaaja.getMones()+"", (x-1)*ruudunkoko+ruudunkoko/2-3, koko-y*ruudunkoko+28);
+        } else if (robo.getSuunta()==2){
+            int [] xpisteet={(x-1)*ruudunkoko+5,(x-1)*ruudunkoko+33,(x-1)*ruudunkoko+18};
+            int [] ypisteet={koko-y*ruudunkoko+8,koko-y*ruudunkoko+8,koko-y*ruudunkoko+28};
+            g.drawPolygon(xpisteet, ypisteet, 3);
+            g.setColor(Color.black);
+            g.drawString(pelaaja.getMones()+"", (x-1)*ruudunkoko+ruudunkoko/2-3, koko-y*ruudunkoko+20);
+        } else if (robo.getSuunta()==1){
+            int [] xpisteet={(x-1)*ruudunkoko+8,(x-1)*ruudunkoko+8,(x-1)*ruudunkoko+28};
+            int [] ypisteet={koko-y*ruudunkoko+5,koko-y*ruudunkoko+33,koko-y*ruudunkoko+19};
+            g.drawPolygon(xpisteet, ypisteet, 3);
+            g.drawString(pelaaja.getMones()+"", (x-1)*ruudunkoko+ruudunkoko/2-6, koko-y*ruudunkoko+23);
+        } else {
+            int [] xpisteet={(x-1)*ruudunkoko+30,(x-1)*ruudunkoko+30,(x-1)*ruudunkoko+10};
+            int [] ypisteet={koko-y*ruudunkoko+5,koko-y*ruudunkoko+33,koko-y*ruudunkoko+19};
+            g.drawPolygon(xpisteet, ypisteet, 3);
+            g.drawString(pelaaja.getMones()+"", (x-1)*ruudunkoko+ruudunkoko/2+2, koko-y*ruudunkoko+23);
+        }
+    }
+
+    private void piirraRobotit(Graphics graphics) {
+        for (Pelaaja pelaaja : pelaajat) {
+            piirraRobotti(pelaaja,graphics);
+        }
+    }
     
 }

@@ -3,23 +3,13 @@
 
 package logiikka.robottiralli.lautaelementtienhallinta;
 
-import logiikka.robottiralli.robottienhallinta.Robotti;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 
 
 public class Lauta {
-    /**
-     * Laudan leveys
-     */
-    int leveys;
-    /**
-     * Laudan korkeus
-     */
-    int korkeus;
+    int koko;
     /**
      * Aloitusruutu, josta kisa alkaa.
      */
@@ -43,31 +33,26 @@ public class Lauta {
         return laserit;
     }
 
-    public int getLeveys() {
-        return leveys;
-    }
+    
 
     public ArrayList<HashSet<Ruutu>> getSeinat() {
         return seinat;
     }
     
-    public int getKorkeus() {
-        return korkeus;
-    }
+   
 
-    public Lauta(int leveys, int korkeus) {
-        this.leveys = leveys;
-        this.korkeus = korkeus;
-        pelilauta=new Ruutu[leveys+2][korkeus+2];
-        for (int i = 0; i < leveys+2; i++) {
-            for (int j = 0; j < korkeus+2; j++) {
+    public Lauta(int koko) {
+        this.koko=koko;
+        pelilauta=new Ruutu[koko+2][koko+2];
+        for (int i = 0; i < koko+2; i++) {
+            for (int j = 0; j < koko+2; j++) {
                 pelilauta[i][j]=new Ruutu(i,j);
             }
         }
     }
 
-    public void setAloitus(int x, int y) {
-        this.aloitus = new Ruutu(x,y);
+    public void setAloitus(Ruutu ruutu) {
+        this.aloitus = ruutu;
     }
     
     public Ruutu getAloitus(){
@@ -90,7 +75,7 @@ public class Lauta {
  * @return Jos sijainti on laudalla palauttaa truen;
  */
     public boolean onLaudalla(Ruutu sijainti){
-        return sijainti.getX()>0&&sijainti.getX()<= leveys && sijainti.getY() > 0 && sijainti.getY() <= korkeus;
+        return sijainti.getX()>0&&sijainti.getX()<= koko && sijainti.getY() > 0 && sijainti.getY() <= koko;
     }
 /**
  * Palauttaa annettua ruutua annetussa suunnassa olevan ruudun.
@@ -101,12 +86,12 @@ public class Lauta {
     public Ruutu seuraavaRuutu(Ruutu ruutu, int suunta) {
              int vipu=(suunta)%4;
             switch (vipu) {
-            case 0: if (ruutu.getY()==korkeus-1) {
+            case 0: if (ruutu.getY()==koko-1) {
                     return null;
                 }
                 ruutu=pelilauta[ruutu.getX()][ruutu.getY()+1];
                 break;
-            case 1: if (ruutu.getX()==leveys-1) {
+            case 1: if (ruutu.getX()==koko-1) {
                     return null;
                 }
                 ruutu=pelilauta[ruutu.getX()+1][ruutu.getY()];
@@ -133,9 +118,10 @@ public class Lauta {
         return pelilauta;
     }
 
-    public void setPelilauta(Ruutu[][] pelilauta) {
-        this.pelilauta = pelilauta;
+    public int getKoko() {
+        return koko;
     }
+    
     
 
     

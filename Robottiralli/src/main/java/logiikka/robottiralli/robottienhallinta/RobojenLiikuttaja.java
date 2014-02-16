@@ -18,7 +18,7 @@ public class RobojenLiikuttaja {
     Lauta lauta;
     
     
-    RobojenLiikuttaja(Lauta lauta) {
+    public RobojenLiikuttaja(Lauta lauta) {
         this.lauta=lauta;
     }
 
@@ -27,7 +27,7 @@ public class RobojenLiikuttaja {
      * @param pelaajat Lista pelaajista, joiden robotteja liikutetaan.
      */
     
-    void suoritaOhjelmat(ArrayList<Pelaaja> pelaajat) {
+    public void suoritaOhjelmat(ArrayList<Pelaaja> pelaajat) {
         Lautaelementtienaktivoija aktivoija=new Lautaelementtienaktivoija(lauta);
         for (int i = 0; i < 5; i++) {
             for (Pelaaja peluri : pelaajat) {
@@ -52,7 +52,7 @@ public class RobojenLiikuttaja {
             } 
             aktivoija.aktivoi(pelaajat,i+1);
             Laserzhallinta hallinta=new Laserzhallinta(lauta);
-            hallinta.ammulaserz(pelaajat);
+            //hallinta.ammulaserz(pelaajat);
         }
         
     }
@@ -72,7 +72,7 @@ public class RobojenLiikuttaja {
              ruudut.add(seuraava);
             if (lauta.getSeinat().contains(ruudut)) {
                 break;
-            } else if (lauta.onRobotti(seuraava)) {
+            } else if (lauta.onRobotti(seuraava)&&!robo.isHolo()) {
                 Robotti tiella=seuraava.getRobotti();
                 liikuta(tiella,1,suunta);
             }

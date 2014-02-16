@@ -31,20 +31,18 @@ public class KorttipakkaTest {
     public void setUp() {
         pakka=new Korttipakka();
         robo=new Robotti(new Ruutu(2,2),2);
-        peluri=new Ihmispelaaja(robo);
+        peluri=new Ihmispelaaja(robo,1);
+        robo.otaVahinkoa(1);
     }
     
     @Test
-    public void oikeaMaaraKorttejaEiVahinkoa(){
+    public void jakaaOikeanMaaran(){
         pakka.jaaKortitPelaajalle(peluri);
-        assertEquals(9,peluri.getKasi().size());
-    }
-    
-    @Test
-    public void oikeaMaaraKorttejaKaksiVahinkoa(){
-        robo.otaVahinkoa(2);
-        pakka.jaaKortitPelaajalle(peluri);
-        assertEquals(7,peluri.getKasi().size());
+        int kortteja=0;
+        for (Kortti kortti : peluri.getKasi().keySet()) {
+            kortteja+=peluri.getKasi().get(kortti);
+        }
+        assertEquals(8,kortteja);
     }
     
    

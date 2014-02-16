@@ -35,7 +35,7 @@ public class Aloitusikkuna extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chao ex Machina");
 
-        jComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4" }));
 
         jLabel1.setText("Valitse pelaajien lukumäärä");
 
