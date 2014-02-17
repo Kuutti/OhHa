@@ -46,6 +46,7 @@ public class Robotti {
         if (holo) {
             this.ruutu.getHolorobot().remove(this);
             this.ruutu = ruutu;
+            
             this.ruutu.lisaaholorobo(this);
         } else {
             this.ruutu.setRobotti(null);
@@ -92,10 +93,6 @@ public class Robotti {
     
     public void setRespawn(Ruutu respawn)  {   
             this.respawn = respawn;
-    }
-
-    public Ruutu Respawn(){
-        return respawn;
     }
 
     /**

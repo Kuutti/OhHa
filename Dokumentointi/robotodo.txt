@@ -1,9 +1,13 @@
 teht‰v‰‰:
 t‰rke‰‰:
--hologrammit ja aktiivisuus, tarkistus koska pois
--korjaa robottien ampuminen
--testit kuntoon
 -voitto
+
+rajalla:
+-javadocs
+-testej‰ lis‰‰
+-kortit n‰kyy hyvin
+-lukkitumisen n‰kyminen
+-hologrammius n‰kyviin
 
 viilausta:
 -vaihda Ruudunviev‰ lautaelementiksi

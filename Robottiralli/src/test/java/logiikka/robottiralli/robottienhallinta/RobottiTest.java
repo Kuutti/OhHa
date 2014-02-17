@@ -43,6 +43,12 @@ public class RobottiTest {
     }
     
     @Test
+    public void aktiivisuus(){
+        robo.setActive(false);
+        assertEquals(false,robo.isActive());
+    }
+    
+    @Test
     public void ToinenKonstruktori(){
        Robotti r=new Robotti(new Ruutu(2,2),1);
        assertEquals(new Ruutu(2,2),r.getRuutu());
@@ -53,6 +59,52 @@ public class RobottiTest {
     public void vahinko(){
         robo.otaVahinkoa(3);
         assertEquals(3,robo.getVahinko());
+    }
+    
+    @Test
+    public void seuraavaCheckpoint(){
+        robo.seuraavacpnumero=1;
+        assertEquals(1,robo.getSeuraavacpnumero());
+}
+    
+    @Test
+    public void checkpointVaihtuu(){
+        robo.seuraavacpnumero=1;
+        robo.setSeuraavacp(new Ruutu(3,3));
+        assertEquals(2,robo.seuraavacpnumero);
+    }
+    
+    @Test
+    public void respawnOikein(){
+        robo.respawn=new Ruutu(2,2);
+        assertEquals(new Ruutu(2,2),robo.getRespawn());
+    }
+    
+    @Test
+    public void roboTuhoutuu(){
+        robo.respawn=new Ruutu(2,2); 
+        robo.otaVahinkoa(10);
+        assertEquals(2,robo.getVahinko());
+    }
+    
+    @Test
+    public void eiTuhoudu(){
+        robo.respawn=new Ruutu(2,2);
+        robo.otaVahinkoa(9);
+        assertEquals(9,robo.getVahinko());
+    }
+    
+    @Test
+    public void holoOikein(){
+        robo.setHolo(false);
+        assertEquals(false,robo.isHolo());
+    }
+    
+    @Test
+    public void setruutuHolonaoikein(){
+        Ruutu ruutu=new Ruutu(2,2);
+        robo.setRuutu(ruutu);
+        assertEquals(true,ruutu.getHolorobot().contains(robo));
     }
     
 

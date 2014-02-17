@@ -41,7 +41,6 @@ public class MurskainTest {
         murskain.aktivoidu(robo, 2);
         assertEquals(robo.getRuutu(),new Ruutu(2,3));
         assertEquals(robo.getVahinko(),2);
-        assertEquals(null,ruutu.getRobotti());
     }
     
     @Test
