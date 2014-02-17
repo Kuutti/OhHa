@@ -1,6 +1,6 @@
 
 
-package logiikka.robottiralli;
+package logiikka.robottiralli.hallinat;
 
 import Laudanluonti.RumaaKoodiaEsittelyLaudanluomiseen;
 import Kayttoliittyma.Lautaikkuna;
@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
 import kayttoliittyma.Aloitusikkuna;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.pelaajienhallinta.Ihmispelaaja;
-import logiikka.robottiralli.robottienhallinta.RobojenLiikuttaja;
+import logiikka.robottiralli.hallinat.RobojenLiikuttaja;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
 
@@ -52,7 +52,7 @@ public class Kayttoliittyma {
             pelaajat.add(new Ihmispelaaja(new Robotti(lauta.getAloitus(),0),i+1));
             pelaajat.get(i).getRobotti().setSeuraavacp(lauta.getAloitus());
             lauta.getAloitus().getRuudussa().aktivoidu(pelaajat.get(i).getRobotti(),0);
-            System.out.println(pelaajat.get(i).getRobotti().getRespawn());
+            lauta.getPelilauta()[3][3].lisaaholorobo(pelaajat.get(i).getRobotti());
         }
     }
 
@@ -66,7 +66,7 @@ public class Kayttoliittyma {
     }
 
     private void pelaus() {
-        RobojenLiikuttaja liikuttaja=new RobojenLiikuttaja(lauta);  
+        Vuorontoteuttaja toteuttaja=new Vuorontoteuttaja(lauta);  
         Korttipakka pakka =new Korttipakka();
         while (true){
           for (Pelaaja pelaaja : pelaajat) {
@@ -74,10 +74,21 @@ public class Kayttoliittyma {
             pakka.jaaKortitPelaajalle(pelaaja);
             lautaikkuna.ohjelmanTeko((Ihmispelaaja) pelaaja); 
         }
-          liikuttaja.suoritaOhjelmat(pelaajat);
-          piirrin.repaint();
+          toteuttaja.teeVuorot(pelaajat,piirrin);
+          
+          epilogi();
         }
         
+    }
+
+    private void epilogi() {
+        for (Pelaaja pelaaja : pelaajat) {
+            pelaaja.getRobotti().setActive(Boolean.TRUE);
+            if (pelaaja.getRobotti().isHolo()&&!pelaaja.getRobotti().getRuutu().onRobotti()) {
+                pelaaja.getRobotti().setHolo(false);
+                pelaaja.getRobotti().getRuutu().setRobotti(pelaaja.getRobotti());
+            }
+        }
     }
 
      

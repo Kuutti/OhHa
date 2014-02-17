@@ -27,8 +27,7 @@ public class RumaaKoodiaEsittelyLaudanluomiseen {
         
        
         Ruutu[][] pelilauta=lauta.getPelilauta(); 
-        
-        pelilauta[3][4].lisaaElementti(new Murskain(0));
+
         
         for (int i = 6; i < 9; i++) {
             pelilauta[1][i].lisaaElementti(new Liukuhihna(pelilauta[1][i+1],0,0));

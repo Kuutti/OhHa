@@ -20,9 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 import kayttoliittyma.Ohjelmantekija;
-import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.pelaajienhallinta.Ihmispelaaja;
-import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 
 /**
  *

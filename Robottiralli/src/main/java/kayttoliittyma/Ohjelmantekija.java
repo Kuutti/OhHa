@@ -53,7 +53,9 @@ public class Ohjelmantekija implements ActionListener{
             }
         } else if (ae.getSource()==poista){
             if (pelaaja.getOhjelma().size()>0) {
-                pelaaja.poistaKortti();
+                if (!pelaaja.poistaKortti()) {
+                    virhekasky.setText("Korttia ei voitu poistaa, koska se on lukkiutunut!");
+                } 
             } else {
                 virhekasky.setText("Ohjelmassasi ei ollut yhtään korttia!");
             }

@@ -1,14 +1,17 @@
 
 
-package logiikka.robottiralli.robottienhallinta;
+package logiikka.robottiralli.hallinat;
 
+import logiikka.robottiralli.hallinat.Laserzhallinta;
 import java.util.ArrayList;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import java.util.HashSet;
 import java.util.Set;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
-import logiikka.robottiralli.lautaelementtienhallinta.Lautaelementtienaktivoija;
+import logiikka.robottiralli.hallinat.Lautaelementtienaktivoija;
+import logiikka.robottiralli.korttienhallinta.Kortti;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
+import logiikka.robottiralli.robottienhallinta.Robotti;
 
 
 public class RobojenLiikuttaja {
@@ -27,35 +30,30 @@ public class RobojenLiikuttaja {
      * @param pelaajat Lista pelaajista, joiden robotteja liikutetaan.
      */
     
-    public void suoritaOhjelmat(ArrayList<Pelaaja> pelaajat) {
-        Lautaelementtienaktivoija aktivoija=new Lautaelementtienaktivoija(lauta);
-        for (int i = 0; i < 5; i++) {
-            for (Pelaaja peluri : pelaajat) {
-                if (peluri.getRobotti().isActive()) {
-                switch(peluri.getOhjelma().get(i).getToiminto()){                 
-                    case KAANNOSOIKEALLE: peluri.getRobotti().setSuunta(peluri.getRobotti().getSuunta()+1);
+    public void suoritaKomento(Kortti kortti, Robotti robo) {
+                switch(kortti.getToiminto()){                 
+                    case KAANNOSOIKEALLE: robo.setSuunta(robo.getSuunta()+1);
                         break;
-                    case KAANNOSVASEMMALLE:peluri.getRobotti().setSuunta(peluri.getRobotti().getSuunta()+3);
+                    case KAANNOSVASEMMALLE:robo.setSuunta(robo.getSuunta()+3);
                         break;
-                    case UKAANNOS:peluri.getRobotti().setSuunta(peluri.getRobotti().getSuunta()+2);
+                    case UKAANNOS:robo.setSuunta(robo.getSuunta()+2);
                         break;
-                    case YKSIETEEN: liikuta(peluri.getRobotti(),1, peluri.getRobotti().getSuunta());
+                    case YKSIETEEN: liikuta(robo,1,robo.getSuunta());
                         break;
-                    case KAKSIETEEN:liikuta(peluri.getRobotti(),2,peluri.getRobotti().getSuunta());
+                    case KAKSIETEEN:liikuta(robo,2,robo.getSuunta());
                         break;
-                    case KOLMEETEEN:liikuta(peluri.getRobotti(),3,peluri.getRobotti().getSuunta());
+                    case KOLMEETEEN:liikuta(robo,3,robo.getSuunta());
                         break;
-                    case PERUUTUS: liikuta(peluri.getRobotti(),1,peluri.getRobotti().getSuunta()+2);
+                    case PERUUTUS: liikuta(robo,1,robo.getSuunta()+2);
                         break;
                 }
                 }
-            } 
-            aktivoija.aktivoi(pelaajat,i+1);
-            Laserzhallinta hallinta=new Laserzhallinta(lauta);
-            //hallinta.ammulaserz(pelaajat);
-        }
+            
+            
+            
         
-    }
+        
+    
 
    /**
     * Liikuttaa robottia tiettyyn suuntaan. Jos edessä on robotti, sitä liikutetaan myös.
@@ -77,11 +75,16 @@ public class RobojenLiikuttaja {
                 liikuta(tiella,1,suunta);
             }
            
+            if (seuraava == null) {
+                robo.tuhoudu();
+            } else {
             robo.setRuutu(seuraava);
-            if (robo.getRuutu().getRuudussa().equals("kuoppa")||!lauta.onLaudalla(robo.getRuutu())) {
+            }
+            if (robo.getRuutu().getRuudussa()!=null) {
+                if (robo.getRuutu().getRuudussa().tyyppi().equals("kuoppa")||!lauta.onLaudalla(robo.getRuutu())) {
                 robo.tuhoudu();
             }
-            
+            } 
         }
     }
 

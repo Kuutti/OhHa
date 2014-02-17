@@ -108,4 +108,9 @@ public class Ruutu {
     public void poistaholorobo(Robotti robo){
         holorobot.remove(robo);
     }
+
+    public ArrayList<Robotti> getHolorobot() {
+        return holorobot;
+    }
+    
 }

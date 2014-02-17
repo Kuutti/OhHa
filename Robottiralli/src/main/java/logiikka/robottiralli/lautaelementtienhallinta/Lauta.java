@@ -78,6 +78,9 @@ public class Lauta {
  * @return Jos sijainti on laudalla palauttaa truen;
  */
     public boolean onLaudalla(Ruutu sijainti){
+        if (sijainti==null) {
+            return false;
+        }
         return sijainti.getX()>0&&sijainti.getX()<= koko && sijainti.getY() > 0 && sijainti.getY() <= koko;
     }
 /**

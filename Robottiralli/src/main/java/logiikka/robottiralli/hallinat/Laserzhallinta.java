@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package logiikka.robottiralli.robottienhallinta;
+package logiikka.robottiralli.hallinat;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,6 +13,7 @@ import logiikka.robottiralli.lautaelementtienhallinta.Laser;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
+import logiikka.robottiralli.robottienhallinta.Robotti;
 
 
 
@@ -53,10 +54,10 @@ public class Laserzhallinta {
  * @param suunta Suunta, johon ammutaan.
  */
     private void ampuminen(Ruutu ruutu, int suunta) {
-        Robotti kohde=null;
-        kohde=onkoEdessärobottia(ruutu, suunta);
-        if (kohde!=null) {
-            kohde.otaVahinkoa(kohde.getVahinko()+1);
+       // ArrayList<Robotti>kohteet=new ArrayList<>();
+        Set<Robotti>kohteet=onkoEdessärobottia(ruutu, suunta);
+        for (Robotti robotti : kohteet) {
+            robotti.otaVahinkoa(1);
         }
     }
 
@@ -66,15 +67,22 @@ public class Laserzhallinta {
      * @param suunta Suunta, johon olio katsoo.
      * @return 
      */
-    private Robotti onkoEdessärobottia(Ruutu ruutu, int suunta) {
-        Set<Ruutu>ruudut= new HashSet<>(); //bad code            
+    private Set<Robotti> onkoEdessärobottia(Ruutu ruutu, int suunta) {
+            Set<Ruutu>ruudut= new HashSet<>(); //bad code            
             ruudut.add(ruutu);
-             Ruutu next=lauta.seuraavaRuutu(ruutu, suunta);
+            Ruutu next=lauta.seuraavaRuutu(ruutu, suunta);
             ruudut.add(next);
             if (lauta.getSeinat().contains(ruudut)||!lauta.onLaudalla(next)) {
-                return null;
-            } else if (next.getRobotti()!=null) {                
-                return next.getRobotti();
+                return new HashSet<>();
+            } else if (next.getRobotti()!=null||!next.getHolorobot().isEmpty()) { 
+                Set<Robotti> kohteet=new HashSet<>();
+                for (Robotti robotti : next.getHolorobot()) {
+                    kohteet.add(robotti);
+                }
+                if (next.getRobotti()!=null) {
+                    kohteet.add(next.getRobotti());
+                }
+                return kohteet;
             }
         return onkoEdessärobottia(next,suunta);
     }

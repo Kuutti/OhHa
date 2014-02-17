@@ -6,6 +6,7 @@
 
 package logiikka.robottiralli.lautaelementtienhallinta;
 
+import logiikka.robottiralli.hallinat.Lautaelementtienaktivoija;
 import java.util.ArrayList;
 import logiikka.robottiralli.lautaelementit.Kaantaja;
 import logiikka.robottiralli.pelaajienhallinta.Ihmispelaaja;

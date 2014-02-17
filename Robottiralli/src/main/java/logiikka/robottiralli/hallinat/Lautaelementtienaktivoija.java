@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 
-package logiikka.robottiralli.lautaelementtienhallinta;
+package logiikka.robottiralli.hallinat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 
 public class Lautaelementtienaktivoija {

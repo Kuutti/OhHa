@@ -97,9 +97,13 @@ public class Ihmispelaaja implements Pelaaja{
         robotti.korjaa(10);
     }
 
-   public void poistaKortti() {
+   public boolean poistaKortti() {
+       if (Math.max(0, robotti.getVahinko()-4)>=ohjelma.size()) {
+           return false;
+       }
         Kortti kortti=ohjelma.pollLast();
         kasikortit.put(kortti, kasikortit.get(kortti)+1);
+        return true;
     }
 
     

@@ -43,11 +43,13 @@ public class Robotti {
  * @param ruutu sijainti johon robo liikkuu 
  */
     public void setRuutu(Ruutu ruutu) {
-        this.ruutu.setRobotti(null);
-        this.ruutu = ruutu;
         if (holo) {
+            this.ruutu.getHolorobot().remove(this);
+            this.ruutu = ruutu;
             this.ruutu.lisaaholorobo(this);
         } else {
+            this.ruutu.setRobotti(null);
+            this.ruutu = ruutu;
             this.ruutu.setRobotti(this);
         }
     }

@@ -25,6 +25,6 @@ public interface Pelaaja {
 
     public void setShutdown();
 
-    public void poistaKortti();
+    public boolean poistaKortti();
 
 }
