@@ -23,7 +23,7 @@ public class Robotti {
     */
    Ruutu respawn=null;
    /**
-    * Voiko robotti liikkua vai ei
+    * Voiko robotti liikkua ja ampua vai ei
     */
    Boolean active=true;
    /**
@@ -46,7 +46,7 @@ public class Robotti {
         this.ruutu.setRobotti(null);
         this.ruutu = ruutu;
         if (holo) {
-            ruutu.lisaaholorobo(this);
+            this.ruutu.lisaaholorobo(this);
         } else {
             this.ruutu.setRobotti(this);
         }

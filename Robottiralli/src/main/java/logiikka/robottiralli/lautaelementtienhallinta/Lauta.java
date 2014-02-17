@@ -60,6 +60,9 @@ public class Lauta {
     }
    
     public boolean onRobotti(Ruutu ruutu) {
+        if (!onLaudalla(ruutu)) {
+            return false;
+        }
         return pelilauta[ruutu.getX()][ruutu.getY()].onRobotti();
     }
 

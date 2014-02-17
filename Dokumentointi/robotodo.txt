@@ -1,9 +1,11 @@
-teht‰v‰‰
--liukuhihna vie kuoppaan, jossa robotti. Unohtaa ekan robotin.->tarkasta kuopat joka v‰liss‰
--voitto
--hologrammit, tarkistus koska pois
--korjaa murskaimesta syntyv‰ virhe
+teht‰v‰‰:
+t‰rke‰‰:
+-hologrammit ja aktiivisuus, tarkistus koska pois
 -korjaa robottien ampuminen
+-testit kuntoon
+-voitto
 
+viilausta:
 -vaihda Ruudunviev‰ lautaelementiksi
 -ruudun taulukon alkaminen nollasta.
+-suunnan vaihtaminen enumiksi.

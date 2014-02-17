@@ -25,7 +25,11 @@ public class RumaaKoodiaEsittelyLaudanluomiseen {
      */
     public void teeLauta(Lauta lauta){
         
+       
         Ruutu[][] pelilauta=lauta.getPelilauta(); 
+        
+        pelilauta[3][4].lisaaElementti(new Murskain(0));
+        
         for (int i = 6; i < 9; i++) {
             pelilauta[1][i].lisaaElementti(new Liukuhihna(pelilauta[1][i+1],0,0));
         }
@@ -62,7 +66,7 @@ public class RumaaKoodiaEsittelyLaudanluomiseen {
         for (int i = 8; i > 3; i--) {
             pelilauta[i][6].lisaaElementti(new Liukuhihna(pelilauta[i-1][6],0,3));
         }
-        pelilauta[3][6].lisaaElementti(new Liukuhihna(pelilauta[3][7],1,3));
+        pelilauta[3][6].lisaaElementti(new Liukuhihna(pelilauta[2][6],1,3));
         for (int i = 6; i < 10; i++) {
             pelilauta[2][i].lisaaElementti(new Liukuhihna(pelilauta[2][i+1],0,0));
         }

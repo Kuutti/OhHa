@@ -23,4 +23,8 @@ public interface Pelaaja {
     public int getMones();
     public void ohjelmaTyhjaksi();
 
+    public void setShutdown();
+
+    public void poistaKortti();
+
 }

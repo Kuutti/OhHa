@@ -53,17 +53,12 @@ public class Ohjelmantekija implements ActionListener{
             }
         } else if (ae.getSource()==poista){
             if (pelaaja.getOhjelma().size()>0) {
-                poistaKortti();
+                pelaaja.poistaKortti();
             } else {
                 virhekasky.setText("Ohjelmassasi ei ollut yhtään korttia!");
             }
         } else if (ae.getSource()==shutdown){
-            while (pelaaja.getOhjelma().size()!=0){
-                poistaKortti();
-            }
-            for (int i = 0; i < 5; i++) {
-                pelaaja.getOhjelma().add(new Kortti(KortinToiminto.NULL));
-            }
+            pelaaja.setShutdown();
         } else if (ae.getSource()==ok){
             if (pelaaja.getOhjelma().size()==5) {
                 komentorivi.setText("");
@@ -98,10 +93,7 @@ public class Ohjelmantekija implements ActionListener{
         kasi.setText(kasi.getText()+"U-KÄÄNNÖS                x"+pelaaja.getKasi().get(new Kortti(KortinToiminto.UKAANNOS)));
     }
     
-    public void poistaKortti() {
-        Kortti kortti=pelaaja.getOhjelma().pollLast();
-        pelaaja.getKasi().put(kortti, pelaaja.getKasi().get(kortti)+1);
-    }
+    
 
     public Boolean isJatkaa() {
         return jatkaa;

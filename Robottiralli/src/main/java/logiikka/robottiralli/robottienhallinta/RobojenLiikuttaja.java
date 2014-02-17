@@ -78,7 +78,9 @@ public class RobojenLiikuttaja {
             }
            
             robo.setRuutu(seuraava);
-            
+            if (robo.getRuutu().getRuudussa().equals("kuoppa")||!lauta.onLaudalla(robo.getRuutu())) {
+                robo.tuhoudu();
+            }
             
         }
     }

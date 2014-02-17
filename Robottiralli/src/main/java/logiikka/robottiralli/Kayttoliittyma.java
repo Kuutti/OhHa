@@ -52,6 +52,7 @@ public class Kayttoliittyma {
             pelaajat.add(new Ihmispelaaja(new Robotti(lauta.getAloitus(),0),i+1));
             pelaajat.get(i).getRobotti().setSeuraavacp(lauta.getAloitus());
             lauta.getAloitus().getRuudussa().aktivoidu(pelaajat.get(i).getRobotti(),0);
+            System.out.println(pelaajat.get(i).getRobotti().getRespawn());
         }
     }
 

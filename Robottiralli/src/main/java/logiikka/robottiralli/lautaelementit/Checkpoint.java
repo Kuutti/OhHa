@@ -44,8 +44,9 @@ public class Checkpoint implements Ruudunvieva{
     public void aktivoidu(Robotti robo, int vuoro) {
         if (robo.getSeuraavacp()==robo.getRuutu()) {
             robo.setSeuraavacp(seuraava);
+            robo.setRespawn(robo.getRuutu());
         }
-        if (vuoro==5) {
+        if (vuoro==5&&robo.isActive()) {
             robo.korjaa(1);
         }
     }

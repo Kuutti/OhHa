@@ -18,7 +18,7 @@ public class Ihmispelaaja implements Pelaaja{
     /**
      * Pelaajalla oleva robotti
      */
-   Robotti pelinappula;
+   Robotti robotti;
    /**
     * Pelaajan hallussa olevat kortit, joista tehdään ohjelma
     */
@@ -31,7 +31,7 @@ public class Ihmispelaaja implements Pelaaja{
    int mones;
    
     public Ihmispelaaja(Robotti pelinappula, int mones) {
-        this.pelinappula = pelinappula;
+        this.robotti = pelinappula;
         this.mones=mones;
         kasiTyhjaksi();
        
@@ -44,7 +44,7 @@ public class Ihmispelaaja implements Pelaaja{
 
     @Override
     public Robotti getRobotti() {
-        return pelinappula;
+        return robotti;
     }
 
     @Override
@@ -85,7 +85,22 @@ public class Ihmispelaaja implements Pelaaja{
         
     }
 
-   
+    @Override
+    public void setShutdown() {
+        while (ohjelma.size()!=0){
+                poistaKortti();
+            }
+        for (int i = 0; i < 5; i++) {
+                ohjelma.add(new Kortti(KortinToiminto.NULL));
+            }
+        robotti.setActive(false);
+        robotti.korjaa(10);
+    }
+
+   public void poistaKortti() {
+        Kortti kortti=ohjelma.pollLast();
+        kasikortit.put(kortti, kasikortit.get(kortti)+1);
+    }
 
     
 
