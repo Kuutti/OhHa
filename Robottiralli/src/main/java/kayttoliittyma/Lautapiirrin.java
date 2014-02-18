@@ -15,7 +15,7 @@ import java.util.Set;
 import javax.swing.JPanel;
 import logiikka.robottiralli.lautaelementtienhallinta.Laser;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
-import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
+import logiikka.robottiralli.lautaelementtienhallinta.Elementti;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 import logiikka.robottiralli.robottienhallinta.Robotti;
@@ -75,7 +75,7 @@ public class Lautapiirrin extends JPanel{
     }
 
     public void piirraRuutu(Ruutu ruutu, Graphics graphics) {
-        Ruudunvieva elementti=ruutu.getRuudussa();
+        Elementti elementti=ruutu.getRuudussa();
         if (elementti==null) {
         }
         else if ("liukuhihna".equals(elementti.tyyppi())){

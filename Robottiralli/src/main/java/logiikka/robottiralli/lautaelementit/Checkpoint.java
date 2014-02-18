@@ -6,7 +6,7 @@
 
 package logiikka.robottiralli.lautaelementit;
 
-import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
+import logiikka.robottiralli.lautaelementtienhallinta.Elementti;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
@@ -14,7 +14,7 @@ import logiikka.robottiralli.robottienhallinta.Robotti;
  *
  * @author KOTIPC
  */
-public class Checkpoint implements Ruudunvieva{
+public class Checkpoint implements Elementti{
 
     /**
      * Monesko checkpoint on kyseessä.
@@ -42,9 +42,10 @@ public class Checkpoint implements Ruudunvieva{
  */
     @Override
     public void aktivoidu(Robotti robo, int vuoro) {
+        robo.setRespawn(robo.getRuutu());
         if (robo.getSeuraavacp()==robo.getRuutu()) {
             robo.setSeuraavacp(seuraava);
-            robo.setRespawn(robo.getRuutu());
+
         }
         if (vuoro==5&&robo.isActive()) {
             robo.korjaa(1);

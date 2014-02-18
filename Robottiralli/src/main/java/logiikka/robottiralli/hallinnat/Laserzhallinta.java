@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package logiikka.robottiralli.hallinat;
+package logiikka.robottiralli.hallinnat;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -41,7 +41,7 @@ public class Laserzhallinta {
  * Hoidetaan pelaajien robottien ampuminen.
  * @param pelaajat joiden robotit ampuvat.
  */
-    private void robotAmpuu(ArrayList<Pelaaja> pelaajat) {
+    public void robotAmpuu(ArrayList<Pelaaja> pelaajat) {
         for (Pelaaja pelaaja : pelaajat) {
             if (pelaaja.getRobotti().isActive()&&!pelaaja.getRobotti().isHolo()) {
                 ampuminen(pelaaja.getRobotti().getRuutu(),pelaaja.getRobotti().getSuunta());  
@@ -53,9 +53,9 @@ public class Laserzhallinta {
  * @param ruutu Ruutu, josta ammutaan.
  * @param suunta Suunta, johon ammutaan.
  */
-    private void ampuminen(Ruutu ruutu, int suunta) {
+    public void ampuminen(Ruutu ruutu, int suunta) {
        // ArrayList<Robotti>kohteet=new ArrayList<>();
-        Set<Robotti>kohteet=onkoEdessärobottia(ruutu, suunta);
+        Set<Robotti>kohteet=onkoEdessarobottia(ruutu, suunta);
         for (Robotti robotti : kohteet) {
             robotti.otaVahinkoa(1);
         }
@@ -67,7 +67,7 @@ public class Laserzhallinta {
      * @param suunta Suunta, johon olio katsoo.
      * @return 
      */
-    private Set<Robotti> onkoEdessärobottia(Ruutu ruutu, int suunta) {
+    public Set<Robotti> onkoEdessarobottia(Ruutu ruutu, int suunta) {
             Set<Ruutu>ruudut= new HashSet<>(); //bad code            
             ruudut.add(ruutu);
             Ruutu next=lauta.seuraavaRuutu(ruutu, suunta);
@@ -84,16 +84,21 @@ public class Laserzhallinta {
                 }
                 return kohteet;
             }
-        return onkoEdessärobottia(next,suunta);
+        return onkoEdessarobottia(next,suunta);
     }
 /**
  * Hoidetaan laudalla olevien laserien ampuminen ja päivitetään robotin vahinko
  * tarvittaessa.
  */
-    private void laseritAmpuu() {
+    public void laseritAmpuu() {
         for (Laser laser : lauta.getLaserit()) {
-            if (laser.getRuutu().onRobotti()) {
-                laser.getRuutu().getRobotti().otaVahinkoa(1);
+            if (laser.getRuutu().onRobotti()||!laser.getRuutu().getHolorobot().isEmpty()) {
+                if (laser.getRuutu().onRobotti()) {
+                    laser.getRuutu().getRobotti().otaVahinkoa(1);
+                }
+                for (Robotti robotti : laser.getRuutu().getHolorobot()) {
+                    robotti.otaVahinkoa(1);
+                }
             } else {
                 ampuminen(laser.getRuutu(),laser.getSuunta());
             }

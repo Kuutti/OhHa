@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package logiikka.robottiralli.hallinat;
+package logiikka.robottiralli.hallinnat;
 
 import java.util.ArrayList;
 import java.util.Arrays;

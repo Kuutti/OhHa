@@ -8,12 +8,12 @@ package logiikka.robottiralli.lautaelementit;
 
 import java.util.ArrayList;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
-import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
+import logiikka.robottiralli.lautaelementtienhallinta.Elementti;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
 
-public class Murskain implements Ruudunvieva{
+public class Murskain implements Elementti{
     
     /**
      * Luku, joka kertoo aktivoituuko parittomilla tai parillisilla vuoroilla.

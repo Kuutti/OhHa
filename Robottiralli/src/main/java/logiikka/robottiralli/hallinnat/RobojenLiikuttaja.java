@@ -1,16 +1,12 @@
 
 
-package logiikka.robottiralli.hallinat;
+package logiikka.robottiralli.hallinnat;
 
-import logiikka.robottiralli.hallinat.Laserzhallinta;
-import java.util.ArrayList;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import java.util.HashSet;
 import java.util.Set;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
-import logiikka.robottiralli.hallinat.Lautaelementtienaktivoija;
 import logiikka.robottiralli.korttienhallinta.Kortti;
-import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
 
@@ -27,7 +23,6 @@ public class RobojenLiikuttaja {
 
     /**
      * Laittaa jokaisen pelaajan robotin toimimaan pelaajan ohjelman mukaisesti
-     * @param pelaajat Lista pelaajista, joiden robotteja liikutetaan.
      */
     
     public void suoritaKomento(Kortti kortti, Robotti robo) {
@@ -38,13 +33,13 @@ public class RobojenLiikuttaja {
                         break;
                     case UKAANNOS:robo.setSuunta(robo.getSuunta()+2);
                         break;
-                    case YKSIETEEN: liikuta(robo,1,robo.getSuunta());
+                    case YKSIETEEN: etsiRuutuJaLiiku(robo,1,robo.getSuunta());
                         break;
-                    case KAKSIETEEN:liikuta(robo,2,robo.getSuunta());
+                    case KAKSIETEEN:etsiRuutuJaLiiku(robo,2,robo.getSuunta());
                         break;
-                    case KOLMEETEEN:liikuta(robo,3,robo.getSuunta());
+                    case KOLMEETEEN:etsiRuutuJaLiiku(robo,3,robo.getSuunta());
                         break;
-                    case PERUUTUS: liikuta(robo,1,robo.getSuunta()+2);
+                    case PERUUTUS: etsiRuutuJaLiiku(robo,1,robo.getSuunta()+2);
                         break;
                 }
                 }
@@ -62,7 +57,7 @@ public class RobojenLiikuttaja {
     * @param i määrä kuinka paljon liikutetaan.
     * @param suunta mihin suuntaan liikutetaan (kuin kellotaulua, mod 4 ja nolla ylöspäin)
     */
-    private void liikuta(Robotti robo, int i, int suunta) {
+    private void etsiRuutuJaLiiku(Robotti robo, int i, int suunta) {
         for (int j = 0; j < i; j++) {
             Set<Ruutu>ruudut= new HashSet<>(); 
             ruudut.add(robo.getRuutu());
@@ -72,19 +67,26 @@ public class RobojenLiikuttaja {
                 break;
             } else if (lauta.onRobotti(seuraava)&&!robo.isHolo()) {
                 Robotti tiella=seuraava.getRobotti();
-                liikuta(tiella,1,suunta);
+                etsiRuutuJaLiiku(tiella,1,suunta);
             }
-           
-            if (seuraava == null) {
-                robo.tuhoudu();
-            } else {
+            liiku(seuraava, robo);
+        }
+    }
+
+    public void liiku(Ruutu seuraava, Robotti robo) {
+        if (seuraava == null) {
+            robo.tuhoudu();
+        } else {
             robo.setRuutu(seuraava);
-            }
-            if (robo.getRuutu().getRuudussa()!=null) {
-                if (robo.getRuutu().getRuudussa().tyyppi().equals("kuoppa")||!lauta.onLaudalla(robo.getRuutu())) {
+        }
+        if (robo.getRuutu().getRuudussa()!=null) {
+            if (robo.getRuutu().getRuudussa().tyyppi().equals("kuoppa")) {
                 robo.tuhoudu();
             }
-            } 
+        } else {
+            if (!lauta.onLaudalla(robo.getRuutu())) {
+                robo.tuhoudu();
+            }
         }
     }
 

@@ -21,10 +21,12 @@ public class RobottiTest {
     
     Robotti robo;
     Lauta lauta;
+    Ruutu ruutu;
     
     @Before
     public void setUp() {
-        robo=new Robotti(new Ruutu(3,3),0);
+        ruutu=new Ruutu(3,3);
+        robo=new Robotti(ruutu,0);
         lauta=new Lauta(10);
     }
     
@@ -98,6 +100,7 @@ public class RobottiTest {
     public void holoOikein(){
         robo.setHolo(false);
         assertEquals(false,robo.isHolo());
+        assertEquals(robo,ruutu.getRobotti());
     }
     
     @Test
@@ -105,6 +108,15 @@ public class RobottiTest {
         Ruutu ruutu=new Ruutu(2,2);
         robo.setRuutu(ruutu);
         assertEquals(true,ruutu.getHolorobot().contains(robo));
+    }
+    
+    @Test
+    public void setruutuOikein(){
+        Ruutu ruutu=new Ruutu(2,2);
+        robo.setHolo(false);
+        robo.setRuutu(ruutu);
+        assertEquals(true,ruutu.onRobotti());
+        assertEquals(null, this.ruutu.getRobotti());
     }
     
 

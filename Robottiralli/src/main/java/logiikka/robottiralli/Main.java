@@ -1,6 +1,6 @@
 package logiikka.robottiralli;
 
-import logiikka.robottiralli.hallinat.Kayttoliittyma;
+import logiikka.robottiralli.hallinnat.Kayttoliittyma;
 
 public class Main 
 {

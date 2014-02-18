@@ -7,14 +7,14 @@
 package logiikka.robottiralli.lautaelementit;
 
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
-import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
+import logiikka.robottiralli.lautaelementtienhallinta.Elementti;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
 
 
 
-public class Kaantaja implements Ruudunvieva{
+public class Kaantaja implements Elementti{
    /**
     * Kuinka paljon robottia käännetään oikealle.
     */

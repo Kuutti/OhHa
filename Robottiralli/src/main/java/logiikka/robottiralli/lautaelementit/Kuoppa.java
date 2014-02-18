@@ -6,14 +6,14 @@
 
 package logiikka.robottiralli.lautaelementit;
 
-import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
+import logiikka.robottiralli.lautaelementtienhallinta.Elementti;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
 /**
  *
  * @author KOTIPC
  */
-public class Kuoppa implements Ruudunvieva{
+public class Kuoppa implements Elementti{
     
   
     public Kuoppa() {

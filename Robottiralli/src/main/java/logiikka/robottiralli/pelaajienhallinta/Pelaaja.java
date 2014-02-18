@@ -2,7 +2,6 @@
 
 package logiikka.robottiralli.pelaajienhallinta;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import logiikka.robottiralli.robottienhallinta.Robotti;
@@ -18,13 +17,10 @@ public interface Pelaaja {
     Robotti getRobotti();
     LinkedList<Kortti> getOhjelma();
     HashMap<Kortti,Integer> getKasi();
-    void setOhjelma(LinkedList<Kortti> ohjelma);
     public void kasiTyhjaksi();
     public int getMones();
     public void ohjelmaTyhjaksi();
-
     public void setShutdown();
-
     public boolean poistaKortti();
 
 }

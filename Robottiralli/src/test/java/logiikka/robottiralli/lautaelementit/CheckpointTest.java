@@ -60,6 +60,12 @@ public class CheckpointTest {
         assertEquals(2,cp.getErikoisint());
     }
     
+    @Test
+    public void vaihtaaRespawn(){
+       cp.aktivoidu(robo, 1);
+       assertEquals(ruutu,robo.getRespawn());
+    }
+    
 
     
     

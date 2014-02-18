@@ -1,6 +1,6 @@
 
 
-package logiikka.robottiralli.hallinat;
+package logiikka.robottiralli.hallinnat;
 
 import Laudanluonti.RumaaKoodiaEsittelyLaudanluomiseen;
 import Kayttoliittyma.Lautaikkuna;
@@ -11,9 +11,7 @@ import logiikka.robottiralli.korttienhallinta.Korttipakka;
 import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 import kayttoliittyma.Aloitusikkuna;
-import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.pelaajienhallinta.Ihmispelaaja;
-import logiikka.robottiralli.hallinat.RobojenLiikuttaja;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
 
@@ -52,7 +50,7 @@ public class Kayttoliittyma {
             pelaajat.add(new Ihmispelaaja(new Robotti(lauta.getAloitus(),0),i+1));
             pelaajat.get(i).getRobotti().setSeuraavacp(lauta.getAloitus());
             lauta.getAloitus().getRuudussa().aktivoidu(pelaajat.get(i).getRobotti(),0);
-            lauta.getPelilauta()[3][3].lisaaholorobo(pelaajat.get(i).getRobotti());
+            lauta.getPelilauta()[lauta.getAloitus().getX()][lauta.getAloitus().getY()].lisaaholorobo(pelaajat.get(i).getRobotti());
         }
     }
 

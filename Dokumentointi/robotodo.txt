@@ -1,15 +1,14 @@
 tehtävää:
 tärkeää:
+-ei liiku jos törmää robottiin jonka takana seinä
 -voitto
-
-rajalla:
 -javadocs
 -testejä lisää
+
+rajalla:
 -kortit näkyy hyvin
--lukkitumisen näkyminen
 -hologrammius näkyviin
 
 viilausta:
--vaihda Ruudunvievä lautaelementiksi
 -ruudun taulukon alkaminen nollasta.
 -suunnan vaihtaminen enumiksi.

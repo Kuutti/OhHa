@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import logiikka.robottiralli.korttienhallinta.Kortti;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 import java.util.List;
+import logiikka.robottiralli.korttienhallinta.KortinToiminto;
 import logiikka.robottiralli.korttienhallinta.Korttipakka;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import org.junit.Before;
@@ -56,13 +57,56 @@ public class IhmispelaajaTest {
     
     @Test
     public void lukittaa(){
-         List<Kortti> testi=new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-             testi.add(new Kortti());
-        }
-        peluri.ohjelma.addAll(testi);
+        jaaKortit();
         peluri.getRobotti().otaVahinkoa(5);
         peluri.ohjelmaTyhjaksi();
        assertEquals(1,peluri.getOhjelma().size());        
     }
+    
+    @Test
+    public void shutdownOikein(){
+        jaaKortit();
+        peluri.setShutdown();
+        assertEquals(false,peluri.getRobotti().isActive());
+        assertEquals(new Kortti(KortinToiminto.NULL),peluri.ohjelma.getLast());
+    }
+
+    public void jaaKortit() {
+        List<Kortti> testi=new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            testi.add(new Kortti());
+        }
+        peluri.ohjelma.addAll(testi);
+    }
+    
+    @Test
+    public void poistaaKortitVahinkoaNelja(){
+        jaaKortit();
+        peluri.getRobotti().otaVahinkoa(4);
+        assertEquals(true,peluri.poistaKortti());
+        assertEquals(4,peluri.ohjelma.size());
+        
+    }
+    
+    @Test
+    public void lisaaPoistetunKortinKateen(){
+        jaaKortit();
+        peluri.poistaKortti();
+        int kasikortteja=0;
+        for (Kortti kortti : peluri.kasikortit.keySet()) {
+            kasikortteja=kasikortteja+peluri.kasikortit.get(kortti);
+        }
+        assertEquals(1,kasikortteja);
+    }
+    
+    @Test
+    public void eiPoistaKunVahinkoaViisi(){
+        jaaKortit();
+        peluri.getRobotti().otaVahinkoa(5);
+        for (int i = 0; i < 4; i++) {
+            peluri.poistaKortti();
+        }
+        assertEquals(false,peluri.poistaKortti());
+    }
+
 }

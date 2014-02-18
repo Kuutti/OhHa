@@ -2,10 +2,8 @@ package logiikka.robottiralli.pelaajienhallinta;
 
 import logiikka.robottiralli.robottienhallinta.Robotti;
 import logiikka.robottiralli.korttienhallinta.Kortti;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import logiikka.robottiralli.korttienhallinta.KortinToiminto;
 
 
@@ -58,11 +56,6 @@ public class Ihmispelaaja implements Pelaaja{
     }
 
     @Override
-    public void setOhjelma(LinkedList<Kortti> ohjelma) {
-        this.ohjelma=ohjelma;
-    }
-
-    @Override
     public HashMap<Kortti, Integer> getKasi() {
         return kasikortit;
     }
@@ -87,16 +80,14 @@ public class Ihmispelaaja implements Pelaaja{
 
     @Override
     public void setShutdown() {
-        while (ohjelma.size()!=0){
-                poistaKortti();
-            }
-        for (int i = 0; i < 5; i++) {
-                ohjelma.add(new Kortti(KortinToiminto.NULL));
-            }
+        ohjelmaTyhjaksi();
+        while(ohjelma.size()!=5){
+            ohjelma.add(new Kortti(KortinToiminto.NULL));
+        }
         robotti.setActive(false);
-        robotti.korjaa(10);
     }
 
+   @Override
    public boolean poistaKortti() {
        if (Math.max(0, robotti.getVahinko()-4)>=ohjelma.size()) {
            return false;

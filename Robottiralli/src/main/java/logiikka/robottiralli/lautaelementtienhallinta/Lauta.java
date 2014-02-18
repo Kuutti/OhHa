@@ -92,22 +92,22 @@ public class Lauta {
     public Ruutu seuraavaRuutu(Ruutu ruutu, int suunta) {
              int vipu=(suunta)%4;
             switch (vipu) {
-            case 0: if (ruutu.getY()==koko-1) {
+            case 0: if (ruutu.getY()==koko) {
                     return null;
                 }
                 ruutu=pelilauta[ruutu.getX()][ruutu.getY()+1];
                 break;
-            case 1: if (ruutu.getX()==koko-1) {
+            case 1: if (ruutu.getX()==koko) {
                     return null;
                 }
                 ruutu=pelilauta[ruutu.getX()+1][ruutu.getY()];
                 break;
-            case 2: if (ruutu.getY()<1) {
+            case 2: if (ruutu.getY()<=0) {
                     return null;
                 }
                 ruutu=pelilauta[ruutu.getX()][ruutu.getY()-1];
                 break;
-            case 3: if (ruutu.getX()<1) {
+            case 3: if (ruutu.getX()<=0) {
                     return null;
                 }
                 ruutu=pelilauta[ruutu.getX()-1][ruutu.getY()];

@@ -8,7 +8,7 @@ package logiikka.robottiralli.lautaelementit;
 
 import java.util.ArrayList;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
-import logiikka.robottiralli.lautaelementtienhallinta.Ruudunvieva;
+import logiikka.robottiralli.lautaelementtienhallinta.Elementti;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
@@ -16,7 +16,7 @@ import logiikka.robottiralli.robottienhallinta.Robotti;
  *
  * @author KOTIPC
  */
-public class Tyonnin implements Ruudunvieva{
+public class Tyonnin implements Elementti{
 /**
  * Ruutu, johon työnnin työntää robotin.
  */

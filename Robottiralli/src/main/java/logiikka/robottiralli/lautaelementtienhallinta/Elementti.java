@@ -2,7 +2,7 @@ package logiikka.robottiralli.lautaelementtienhallinta;
 
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
-public interface Ruudunvieva {
+public interface Elementti {
     /**
      * @return Palauttaa minkälainen elementti on kyseessä.
      */

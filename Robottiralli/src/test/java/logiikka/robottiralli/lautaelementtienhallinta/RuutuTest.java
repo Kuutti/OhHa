@@ -45,7 +45,7 @@ public class RuutuTest {
     }
     @Test 
     public void tostring(){
-        assertEquals("Sijainti 10,11",ruutu.toString());
+        assertEquals("Ruutu 10,11",ruutu.toString());
     }
     
     @Test

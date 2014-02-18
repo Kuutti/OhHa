@@ -25,7 +25,7 @@ public class Ruutu {
     /**
      * Ruudussa oleva lautaelementti
      */
-    Ruudunvieva ruudussa;
+    Elementti ruudussa;
     
     
     public Ruutu(int x, int y) {
@@ -41,7 +41,7 @@ public class Ruutu {
      * Lisää ruutuun lautaelementin
      * @param elementti lisättävä lautaelementti
      */
-    public void lisaaElementti(Ruudunvieva elementti){
+    public void lisaaElementti(Elementti elementti){
         ruudussa=elementti;
     }
     
@@ -78,7 +78,7 @@ public class Ruutu {
 
     @Override
     public String toString() {
-        return "Sijainti "+x+","+y;
+        return "Ruutu "+x+","+y;
     }
 /**
  * @return palauttaa true, jos ruudussa on robotti. 
@@ -87,7 +87,7 @@ public class Ruutu {
         return robotti != null;
     }
 
-    public Ruudunvieva getRuudussa() {
+    public Elementti getRuudussa() {
         return ruudussa;
     }
 

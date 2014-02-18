@@ -64,6 +64,7 @@ public class Ohjelmantekija implements ActionListener{
         } else if (ae.getSource()==ok){
             if (pelaaja.getOhjelma().size()==5) {
                 komentorivi.setText("");
+                kasi.setText("");
                 pelaaja.kasiTyhjaksi();
                 jatkaa=true;
             } else {
@@ -175,6 +176,8 @@ public class Ohjelmantekija implements ActionListener{
     public void setKasi(JTextArea kasi) {
         this.kasi = kasi;
     }
+
+
 
     
     
