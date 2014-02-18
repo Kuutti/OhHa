@@ -22,7 +22,7 @@ public class RobojenLiikuttaja {
     }
 
     /**
-     * Laittaa jokaisen pelaajan robotin toimimaan pelaajan ohjelman mukaisesti
+     * Laittaa robotin toimimaan komennon mukaisesti.
      */
     
     public void suoritaKomento(Kortti kortti, Robotti robo) {
@@ -51,8 +51,8 @@ public class RobojenLiikuttaja {
     
 
    /**
-    * Liikuttaa robottia tiettyyn suuntaan. Jos edessä on robotti, sitä liikutetaan myös.
-    * Seinien läpi ei liikuta.
+    * Etsii robotille ruudun johon, robotti liikkuu ja huolehtii tämän jälkeen
+    * liikkumisesta. Seinän läpi ei kuitenkaan päästä ja edessä olevat robotit työnnetään.
     * @param robo robotti, jota liikutetaan.
     * @param i määrä kuinka paljon liikutetaan.
     * @param suunta mihin suuntaan liikutetaan (kuin kellotaulua, mod 4 ja nolla ylöspäin)
@@ -72,7 +72,12 @@ public class RobojenLiikuttaja {
             liiku(seuraava, robo);
         }
     }
-
+    /**
+    * Liikuttaa robotin parametrina annettuun ruutuun. Jos ruutu ei ole 
+    * laudalla tai on kuoppa robotti tuohoutuu.
+    * @param seuraava
+    * @param robo 
+    */
     public void liiku(Ruutu seuraava, Robotti robo) {
         if (seuraava == null) {
             robo.tuhoudu();

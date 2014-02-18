@@ -43,6 +43,6 @@ public class KaantajaTest {
     
     @Test
     public void tarkistakaannos(){
-        assertEquals(1,kaannin.getErikoisint());
+        assertEquals(1,kaannin.getGrafiikkaluku());
     }
 }

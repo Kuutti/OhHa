@@ -57,7 +57,7 @@ public class Tyonnin implements Elementti{
  * parillisilla vuoroilla ja 4-7, kun aktivoituu parittomilla.
  */
     @Override
-    public int getErikoisint() {
+    public int getGrafiikkaluku() {
         return 4*(aktivoituu%2)+suunta;
     }
     

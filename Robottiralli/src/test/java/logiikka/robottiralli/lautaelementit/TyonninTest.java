@@ -42,7 +42,7 @@ public class TyonninTest {
     }
     @Test 
     public void Erikoisint(){
-        assertEquals(2,tyonnin.getErikoisint());
+        assertEquals(2,tyonnin.getGrafiikkaluku());
     }
     
 }

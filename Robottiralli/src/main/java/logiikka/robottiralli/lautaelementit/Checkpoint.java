@@ -55,7 +55,7 @@ public class Checkpoint implements Elementti{
  * @return palauttaa monesko checkpoint on kyseessä.
  */
     @Override
-    public int getErikoisint() {
+    public int getGrafiikkaluku() {
         return mones;
     }
     

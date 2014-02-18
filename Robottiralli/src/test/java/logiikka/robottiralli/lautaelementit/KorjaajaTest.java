@@ -46,7 +46,7 @@ public class KorjaajaTest {
     
     @Test
     public void korjausget(){
-        assertEquals(2,korjaaja.getErikoisint());
+        assertEquals(2,korjaaja.getGrafiikkaluku());
     }
     
     @Test

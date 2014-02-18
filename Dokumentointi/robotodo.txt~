@@ -1,7 +1,6 @@
 tehtävää:
 tärkeää:
 -ei liiku jos törmää robottiin jonka takana seinä
--checkpointin numero checkpointille eikä robotille
 -voitto
 -javadocs
 -testejä lisää

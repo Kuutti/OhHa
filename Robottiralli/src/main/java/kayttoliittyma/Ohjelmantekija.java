@@ -75,6 +75,10 @@ public class Ohjelmantekija implements ActionListener{
         paivitaOhjelma();
     }
 
+    
+    /**
+     * Päivittää pelaajan tämän hetkisen ohjelman TextAreaan komentorivi.
+     */
     private void paivitaOhjelma() {
         komentorivi.setText("");
         for (int i = 0; i < pelaaja.getOhjelma().size(); i++) {
@@ -85,6 +89,9 @@ public class Ohjelmantekija implements ActionListener{
         }
     }
     
+    /**
+     * Päivittää pelaajan tämän hetkisen käden TextAreaan Kasi.
+     */
     public void paivitaKasi() {
         kasi.setText("");
         kasi.setText("YKSI ETEEN                 x"+pelaaja.getKasi().get(new Kortti(KortinToiminto.YKSIETEEN)));

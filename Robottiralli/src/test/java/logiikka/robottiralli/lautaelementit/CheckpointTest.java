@@ -57,7 +57,7 @@ public class CheckpointTest {
     
     @Test
     public void tarkistaMones(){
-        assertEquals(2,cp.getErikoisint());
+        assertEquals(2,cp.getGrafiikkaluku());
     }
     
     @Test

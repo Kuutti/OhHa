@@ -62,7 +62,9 @@ public class Kayttoliittyma {
         RumaaKoodiaEsittelyLaudanluomiseen luoja=new RumaaKoodiaEsittelyLaudanluomiseen();
         luoja.teeLauta(lauta);
     }
-
+/**
+ * Aloittaa pelin pelauksen.
+ */
     private void pelaus() {
         Vuorontoteuttaja toteuttaja=new Vuorontoteuttaja(lauta);  
         Korttipakka pakka =new Korttipakka();
@@ -78,7 +80,10 @@ public class Kayttoliittyma {
         }
         
     }
-
+/**
+ * Huolehtii vuoron lopussa, että kaikki robotit ovat aktiivisia ja eivät ole
+ * hologrammeja, jos mahdollista.
+ */
     private void epilogi() {
         for (Pelaaja pelaaja : pelaajat) {
             pelaaja.getRobotti().setActive(Boolean.TRUE);

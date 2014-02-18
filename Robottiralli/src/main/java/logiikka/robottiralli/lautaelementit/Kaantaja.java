@@ -42,7 +42,7 @@ public class Kaantaja implements Elementti{
   * @return  palauttaa kaannosmaaran.
   */
     @Override
-    public int getErikoisint() {
+    public int getGrafiikkaluku() {
        return Kaannosmaara;
     }
     

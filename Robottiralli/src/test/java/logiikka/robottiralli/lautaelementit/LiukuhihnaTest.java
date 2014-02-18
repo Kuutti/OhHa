@@ -47,7 +47,7 @@ public class LiukuhihnaTest {
     }
     @Test
     public void Erikoisint(){
-        assertEquals(2,hihna.getErikoisint());
+        assertEquals(2,hihna.getGrafiikkaluku());
     }
     
     

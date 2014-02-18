@@ -65,7 +65,11 @@ public class Lauta {
         }
         return pelilauta[ruutu.getX()][ruutu.getY()].onRobotti();
     }
-
+/**
+ * Lisää seinän laudalle parametreina annettujen kahden ruudun välille.
+ * @param sijainti
+ * @param seuraava 
+ */
     public void addSeina(Ruutu sijainti, Ruutu seuraava) {
         HashSet<Ruutu> seina=new HashSet<>();
         seina.add(sijainti);
@@ -115,7 +119,10 @@ public class Lauta {
         }
         return ruutu;
     }
-
+/**
+ * Lisää laserin laudalle.
+ * @param laser 
+ */
     public void addLaser(Laser laser){
         laserit.add(laser);
     }

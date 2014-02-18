@@ -38,7 +38,7 @@ public class Kuoppa implements Elementti{
      * @return 
      */
     @Override
-    public int getErikoisint() {
+    public int getGrafiikkaluku() {
         return 0;
     }
     

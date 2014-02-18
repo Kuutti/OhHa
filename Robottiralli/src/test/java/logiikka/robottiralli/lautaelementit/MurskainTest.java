@@ -45,7 +45,7 @@ public class MurskainTest {
     
     @Test
     public void erikoisInt(){
-        assertEquals(2,murskain.getErikoisint());
+        assertEquals(2,murskain.getGrafiikkaluku());
     }
     
     

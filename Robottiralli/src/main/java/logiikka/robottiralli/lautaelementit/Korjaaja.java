@@ -48,7 +48,7 @@ public class Korjaaja implements Elementti{
  * @return palauttaa Korjaajan tehon.
  */
     @Override
-    public int getErikoisint() {
+    public int getGrafiikkaluku() {
         return teho;
     }
     

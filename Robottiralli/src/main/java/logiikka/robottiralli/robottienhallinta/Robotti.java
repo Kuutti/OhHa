@@ -6,13 +6,16 @@ import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 
 public class Robotti {
     /**
-     * Suunta, johon robotti katsoo. 0 ylös, 1 oikealle jne
+     * Suunta, johon robotti katsoo. 0 ylös, 1 oikealle jne...
      */
    int suunta;
    /**
     * Paljonko vahinkoa robotti on ottanut
     */
    int vahinko=0;
+   /**
+    * monesko seuraava checkpoint on
+    */
    int seuraavacpnumero=0;
    /**
     * Seuraava ruutu, johon robotin on mentävä radalla

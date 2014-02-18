@@ -25,7 +25,9 @@ public class Ihmispelaaja implements Pelaaja{
     * Pelaajan korteista tekemä ohjelma, jota pelaajan robotti noudattaa
     */
    LinkedList<Kortti> ohjelma=new LinkedList<>();
-
+   /**
+    * Monesko pelaaja on.
+    */
    int mones;
    
     public Ihmispelaaja(Robotti pelinappula, int mones) {
@@ -60,6 +62,7 @@ public class Ihmispelaaja implements Pelaaja{
         return kasikortit;
     }
 
+   @Override
     public void kasiTyhjaksi() {
         for (KortinToiminto kortinToiminto : KortinToiminto.values()) {
             kasikortit.put(new Kortti(kortinToiminto), 0);

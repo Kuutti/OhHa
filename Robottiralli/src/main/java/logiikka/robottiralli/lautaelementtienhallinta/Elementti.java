@@ -17,6 +17,6 @@ public interface Elementti {
      * @return Palauttaa elementistä riippuen luvun, jota grafiikkapiirturi
      * tarvitsee.
      */
-    int getErikoisint();
+    int getGrafiikkaluku();
        
 }

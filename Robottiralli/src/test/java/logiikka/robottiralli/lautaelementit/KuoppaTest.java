@@ -45,7 +45,7 @@ public class KuoppaTest {
     
     @Test
     public void Erikoisint(){
-        assertEquals(0,kuoppa.getErikoisint());
+        assertEquals(0,kuoppa.getGrafiikkaluku());
     }
     
     

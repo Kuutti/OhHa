@@ -43,7 +43,7 @@ public class Murskain implements Elementti{
  * @return palauttaa aktivoituuko parittomilla via parillisilla vuoroilla 
  */
     @Override
-    public int getErikoisint() {
+    public int getGrafiikkaluku() {
         return aktivoituu;
     }
     

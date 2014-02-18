@@ -22,7 +22,11 @@ public class Vuorontoteuttaja {
     Vuorontoteuttaja(Lauta lauta) {
         this.lauta=lauta;
     }
-
+    /**
+     * Toteuttaa Vuoron aikana tarvittavat asiat.
+     * @param pelaajat
+     * @param piirrin 
+     */
     void teeVuorot(ArrayList<Pelaaja> pelaajat, Lautapiirrin piirrin) {
         Lautaelementtienaktivoija aktivoija=new Lautaelementtienaktivoija(lauta);
         RobojenLiikuttaja liikuttaja=new RobojenLiikuttaja(lauta);
@@ -39,6 +43,11 @@ public class Vuorontoteuttaja {
              
     }
 
+    /**
+     * Odottaa parametrina annetun ajan, jotta pelaajat ehtivät
+     * huomata mitä laudalla tapahtuu.
+     * @param odotus 
+     */
     public void odota(int odotus) {
         try {
             Thread.sleep(odotus);
@@ -47,6 +56,12 @@ public class Vuorontoteuttaja {
         }
     }
 
+    /**
+     * Suorittaa pelaajien antaman koodin robotille kortti kerrallaan.
+     * @param pelaajat
+     * @param liikuttaja
+     * @param i 
+     */
     public void suoritaKomennot(ArrayList<Pelaaja> pelaajat, RobojenLiikuttaja liikuttaja, int i) {
         for (Pelaaja pelaaja : pelaajat) {
             if (pelaaja.getRobotti().isActive()) {
@@ -58,6 +73,11 @@ public class Vuorontoteuttaja {
         }
     }
 
+    /**
+     * Tarkistaa onko pelaajilla shutdown-tilassa olevia robotteja. Jos
+     * näin on robotit korjataan.
+     * @param pelaajat 
+     */
     private void tarkistaShutdown(ArrayList<Pelaaja> pelaajat) {
         for (Pelaaja pelaaja : pelaajat) {
             if (!pelaaja.getRobotti().isActive()) {

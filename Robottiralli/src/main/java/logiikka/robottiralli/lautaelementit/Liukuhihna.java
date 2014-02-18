@@ -48,7 +48,7 @@ public class Liukuhihna implements Elementti{
  * @return Palauttaa suunnan, johon liukuhihna vie.
  */
     @Override
-    public int getErikoisint() {
+    public int getGrafiikkaluku() {
         return suunta;
     }
 
