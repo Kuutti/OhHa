@@ -4,7 +4,7 @@ import logiikka.robottiralli.hallinnat.Kayttoliittyma;
 
 public class Main 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws InterruptedException
     {
       Kayttoliittyma kayttis=new Kayttoliittyma();
       kayttis.aloitus();
