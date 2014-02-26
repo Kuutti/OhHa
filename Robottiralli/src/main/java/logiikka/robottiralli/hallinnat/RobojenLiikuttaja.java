@@ -57,20 +57,25 @@ public class RobojenLiikuttaja {
     * @param i määrä kuinka paljon liikutetaan.
     * @param suunta mihin suuntaan liikutetaan (kuin kellotaulua, mod 4 ja nolla ylöspäin)
     */
-    private void etsiRuutuJaLiiku(Robotti robo, int i, int suunta) {
+    private boolean etsiRuutuJaLiiku(Robotti robo, int i, int suunta) {
         for (int j = 0; j < i; j++) {
             Set<Ruutu>ruudut= new HashSet<>(); 
             ruudut.add(robo.getRuutu());
              Ruutu seuraava=lauta.seuraavaRuutu(robo.getRuutu(), suunta);
              ruudut.add(seuraava);
             if (lauta.getSeinat().contains(ruudut)) {
-                break;
+                return false;
             } else if (lauta.onRobotti(seuraava)&&!robo.isHolo()) {
                 Robotti tiella=seuraava.getRobotti();
-                etsiRuutuJaLiiku(tiella,1,suunta);
-            }
+                if (etsiRuutuJaLiiku(tiella,1,suunta)) {
+                    liiku(seuraava, robo);
+                }
+                
+            } else {
             liiku(seuraava, robo);
+            }
         }
+        return true;
     }
     /**
     * Liikuttaa robotin parametrina annettuun ruutuun. Jos ruutu ei ole 

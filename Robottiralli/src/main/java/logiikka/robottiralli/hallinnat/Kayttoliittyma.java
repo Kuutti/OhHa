@@ -3,8 +3,8 @@
 package logiikka.robottiralli.hallinnat;
 
 import Laudanluonti.RumaaKoodiaEsittelyLaudanluomiseen;
-import Kayttoliittyma.Lautaikkuna;
-import Kayttoliittyma.Lautapiirrin;
+import kayttoliittyma.Lautaikkuna;
+import kayttoliittyma.Lautapiirrin;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.korttienhallinta.Korttipakka;
@@ -30,14 +30,15 @@ public class Kayttoliittyma {
     /**
      * Aloittaa pelin kysyen pelaajien lukumäärää, minkä jälkeen luo pelaajat ja laudan.
      */
-     public void aloitus(){
+     public void aloitus() throws InterruptedException{
         laudanluonti();
+        Monitori monitori=new Monitori();
         Aloitusikkuna ikkuna=new Aloitusikkuna();
         pelaajienLuonti(ikkuna.aloita());
         piirrin=new Lautapiirrin(lauta,pelaajat);
-        lautaikkuna=new Lautaikkuna(piirrin);
+        lautaikkuna=new Lautaikkuna(piirrin,monitori);
         SwingUtilities.invokeLater(lautaikkuna);
-        while(!lautaikkuna.isSaaJatkaa());
+        monitori.odota();
         pelaus();
          
      }
@@ -65,7 +66,7 @@ public class Kayttoliittyma {
 /**
  * Aloittaa pelin pelauksen.
  */
-    private void pelaus() {
+    private void pelaus() throws InterruptedException {
         Vuorontoteuttaja toteuttaja=new Vuorontoteuttaja(lauta);  
         Korttipakka pakka =new Korttipakka();
         while (true){
@@ -77,6 +78,7 @@ public class Kayttoliittyma {
           toteuttaja.teeVuorot(pelaajat,piirrin);
           
           epilogi();
+          lautaikkuna.uusivuoro();
         }
         
     }

@@ -12,6 +12,7 @@ import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import logiikka.robottiralli.hallinnat.Monitori;
 import logiikka.robottiralli.korttienhallinta.KortinToiminto;
 import logiikka.robottiralli.korttienhallinta.Kortti;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
@@ -36,7 +37,7 @@ public class Ohjelmantekija implements ActionListener{
     JLabel virhekasky;
     HashMap<JButton,Kortti> komennot;
     Pelaaja pelaaja;
-    Boolean jatkaa;
+    private Monitori monitori;
     
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -66,7 +67,8 @@ public class Ohjelmantekija implements ActionListener{
                 komentorivi.setText("");
                 kasi.setText("");
                 pelaaja.kasiTyhjaksi();
-                jatkaa=true;
+                virhekasky.setText("Robotit liikkuvat");
+                monitori.avaa();
             } else {
                 virhekasky.setText("Ohjelmasi ei ole valmis. Ei voida jatkaa");
             }
@@ -102,20 +104,11 @@ public class Ohjelmantekija implements ActionListener{
         kasi.setText(kasi.getText()+"    VASEMMALLE KÄÄNNÖS x"+pelaaja.getKasi().get(new Kortti(KortinToiminto.KAANNOSVASEMMALLE))+"\n");
         kasi.setText(kasi.getText()+"U-KÄÄNNÖS                x"+pelaaja.getKasi().get(new Kortti(KortinToiminto.UKAANNOS)));
     }
-    
-    
-
-    public Boolean isJatkaa() {
-        return jatkaa;
-    }
-
-    public void setJatkaa(Boolean jatkaa) {
-        this.jatkaa = jatkaa;
-    }
 
     
-    public Ohjelmantekija() {
+    public Ohjelmantekija(Monitori monitori) {
         komennot=new HashMap<>();
+        this.monitori=monitori;
     }
     
     public void HashMappiinNappulat(){
@@ -182,6 +175,11 @@ public class Ohjelmantekija implements ActionListener{
 
     public void setKasi(JTextArea kasi) {
         this.kasi = kasi;
+    }
+
+    void uusivuoro() {
+        virhekasky.setText("Robotit ovat liikkuneet");
+        kasi.setText("");
     }
 
 

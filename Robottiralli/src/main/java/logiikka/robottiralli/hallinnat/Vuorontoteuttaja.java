@@ -6,7 +6,7 @@
 
 package logiikka.robottiralli.hallinnat;
 
-import Kayttoliittyma.Lautapiirrin;
+import kayttoliittyma.Lautapiirrin;
 import java.util.ArrayList;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;

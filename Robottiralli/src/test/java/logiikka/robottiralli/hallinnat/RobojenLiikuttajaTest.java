@@ -127,10 +127,7 @@ public class RobojenLiikuttajaTest {
         tiella.setHolo(false);
         lauta.addSeina(lauta.getPelilauta()[5][7], lauta.getPelilauta()[5][6]);
         liikuttaja.suoritaKomento(new Kortti(KortinToiminto.KOLMEETEEN), robo);
-        System.out.println(lauta.getPelilauta()[5][5].getRobotti());
-        System.out.println(tiella);
-        System.out.println(robo);
-        //assertEquals(new Ruutu(5,5),robo.getRuutu());
+        assertEquals(new Ruutu(5,5),robo.getRuutu());
         assertEquals(new Ruutu(5,6),tiella.getRuutu());
         assertEquals(1,tiella.getSuunta());
         assertEquals(0,robo.getSuunta());

@@ -6,13 +6,18 @@
 
 package kayttoliittyma;
 
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  *
  * @author KOTIPC
  */
 public class Aloitusikkuna extends javax.swing.JFrame {
 
-    boolean odota=true; 
+    final Lock lock = new ReentrantLock();
+    final Condition valmis  = lock.newCondition(); 
     
     public Aloitusikkuna() {
         initComponents();
@@ -87,7 +92,9 @@ public class Aloitusikkuna extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aloitaNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aloitaNappiActionPerformed
-        odota=false;
+        lock.lock();
+        valmis.signal();
+        lock.unlock();
         setVisible(false); 
         dispose();
     }//GEN-LAST:event_aloitaNappiActionPerformed
@@ -129,9 +136,11 @@ public class Aloitusikkuna extends javax.swing.JFrame {
     }
     
     @SuppressWarnings("empty-statement")
-    public int aloita(){
+    public int aloita() throws InterruptedException{
         setVisible(true);
-        while (odota);
+        lock.lock();
+        valmis.await();
+        lock.unlock();
         return Integer.parseInt(jComboBox.getSelectedItem().toString());
     }
 

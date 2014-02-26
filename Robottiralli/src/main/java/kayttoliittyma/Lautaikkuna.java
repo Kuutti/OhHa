@@ -19,7 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
-import kayttoliittyma.Ohjelmantekija;
+import logiikka.robottiralli.hallinnat.Monitori;
 import logiikka.robottiralli.pelaajienhallinta.Ihmispelaaja;
 
 /**
@@ -35,12 +35,17 @@ public class Lautaikkuna implements Runnable{
     JLabel vahinko;
     JLabel seuraava;
     Ohjelmantekija tekija;
-    boolean saaJatkaa=false;
+    private Monitori monitori;
     
     
     public Lautaikkuna(Lautapiirrin piirrin) {
-        this.piirrin=piirrin;
+        
          
+    }
+
+    public Lautaikkuna(Lautapiirrin piirrin, Monitori monitori) {
+        this.piirrin=piirrin;
+        this.monitori=monitori;
     }
     
     private void luoKomponentit(Container container) {
@@ -50,7 +55,7 @@ public class Lautaikkuna implements Runnable{
         JPanel nappulat=new JPanel();
         container.add(nappulat);
         teeInteraktiviiset(nappulat);
-        saaJatkaa=true;
+        monitori.avaa();
         
     }
 
@@ -60,7 +65,7 @@ public class Lautaikkuna implements Runnable{
         nappulat.setLayout(new GridBagLayout());
         gbc.fill=GridBagConstraints.HORIZONTAL;
         
-        tekija=new Ohjelmantekija();
+        tekija=new Ohjelmantekija(monitori);
         
         JButton eteen1nappula=new JButton("1 Eteenpäin");
         gbc.gridx=0;
@@ -191,18 +196,18 @@ public class Lautaikkuna implements Runnable{
         frame.setVisible(true);
     }
 
-    public void ohjelmanTeko(Ihmispelaaja pelaaja){
+    public void ohjelmanTeko(Ihmispelaaja pelaaja) throws InterruptedException{
        tekija.setPelaaja(pelaaja);
-       tekija.setJatkaa(false);
        seuraava.setText("Seuraava piste on "+pelaaja.getRobotti().getSeuraavacpnumero());
        this.pelaaja.setText("Pelaaja numero "+pelaaja.getMones());
        vahinko.setText("Vahinkoa otettu "+pelaaja.getRobotti().getVahinko());
-       while(!tekija.isJatkaa());
+       monitori.odota();
+    }
+    
+    public void uusivuoro(){
+        tekija.uusivuoro();
     }
 
-    public boolean isSaaJatkaa() {
-        return saaJatkaa;
-    }
     
   
     
