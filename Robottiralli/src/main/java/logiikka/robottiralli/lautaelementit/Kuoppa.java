@@ -32,7 +32,6 @@ public class Kuoppa implements Elementti{
     public void aktivoidu(Robotti robo, int vuoro) {
         robo.tuhoudu(); 
     }
-
     /**
      * Ei tarvita
      * @return 

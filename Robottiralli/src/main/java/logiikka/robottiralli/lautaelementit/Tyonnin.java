@@ -40,7 +40,6 @@ public class Tyonnin implements Elementti{
         this.aktivoituu = aktivoituu;
         this.suunta=suunta;
     }
-
     /**
      * Siirtää robotin työnnettävään ruutuun, jossa vuoro on oikea.
      * @param robo Robotti, jota työnnetään

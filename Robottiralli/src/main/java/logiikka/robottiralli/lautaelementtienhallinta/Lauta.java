@@ -9,6 +9,11 @@ import java.util.HashSet;
 
 
 public class Lauta {
+    
+    /**
+     * Kuinka monta ruutua leveä ja korkea
+     * lauta on.
+     */
     int koko;
     /**
      * Aloitusruutu, josta kisa alkaa.
@@ -33,14 +38,10 @@ public class Lauta {
         return laserit;
     }
 
-    
-
     public ArrayList<HashSet<Ruutu>> getSeinat() {
         return seinat;
     }
     
-   
-
     public Lauta(int koko) {
         this.koko=koko;
         pelilauta=new Ruutu[koko+2][koko+2];

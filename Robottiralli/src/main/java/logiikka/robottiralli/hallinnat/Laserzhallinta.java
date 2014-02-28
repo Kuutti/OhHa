@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package logiikka.robottiralli.hallinnat;
 
@@ -22,8 +17,6 @@ public class Laserzhallinta {
  * Pelissä käytettävä lauta
  */
     Lauta lauta;
-    
-   
     
     Laserzhallinta(Lauta lauta) {
         this.lauta=lauta;
@@ -60,7 +53,6 @@ public class Laserzhallinta {
             robotti.otaVahinkoa(1);
         }
     }
-
     /**
      * Palautetaan olion edessä oleva robotti, jos ei ole robottia, palautetaan null.
      * @param ruutu ruutu, jossa  olio on
@@ -104,7 +96,5 @@ public class Laserzhallinta {
             }
         }
     }
-
-    
-    
+  
 }

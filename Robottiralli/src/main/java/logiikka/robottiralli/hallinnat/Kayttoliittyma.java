@@ -1,5 +1,4 @@
 
-
 package logiikka.robottiralli.hallinnat;
 
 import Laudanluonti.RumaaKoodiaEsittelyLaudanluomiseen;
@@ -14,7 +13,6 @@ import kayttoliittyma.Aloitusikkuna;
 import logiikka.robottiralli.pelaajienhallinta.Ihmispelaaja;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
-
 public class Kayttoliittyma {
     /**
      * Pelissä käytettävä lauta.
@@ -26,7 +24,6 @@ public class Kayttoliittyma {
     ArrayList<Pelaaja> pelaajat=new ArrayList<>();
     Lautapiirrin piirrin;
     Lautaikkuna lautaikkuna;
-    
     /**
      * Aloittaa pelin kysyen pelaajien lukumäärää, minkä jälkeen luo pelaajat ja laudan.
      */
@@ -39,13 +36,11 @@ public class Kayttoliittyma {
         lautaikkuna=new Lautaikkuna(piirrin,monitori);
         SwingUtilities.invokeLater(lautaikkuna);
         monitori.odota();
-        pelaus();
-         
+        pelaus();  
      }
      /**
       * Luo pelaajat
       */
-
     private void pelaajienLuonti(int pelaajia) {
         for (int i = 0; i < pelaajia; i++) {
             pelaajat.add(new Ihmispelaaja(new Robotti(lauta.getAloitus(),0),i+1));
@@ -54,7 +49,6 @@ public class Kayttoliittyma {
             lauta.getPelilauta()[lauta.getAloitus().getX()][lauta.getAloitus().getY()].lisaaholorobo(pelaajat.get(i).getRobotti());
         }
     }
-
     /**
      * Luo pelissä käytettävän laudan lautaelementteineen.
      */
@@ -95,7 +89,5 @@ public class Kayttoliittyma {
             }
         }
     }
-
-     
     
 }

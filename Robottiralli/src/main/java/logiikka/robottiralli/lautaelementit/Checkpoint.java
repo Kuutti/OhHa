@@ -10,12 +10,7 @@ import logiikka.robottiralli.lautaelementtienhallinta.Elementti;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
-/**
- *
- * @author KOTIPC
- */
 public class Checkpoint implements Elementti{
-
     /**
      * Monesko checkpoint on kyseessä.
      */

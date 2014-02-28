@@ -51,3 +51,5 @@ samalla piirtämiskoodeja sopivammaksi.
 11:45-13:30 ihmetelty layoutteja ja saatu nappulat pistettyä.
 15:00-16:00 Koitettu noudattaa clean codea, mutta jostain syystä jframe ei 
 suostu luomaan jpanelin extendaavaa luokkaa.
+
+Viimeisillä viikoilla tuntikirjanpidosta luistettu.

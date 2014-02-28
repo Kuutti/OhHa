@@ -1,0 +1,2206 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+border: 1px solid #dddddd;
+padding-top: 10px;
+padding-right: 5px;
+padding-left: 5px;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+</style>
+
+</head>
+<body>
+
+
+<h1>Robotti.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_1'/>
+1
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_1'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_2'/>
+2
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_2'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_3'/>
+3
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_3'></a>
+</td>
+<td class=''><pre><span  class=''>package logiikka.robottiralli.robottienhallinta;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_4'/>
+4
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_4'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_5'/>
+5
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_5'></a>
+</td>
+<td class=''><pre><span  class=''>import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_6'/>
+6
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_6'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_7'/>
+7
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_7'></a>
+</td>
+<td class=''><pre><span  class=''>public class Robotti {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_8'/>
+8
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_8'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_9'/>
+9
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_9'></a>
+</td>
+<td class=''><pre><span  class=''>     * Suunta, johon robotti katsoo. 0 yl&#195;&#182;s, 1 oikealle jne...</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_10'/>
+10
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_10'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_11'/>
+11
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_11'></a>
+</td>
+<td class=''><pre><span  class=''>   int suunta;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_12'/>
+12
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_12'></a>
+</td>
+<td class=''><pre><span  class=''>   /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_13'/>
+13
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_13'></a>
+</td>
+<td class=''><pre><span  class=''>    * Paljonko vahinkoa robotti on ottanut</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_14'/>
+14
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_14'></a>
+</td>
+<td class=''><pre><span  class=''>    */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_15'/>
+15
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_15'></a>
+</td>
+<td class='covered'><pre><span  class=''>   int vahinko=0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_16'/>
+16
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_16'></a>
+</td>
+<td class=''><pre><span  class=''>   /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_17'/>
+17
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_17'></a>
+</td>
+<td class=''><pre><span  class=''>    * monesko seuraava checkpoint on</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_18'/>
+18
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_18'></a>
+</td>
+<td class=''><pre><span  class=''>    */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_19'/>
+19
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_19'></a>
+</td>
+<td class='covered'><pre><span  class=''>   int seuraavacpnumero=0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_20'/>
+20
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_20'></a>
+</td>
+<td class=''><pre><span  class=''>   /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_21'/>
+21
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_21'></a>
+</td>
+<td class=''><pre><span  class=''>    * Seuraava ruutu, johon robotin on ment&#195;&#164;v&#195;&#164; radalla</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_22'/>
+22
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_22'></a>
+</td>
+<td class=''><pre><span  class=''>    */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_23'/>
+23
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_23'></a>
+</td>
+<td class=''><pre><span  class=''>   Ruutu seuraavacp;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_24'/>
+24
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_24'></a>
+</td>
+<td class=''><pre><span  class=''>   /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_25'/>
+25
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_25'></a>
+</td>
+<td class=''><pre><span  class=''>    * Robotin kuoltua, robotti joutuu t&#195;&#164;nne hologrammina</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_26'/>
+26
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_26'></a>
+</td>
+<td class=''><pre><span  class=''>    */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_27'/>
+27
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_27'></a>
+</td>
+<td class='covered'><pre><span  class=''>   Ruutu respawn=null;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_28'/>
+28
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_28'></a>
+</td>
+<td class=''><pre><span  class=''>   /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_29'/>
+29
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_29'></a>
+</td>
+<td class=''><pre><span  class=''>    * Voiko robotti liikkua ja ampua vai ei</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_30'/>
+30
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_30'></a>
+</td>
+<td class=''><pre><span  class=''>    */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_31'/>
+31
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_31'></a>
+</td>
+<td class='covered'><pre><span  class=''>   Boolean active=true;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_32'/>
+32
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_32'></a>
+</td>
+<td class=''><pre><span  class=''>   /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_33'/>
+33
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_33'></a>
+</td>
+<td class=''><pre><span  class=''>    * Onko robotti hologrammina jolloin ei voi t&#195;&#182;rm&#195;&#164;t&#195;&#164;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_34'/>
+34
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_34'></a>
+</td>
+<td class=''><pre><span  class=''>    */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_35'/>
+35
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_35'></a>
+</td>
+<td class='covered'><pre><span  class=''>   Boolean holo=true;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_36'/>
+36
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_36'></a>
+</td>
+<td class=''><pre><span  class=''>   /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_37'/>
+37
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_37'></a>
+</td>
+<td class=''><pre><span  class=''>    * Ruutu, jolla robotti on</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_38'/>
+38
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_38'></a>
+</td>
+<td class=''><pre><span  class=''>    */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_39'/>
+39
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_39'></a>
+</td>
+<td class=''><pre><span  class=''>   Ruutu ruutu;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_40'/>
+40
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_40'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_41'/>
+41
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_41'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_42'/>
+42
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_42'></a>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_43'/>
+43
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_43'></a>
+</td>
+<td class=''><pre><span  class=''> * Asettaa robotin tiettyyn ruutuun ja p&#195;&#164;ivitt&#195;&#164;&#195;&#164; samalla ruudun tiedot.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_44'/>
+44
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_44'></a>
+</td>
+<td class=''><pre><span  class=''> * Jos liikkuminen on tapahtunut tuhoutumisen yhteydess&#195;&#164; robotti &#34;syntyy&#34;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_45'/>
+45
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_45'></a>
+</td>
+<td class=''><pre><span  class=''> * hologrammina</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_46'/>
+46
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_46'></a>
+</td>
+<td class=''><pre><span  class=''> * @param ruutu sijainti johon robo liikkuu </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_47'/>
+47
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_47'></a>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_48'/>
+48
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_48'></a>
+</td>
+<td class=''><pre><span  class=''>    public void setRuutu(Ruutu ruutu) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_49'/>
+49
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_49'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (holo) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_50'/>
+50
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_50'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.ruutu.getHolorobot().remove(this);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_51'/>
+51
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_51'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.ruutu = ruutu;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_52'/>
+52
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_52'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            this.ruutu.lisaaholorobo(this);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_53'/>
+53
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_53'></a>
+</td>
+<td class=''><pre><span  class=''>        } else {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_54'/>
+54
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_54'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            this.ruutu.setRobotti(null);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_55'/>
+55
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_55'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.ruutu = ruutu;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_56'/>
+56
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_56'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            this.ruutu.setRobotti(this);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_57'/>
+57
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_57'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_58'/>
+58
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_58'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_59'/>
+59
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_59'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_60'/>
+60
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_60'></a>
+</td>
+<td class=''><pre><span  class=''>    public Ruutu getSeuraavacp() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_61'/>
+61
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_61'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return seuraavacp;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_62'/>
+62
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_62'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_63'/>
+63
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_63'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_64'/>
+64
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_64'></a>
+</td>
+<td class=''><pre><span  class=''>    public void setSeuraavacp(Ruutu seuraavacp) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_65'/>
+65
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_65'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.seuraavacp = seuraavacp;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_66'/>
+66
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_66'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        seuraavacpnumero++;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_67'/>
+67
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_67'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_68'/>
+68
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_68'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_69'/>
+69
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_69'></a>
+</td>
+<td class=''><pre><span  class=''>    public Boolean isActive() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_70'/>
+70
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_70'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return active;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_71'/>
+71
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_71'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_72'/>
+72
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_72'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_73'/>
+73
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_73'></a>
+</td>
+<td class='covered'><pre><span  class=''>    public Robotti (Ruutu ruutu, int z) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_74'/>
+74
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_74'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.ruutu=ruutu;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_75'/>
+75
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_75'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        suunta=z%4;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_76'/>
+76
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_76'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_77'/>
+77
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_77'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_78'/>
+78
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_78'></a>
+</td>
+<td class=''><pre><span  class=''>    public void setActive(Boolean active) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_79'/>
+79
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_79'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.active = active;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_80'/>
+80
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_80'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_81'/>
+81
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_81'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_82'/>
+82
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_82'></a>
+</td>
+<td class=''><pre><span  class=''>    public Boolean isHolo() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_83'/>
+83
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_83'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return holo;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_84'/>
+84
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_84'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_85'/>
+85
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_85'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_86'/>
+86
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_86'></a>
+</td>
+<td class=''><pre><span  class=''>    public Ruutu getRespawn() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_87'/>
+87
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_87'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return respawn;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_88'/>
+88
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_88'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_89'/>
+89
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_89'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_90'/>
+90
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_90'></a>
+</td>
+<td class=''><pre><span  class=''>    public void setHolo(Boolean holo) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_91'/>
+91
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_91'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (holo==false) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_92'/>
+92
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_92'></a>
+</td>
+<td class='covered'><pre><span  class=''>            ruutu.getHolorobot().remove(this);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_93'/>
+93
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_93'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            ruutu.setRobotti(this);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_94'/>
+94
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_94'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_95'/>
+95
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_95'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.holo = holo;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_96'/>
+96
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_96'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_97'/>
+97
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_97'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_98'/>
+98
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_98'></a>
+</td>
+<td class=''><pre><span  class=''>    public void setRespawn(Ruutu respawn)  {   </span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_99'/>
+99
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_99'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.respawn = respawn;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_100'/>
+100
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_100'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_101'/>
+101
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_101'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_102'/>
+102
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_102'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_103'/>
+103
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_103'></a>
+</td>
+<td class=''><pre><span  class=''>     * Muuttaa robotin hologrammiksi, ei aktiiviseksi, asettaa robotin ot-</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_104'/>
+104
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_104'></a>
+</td>
+<td class=''><pre><span  class=''>     * taman vahingon kahteen ja antaa setRuudulle komennon liikuttaa ro-</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_105'/>
+105
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_105'></a>
+</td>
+<td class=''><pre><span  class=''>     * botti respawnille.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_106'/>
+106
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_106'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_107'/>
+107
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_107'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_108'/>
+108
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_108'></a>
+</td>
+<td class=''><pre><span  class=''>    public void tuhoudu(){</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_109'/>
+109
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_109'></a>
+</td>
+<td class='covered'><pre><span  class=''>        holo=true;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_110'/>
+110
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_110'></a>
+</td>
+<td class='covered'><pre><span  class=''>        active=false;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_111'/>
+111
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_111'></a>
+</td>
+<td class='covered'><pre><span  class=''>        vahinko=2;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_112'/>
+112
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_112'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        setRuutu(respawn);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_113'/>
+113
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_113'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }   </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_114'/>
+114
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_114'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_115'/>
+115
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_115'></a>
+</td>
+<td class=''><pre><span  class=''>    public int getVahinko() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_116'/>
+116
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_116'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return vahinko;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_117'/>
+117
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_117'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_118'/>
+118
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_118'></a>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_119'/>
+119
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_119'></a>
+</td>
+<td class=''><pre><span  class=''> * Lis&#195;&#164;&#195;&#164; robotin ottamaa vahinkoa ja jos otettu vahinko on yli 9 robotti</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_120'/>
+120
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_120'></a>
+</td>
+<td class=''><pre><span  class=''> * tuhotaan.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_121'/>
+121
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_121'></a>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_122'/>
+122
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_122'></a>
+</td>
+<td class=''><pre><span  class=''> * @param vahinko robottin ottama vahinko</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_123'/>
+123
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_123'></a>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_124'/>
+124
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_124'></a>
+</td>
+<td class=''><pre><span  class=''>    public void otaVahinkoa(int vahinko) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_125'/>
+125
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_125'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        this.vahinko =this.vahinko+vahinko;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_126'/>
+126
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_126'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (vahinko&#62;9) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_127'/>
+127
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_127'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            tuhoudu();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_128'/>
+128
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_128'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_129'/>
+129
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_129'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_130'/>
+130
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_130'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_131'/>
+131
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_131'></a>
+</td>
+<td class=''><pre><span  class=''>    public int getSuunta() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_132'/>
+132
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_132'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return suunta;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_133'/>
+133
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_133'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_134'/>
+134
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_134'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_135'/>
+135
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_135'></a>
+</td>
+<td class=''><pre><span  class=''>    public void setSuunta(int x) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_136'/>
+136
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_136'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        suunta=x%4;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_137'/>
+137
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_137'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_138'/>
+138
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_138'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_139'/>
+139
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_139'></a>
+</td>
+<td class=''><pre><span  class=''>    public Ruutu getRuutu() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_140'/>
+140
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_140'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return ruutu;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_141'/>
+141
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_141'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_142'/>
+142
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_142'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_143'/>
+143
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_143'></a>
+</td>
+<td class=''><pre><span  class=''>     * Korjaa robottia korjauksen tehon verran. Jos vahinko menee negatiiviselle</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_144'/>
+144
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_144'></a>
+</td>
+<td class=''><pre><span  class=''>     * vahingoksi laitetaan nolla.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_145'/>
+145
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_145'></a>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_146'/>
+146
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_146'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param teho Kuinka paljon robottia korjataan.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_147'/>
+147
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_147'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_148'/>
+148
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_148'></a>
+</td>
+<td class=''><pre><span  class=''>    public void korjaa(int teho) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_149'/>
+149
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_149'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        vahinko=Math.max(0, vahinko-teho);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_150'/>
+150
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_150'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_151'/>
+151
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_151'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_152'/>
+152
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_152'></a>
+</td>
+<td class=''><pre><span  class=''>    public int getSeuraavacpnumero() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_153'/>
+153
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_153'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return seuraavacpnumero;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_154'/>
+154
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_154'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_155'/>
+155
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_155'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@8610d2_156'/>
+156
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_156'></a>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_49'>49</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_49'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.setruutuHolonaoikein(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_52'>52</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_52'/> 
+
+<p class='KILLED'>removed call to logiikka/robottiralli/lautaelementtienhallinta/Ruutu::lisaaholorobo : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.setruutuHolonaoikein(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_54'>54</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_54'/> 
+
+<p class='KILLED'>removed call to logiikka/robottiralli/lautaelementtienhallinta/Ruutu::setRobotti : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.setruutuOikein(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_56'>56</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_56'/> 
+
+<p class='KILLED'>removed call to logiikka/robottiralli/lautaelementtienhallinta/Ruutu::setRobotti : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.setruutuOikein(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_61'>61</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_61'/> 
+
+<p class='KILLED'>mutated return of Object value for logiikka/robottiralli/robottienhallinta/Robotti::getSeuraavacp to ( if (x != null) null else throw new RuntimeException ) : KILLED -> logiikka.robottiralli.lautaelementit.CheckpointTest.cpvaihtuukuntarve(logiikka.robottiralli.lautaelementit.CheckpointTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_66'>66</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_66'/> 
+
+<p class='KILLED'>Replaced integer addition with subtraction : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.checkpointVaihtuu(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_70'>70</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_70'/> 
+
+<p class='KILLED'>mutated return of Object value for logiikka/robottiralli/robottienhallinta/Robotti::isActive to ( if (x != null) null else throw new RuntimeException ) : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.aktiivisuus(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_75'>75</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_75'/> 
+
+<p class='KILLED'>Replaced integer modulus with multiplication : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.ToinenKonstruktori(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_83'>83</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_83'/> 
+
+<p class='KILLED'>mutated return of Object value for logiikka/robottiralli/robottienhallinta/Robotti::isHolo to ( if (x != null) null else throw new RuntimeException ) : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.holoOikein(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_87'>87</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_87'/> 
+
+<p class='KILLED'>mutated return of Object value for logiikka/robottiralli/robottienhallinta/Robotti::getRespawn to ( if (x != null) null else throw new RuntimeException ) : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.respawnOikein(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_91'>91</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_91'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.holoOikein(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_93'>93</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_93'/> 
+
+<p class='KILLED'>removed call to logiikka/robottiralli/lautaelementtienhallinta/Ruutu::setRobotti : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.holoOikein(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_112'>112</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_112'/> 
+
+<p class='KILLED'>removed call to logiikka/robottiralli/robottienhallinta/Robotti::setRuutu : KILLED -> logiikka.robottiralli.lautaelementit.KuoppaTest.robottiTuhoutuu(logiikka.robottiralli.lautaelementit.KuoppaTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_116'>116</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_116'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.eiTuhoudu(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_125'>125</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_125'/> 
+
+<p class='KILLED'>Replaced integer addition with subtraction : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.eiTuhoudu(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_126'>126</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_126'/> 
+
+<p class='KILLED'>changed conditional boundary : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.eiTuhoudu(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> <p class='KILLED'>negated conditional : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.eiTuhoudu(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_127'>127</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_127'/> 
+
+<p class='KILLED'>removed call to logiikka/robottiralli/robottienhallinta/Robotti::tuhoudu : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.roboTuhoutuu(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_132'>132</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_132'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.ToinenKonstruktori(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_136'>136</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_136'/> 
+
+<p class='KILLED'>Replaced integer modulus with multiplication : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.Setterit(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_140'>140</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_140'/> 
+
+<p class='KILLED'>mutated return of Object value for logiikka/robottiralli/robottienhallinta/Robotti::getRuutu to ( if (x != null) null else throw new RuntimeException ) : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.ToinenKonstruktori(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_149'>149</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_149'/> 
+
+<p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logiikka.robottiralli.lautaelementit.CheckpointTest.korjaaVuoronlopussa(logiikka.robottiralli.lautaelementit.CheckpointTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@8610d2_153'>153</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@8610d2_153'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logiikka.robottiralli.robottienhallinta.RobottiTest.seuraavaCheckpoint(logiikka.robottiralli.robottienhallinta.RobottiTest)</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>logiikka.robottiralli.lautaelementit.CheckpointTest.tarkistaMones(logiikka.robottiralli.lautaelementit.CheckpointTest) (1 ms)</li><li>logiikka.robottiralli.lautaelementit.LiukuhihnaTest.tyyppiOikein(logiikka.robottiralli.lautaelementit.LiukuhihnaTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.CheckpointTest.konstruktori(logiikka.robottiralli.lautaelementit.CheckpointTest) (1 ms)</li><li>logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest.poistaaKortitVahinkoaNelja(logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest) (0 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.roboTuhoutuu(logiikka.robottiralli.robottienhallinta.RobottiTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.kaantaaOikealle(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (1 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.eiTuhoudu(logiikka.robottiralli.robottienhallinta.RobottiTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.LaserzhallintaTest.kaikkiAmpuu(logiikka.robottiralli.hallinnat.LaserzhallintaTest) (1 ms)</li><li>logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest.eiPoistaKunVahinkoaViisi(logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest) (1 ms)</li><li>logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest.monesOikein(logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest) (1 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.tuhoutuuJosEiLaudalla(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (1 ms)</li><li>logiikka.robottiralli.lautaelementit.KorjaajaTest.korjausget(logiikka.robottiralli.lautaelementit.KorjaajaTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.peruuttaa(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (1 ms)</li><li>logiikka.robottiralli.lautaelementtienhallinta.RuutuTest.holorobonLisaysjapoisto(logiikka.robottiralli.lautaelementtienhallinta.RuutuTest) (1 ms)</li><li>logiikka.robottiralli.hallinnat.LaserzhallintaTest.RobottiosuuRobottiin(logiikka.robottiralli.hallinnat.LaserzhallintaTest) (7 ms)</li><li>logiikka.robottiralli.lautaelementtienhallinta.LautaTest.RuudullaRobotti(logiikka.robottiralli.lautaelementtienhallinta.LautaTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementtienhallinta.LautaelementtienaktivoijaTest.toimii(logiikka.robottiralli.lautaelementtienhallinta.LautaelementtienaktivoijaTest) (1 ms)</li><li>logiikka.robottiralli.lautaelementit.TyonninTest.tyyppiOikea(logiikka.robottiralli.lautaelementit.TyonninTest) (0 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.seuraavaCheckpoint(logiikka.robottiralli.robottienhallinta.RobottiTest) (1 ms)</li><li>logiikka.robottiralli.hallinnat.LaserzhallintaTest.edessaHolorobotti(logiikka.robottiralli.hallinnat.LaserzhallintaTest) (1 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.checkpointVaihtuu(logiikka.robottiralli.robottienhallinta.RobottiTest) (0 ms)</li><li>logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest.OikeaRobotti(logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest) (0 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.respawnOikein(logiikka.robottiralli.robottienhallinta.RobottiTest) (0 ms)</li><li>logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest.lukittaa(logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.KorjaajaTest.tyyppiOikein(logiikka.robottiralli.lautaelementit.KorjaajaTest) (2 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.tekeeUKaannos(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.tuhoutuuJosKuoppaan(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (1 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.holoOikein(logiikka.robottiralli.robottienhallinta.RobottiTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.LaserzhallintaTest.laserOsuuSamassaRuudussaOlevaanholoon(logiikka.robottiralli.hallinnat.LaserzhallintaTest) (0 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.getteritJaKonstruktori(logiikka.robottiralli.robottienhallinta.RobottiTest) (0 ms)</li><li>logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest.tyhjentaaOhjelman(logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.LaserzhallintaTest.edessaSeina(logiikka.robottiralli.hallinnat.LaserzhallintaTest) (1 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.liikkuuKolme(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (0 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.aktiivisuus(logiikka.robottiralli.robottienhallinta.RobottiTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.CheckpointTest.cpvaihtuukuntarve(logiikka.robottiralli.lautaelementit.CheckpointTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.VuorontoteuttajaTest.shutdowntarkistus(logiikka.robottiralli.hallinnat.VuorontoteuttajaTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.roboLiikkuu(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (1 ms)</li><li>logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest.lisaaPoistetunKortinKateen(logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.LaserzhallintaTest.laserOsuusamassaRuudussaOlevaan(logiikka.robottiralli.hallinnat.LaserzhallintaTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.LaserzhallintaTest.osuuRobottiin(logiikka.robottiralli.hallinnat.LaserzhallintaTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.KuoppaTest.tyyppiOikein(logiikka.robottiralli.lautaelementit.KuoppaTest) (1 ms)</li><li>logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest.shutdownOikein(logiikka.robottiralli.pelaajienhallinta.IhmispelaajaTest) (1 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.tuhoutuuJosLiikkuuNull(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (1 ms)</li><li>logiikka.robottiralli.lautaelementit.MurskainTest.tyyppiOikein(logiikka.robottiralli.lautaelementit.MurskainTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.TyonninTest.Erikoisint(logiikka.robottiralli.lautaelementit.TyonninTest) (1 ms)</li><li>logiikka.robottiralli.hallinnat.LaserzhallintaTest.oikeaLauta(logiikka.robottiralli.hallinnat.LaserzhallintaTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.tormaaRobottiinJonkaTakanaSeina(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.LaserzhallintaTest.edessaRobotti(logiikka.robottiralli.hallinnat.LaserzhallintaTest) (1 ms)</li><li>logiikka.robottiralli.lautaelementit.KorjaajaTest.Respawntarkistus(logiikka.robottiralli.lautaelementit.KorjaajaTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.LiukuhihnaTest.Erikoisint(logiikka.robottiralli.lautaelementit.LiukuhihnaTest) (0 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.Setterit(logiikka.robottiralli.robottienhallinta.RobottiTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.KuoppaTest.robottiTuhoutuu(logiikka.robottiralli.lautaelementit.KuoppaTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.tormaaRobottiin(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.tormaaSeinaan(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.CheckpointTest.vaihtaaRespawn(logiikka.robottiralli.lautaelementit.CheckpointTest) (0 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.vahinko(logiikka.robottiralli.robottienhallinta.RobottiTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.kaantaaVasemmalle(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (0 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.setruutuHolonaoikein(logiikka.robottiralli.robottienhallinta.RobottiTest) (1 ms)</li><li>logiikka.robottiralli.lautaelementit.KaantajaTest.kaantaa(logiikka.robottiralli.lautaelementit.KaantajaTest) (0 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.setruutuOikein(logiikka.robottiralli.robottienhallinta.RobottiTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.KaantajaTest.tyyppiOikein(logiikka.robottiralli.lautaelementit.KaantajaTest) (1 ms)</li><li>logiikka.robottiralli.korttienhallinta.KorttipakkaTest.jakaaOikeanMaaran(logiikka.robottiralli.korttienhallinta.KorttipakkaTest) (1 ms)</li><li>logiikka.robottiralli.lautaelementit.MurskainTest.erikoisInt(logiikka.robottiralli.lautaelementit.MurskainTest) (1 ms)</li><li>logiikka.robottiralli.hallinnat.LaserzhallintaTest.laserOsuuKauempaanRobottiin(logiikka.robottiralli.hallinnat.LaserzhallintaTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.liikkuuKaksi(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (0 ms)</li><li>logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest.liikkuuYksi(logiikka.robottiralli.hallinnat.RobojenLiikuttajaTest) (1 ms)</li><li>logiikka.robottiralli.hallinnat.LaserzhallintaTest.edessaEiMitaan(logiikka.robottiralli.hallinnat.LaserzhallintaTest) (1 ms)</li><li>logiikka.robottiralli.lautaelementit.CheckpointTest.tyyppiOikein(logiikka.robottiralli.lautaelementit.CheckpointTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.KuoppaTest.Erikoisint(logiikka.robottiralli.lautaelementit.KuoppaTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.CheckpointTest.korjaaVuoronlopussa(logiikka.robottiralli.lautaelementit.CheckpointTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.TyonninTest.tyontaa(logiikka.robottiralli.lautaelementit.TyonninTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.KorjaajaTest.korjaa(logiikka.robottiralli.lautaelementit.KorjaajaTest) (1 ms)</li><li>logiikka.robottiralli.lautaelementit.MurskainTest.murskaa(logiikka.robottiralli.lautaelementit.MurskainTest) (0 ms)</li><li>logiikka.robottiralli.robottienhallinta.RobottiTest.ToinenKonstruktori(logiikka.robottiralli.robottienhallinta.RobottiTest) (0 ms)</li><li>logiikka.robottiralli.lautaelementit.LiukuhihnaTest.liikuttaaOikein(logiikka.robottiralli.lautaelementit.LiukuhihnaTest) (1 ms)</li><li>logiikka.robottiralli.lautaelementtienhallinta.LaserTest.luoOikein(logiikka.robottiralli.lautaelementtienhallinta.LaserTest) (1 ms)</li><li>logiikka.robottiralli.lautaelementit.KaantajaTest.tarkistakaannos(logiikka.robottiralli.lautaelementit.KaantajaTest) (0 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 0.30
+
+</body>
+</html>

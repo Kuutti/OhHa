@@ -37,7 +37,7 @@ public class Ohjelmantekija implements ActionListener{
     JLabel virhekasky;
     HashMap<JButton,Kortti> komennot;
     Pelaaja pelaaja;
-    private Monitori monitori;
+    private final Monitori monitori;
     
     @Override
     public void actionPerformed(ActionEvent ae) {

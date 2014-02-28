@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package logiikka.robottiralli.hallinnat;
 
@@ -11,10 +6,6 @@ import java.util.ArrayList;
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.pelaajienhallinta.Pelaaja;
 
-/**
- *
- * @author KOTIPC
- */
 public class Vuorontoteuttaja {
 
     Lauta lauta;
@@ -42,7 +33,6 @@ public class Vuorontoteuttaja {
         }
              
     }
-
     /**
      * Odottaa parametrina annetun ajan, jotta pelaajat ehtivät
      * huomata mitä laudalla tapahtuu.
@@ -55,7 +45,6 @@ public class Vuorontoteuttaja {
             Thread.currentThread().interrupt();
         }
     }
-
     /**
      * Suorittaa pelaajien antaman koodin robotille kortti kerrallaan.
      * @param pelaajat
@@ -72,13 +61,12 @@ public class Vuorontoteuttaja {
             }
         }
     }
-
     /**
      * Tarkistaa onko pelaajilla shutdown-tilassa olevia robotteja. Jos
      * näin on robotit korjataan.
      * @param pelaajat 
      */
-    private void tarkistaShutdown(ArrayList<Pelaaja> pelaajat) {
+    void tarkistaShutdown(ArrayList<Pelaaja> pelaajat) {
         for (Pelaaja pelaaja : pelaajat) {
             if (!pelaaja.getRobotti().isActive()) {
                 pelaaja.getRobotti().korjaa(10);
@@ -86,6 +74,4 @@ public class Vuorontoteuttaja {
         }
     }
 
-
-    
 }

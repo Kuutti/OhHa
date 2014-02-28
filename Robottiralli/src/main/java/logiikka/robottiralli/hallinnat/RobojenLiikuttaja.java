@@ -1,5 +1,4 @@
 
-
 package logiikka.robottiralli.hallinnat;
 
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
@@ -24,7 +23,6 @@ public class RobojenLiikuttaja {
     /**
      * Laittaa robotin toimimaan komennon mukaisesti.
      */
-    
     public void suoritaKomento(Kortti kortti, Robotti robo) {
                 switch(kortti.getToiminto()){                 
                     case KAANNOSOIKEALLE: robo.setSuunta(robo.getSuunta()+1);
@@ -43,12 +41,6 @@ public class RobojenLiikuttaja {
                         break;
                 }
                 }
-            
-            
-            
-        
-        
-    
 
    /**
     * Etsii robotille ruudun johon, robotti liikkuu ja huolehtii tämän jälkeen
@@ -67,13 +59,11 @@ public class RobojenLiikuttaja {
                 return false;
             } else if (lauta.onRobotti(seuraava)&&!robo.isHolo()) {
                 Robotti tiella=seuraava.getRobotti();
-                if (etsiRuutuJaLiiku(tiella,1,suunta)) {
-                    liiku(seuraava, robo);
-                }
-                
-            } else {
-            liiku(seuraava, robo);
+                if (!etsiRuutuJaLiiku(tiella,1,suunta)) {
+                    return false;
+                }  
             }
+            liiku(seuraava, robo);
         }
         return true;
     }
@@ -100,12 +90,4 @@ public class RobojenLiikuttaja {
         }
     }
 
-   
-
-    
-
-    
-
-
-    
 }

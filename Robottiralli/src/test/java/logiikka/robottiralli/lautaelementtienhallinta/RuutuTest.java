@@ -1,13 +1,9 @@
 package logiikka.robottiralli.lautaelementtienhallinta;
 
-
-
-import logiikka.robottiralli.lautaelementtienhallinta.*;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
 
 public class RuutuTest {
     

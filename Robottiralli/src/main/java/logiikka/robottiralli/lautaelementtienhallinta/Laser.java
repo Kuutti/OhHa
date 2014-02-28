@@ -10,7 +10,6 @@ public class Laser {
     Ruutu ruutu;
     int suunta;
     
-
     public Ruutu getRuutu() {
         return ruutu;
     }
@@ -19,7 +18,6 @@ public class Laser {
         return suunta;
     }
 
-   
     public Laser(Ruutu ruutu, int suunta) {
         this.ruutu = ruutu;
         this.suunta = suunta;

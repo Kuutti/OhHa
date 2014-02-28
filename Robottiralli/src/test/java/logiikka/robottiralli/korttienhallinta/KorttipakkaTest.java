@@ -1,11 +1,5 @@
 package logiikka.robottiralli.korttienhallinta;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.pelaajienhallinta.Ihmispelaaja;
 import logiikka.robottiralli.robottienhallinta.Robotti;
@@ -13,10 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author KOTIPC
- */
 public class KorttipakkaTest {
     
      Korttipakka pakka;

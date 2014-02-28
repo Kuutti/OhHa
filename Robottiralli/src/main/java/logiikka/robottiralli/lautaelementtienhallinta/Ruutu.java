@@ -36,7 +36,6 @@ public class Ruutu {
     public int getX() {
         return x;
     }
-
     /**
      * Lisää ruutuun lautaelementin
      * @param elementti lisättävä lautaelementti

@@ -6,9 +6,7 @@
 
 package logiikka.robottiralli.lautaelementit;
 
-import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Elementti;
-import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import logiikka.robottiralli.robottienhallinta.Robotti;
 
 
@@ -28,7 +26,6 @@ public class Kaantaja implements Elementti{
     public String tyyppi() {
         return "kaantaja";
     }
-
     /**
      *Robottia kaannosmaaran verran.
      * @param robo Kaannettava robotti.

@@ -66,8 +66,6 @@ public class Robotti {
         seuraavacpnumero++;
     }
     
-    
-    
     public Boolean isActive() {
         return active;
     }
@@ -154,10 +152,5 @@ public class Robotti {
     public int getSeuraavacpnumero() {
         return seuraavacpnumero;
     }
-
-    
-
-    
-
     
 }

@@ -1,19 +1,11 @@
 package logiikka.robottiralli.robottienhallinta;
 
-
-
-
-
 import logiikka.robottiralli.lautaelementtienhallinta.Lauta;
 import logiikka.robottiralli.lautaelementtienhallinta.Ruutu;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author KOTIPC
- */
 public class RobottiTest {
     
     public RobottiTest() {

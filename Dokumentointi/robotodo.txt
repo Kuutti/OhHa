@@ -1,10 +1,7 @@
 teht‰v‰‰:
 t‰rke‰‰:
--ei liiku jos tˆrm‰‰ robottiin jonka takana sein‰
--checkpointin numero checkpointille eik‰ robotille
 -voitto
--javadocs
--testej‰ lis‰‰
+
 
 rajalla:
 -kortit n‰kyy hyvin
